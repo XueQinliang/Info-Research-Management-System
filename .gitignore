@@ -12,3 +12,8 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+
+#json
+
+package.json
+package-lock.json
