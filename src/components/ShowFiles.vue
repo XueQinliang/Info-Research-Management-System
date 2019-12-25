@@ -14,6 +14,7 @@
 </template>
 
 <script>
+var fly = require('flyio')
 
 export default {
   name: 'show-files',
@@ -22,6 +23,12 @@ export default {
           files:[],
           search:""
       }
+  },
+  beforeCreate(){
+      fly.get('http:127.0.0.1:5000/index')
+      .then(function(response){
+          console.log(response)
+      })
   },
   created(){
       this.$emit('header',true)

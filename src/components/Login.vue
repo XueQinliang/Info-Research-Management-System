@@ -28,6 +28,8 @@
 
 import $ from 'jquery';
 
+var fly = require('flyio')
+
 export default {
     name:"login",
     data(){
@@ -46,8 +48,18 @@ export default {
             $("#loginButton span").toggle();
             var usr = $("#inUsr").val();
             var pw = $("#inPw").val();
-            alert(usr+pw)
-        }
+            //alert(usr+pw)
+            fly.post('http://127.0.0.1:5000/login',{
+                username:usr,
+                password:pw
+            }).then(function(response){
+                console.log(response)
+                if(parseInt(response.status)==200){
+                    window.location.href = '/'
+                }
+            })
+        },
+        
     }
 }
 </script>
