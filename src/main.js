@@ -44,7 +44,7 @@ Vue.filter("snippet",function(value){
 //创建路由
 const router = new VueRouter({
   routes: Routes,
-  mode:"history"
+  mode:"hash"
 })
 
 
