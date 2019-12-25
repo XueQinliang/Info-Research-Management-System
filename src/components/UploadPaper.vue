@@ -66,7 +66,6 @@
 
 
 <script>
-document.title = "论文信息上传"
 
 import PDFJS from 'pdfjs-dist'
 import pdf from 'vue-pdf'

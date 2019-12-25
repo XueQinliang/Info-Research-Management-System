@@ -47,6 +47,10 @@ const router = new VueRouter({
   mode:"hash"
 })
 
+router.beforeEach((to, from, next) => {
+    window.document.title = to.meta.title;
+    next()
+  })
 
 //Leancloud
 /*// 存储服务

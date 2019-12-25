@@ -1,6 +1,5 @@
 <template>
   <div v-theme:column="'wide'" id="show-files">
-      <div v-wechat-title='$route.meta.title'></div>
       <h1>文件总览</h1>
       <input type="text" v-model = "search" placeholder="搜索">
       <div v-for="(x,index) in filterblogs" :key="index" class="single-blog">
@@ -25,6 +24,7 @@ export default {
       }
   },
   created(){
+      this.$emit('header',true)
       this.$http.get("https://jsonplaceholder.typicode.com/posts")
       .then(function(data){
           //console.log(data);

@@ -1,8 +1,19 @@
 
 <template>
     <div>
-        <div class="brand">
-            <img src='./../assets/top_logo.jpg'>
+        <div class="header">
+            <div class="logo">
+                <img src='./../assets/top_logo.jpg'>
+                <div class="userinfo">
+                    <div class="litxtright">
+                        <span>{{user.name}}</span><br>
+                        <span>{{user.number}}</span>
+                    </div>
+                    <div class="liimgright">
+                        <img src='./../assets/OIP.jpg' height="60px" width="50px">
+                    </div>
+                </div>
+            </div>
         </div>
         <nav>
             <ul>
@@ -19,12 +30,20 @@
 
 <script>
     export default{
-        name:"blog-header"
+        name:"blog-header",
+        data(){
+            return {
+                user:{
+                    name:"薛钦亮",
+                    number:"2017202084"
+                }
+            }
+        }
     }
 </script>
 
 <style scoped>
-.brand img{
+/* .brand img{
     margin:0 auto;
     width:35%;
     text-align:center;
@@ -35,6 +54,17 @@
 }
 .brand{
     background: #1d50a2
+} */
+.header{
+    background: #1d50a2
+}
+.logo{
+    margin:0px;
+    width:35%;
+    display: flex;
+    padding:0px 40px;
+    background: #1d50a2;
+
 }
 hr{
     margin-top:7px;
@@ -57,7 +87,33 @@ ul{
 li{
     display: inline-block;
     margin: 0 10px;
+    background: white;
 }
+.userinfo{
+    position: absolute;
+    top:10px;
+    right:100px;
+    height: 70px;
+    width: 150px; 
+    background: rgb(99, 185, 243);
+    border: 1px solid rgb(25, 21, 226)
+}
+.liimgright{
+    float:left;
+    margin: 5px 5px;
+    /* position: absolute;
+    top:15px;
+    right:150px; */
+}
+
+.litxtright{
+    float:right;
+    margin:5px 5px;
+    /* position: absolute;
+    top:15px;
+    right:60px; */
+} 
+
 a{
     color: black;
     text-decoration: none;

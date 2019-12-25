@@ -2,8 +2,8 @@
   <div id="app">
     <!--<add-blog></add-blog>-->
     <!--<show-blogs></show-blogs>-->
-    <blog-header></blog-header>
-    <router-view></router-view>
+    <blog-header v-if="isshow"></blog-header>
+    <router-view @header='showheader'></router-view>
   </div>
 </template>
 
@@ -19,6 +19,16 @@ export default {
   name: 'App',
   components: {
     UploadPaper,ShowFiles,BlogHeader,PrintLibrary,CheckOrder,Login
+  },
+  data(){
+    return{
+      isshow:true,
+    }
+  },
+  methods:{
+    showheader(bool){
+      this.isshow = bool
+    }
   }
 }
 </script>

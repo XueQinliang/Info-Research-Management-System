@@ -1,8 +1,8 @@
 <template>
     <div id="login">
         <div class="top">
-            <img src='./../assets/icon.jpg'>
-            <h2>中国人民大学信息学院论文信息网</h2>
+            <img src='./../assets/top_logo3.png'>
+            <h1>中国人民大学信息学院科研管理系统</h1>
         </div>
         <div id="login-inputgroup" style="margin:-5px">
             <div class="inputbox">
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-document.title = "登录-信息学院论文信息网"
+
 import $ from 'jquery';
 
 export default {
@@ -37,6 +37,9 @@ export default {
                 password:""
             }
         }
+    },
+    created(){
+        this.$emit('header',false)
     },
     methods:{
         dologin(){
@@ -51,9 +54,10 @@ export default {
 
 <style scoped>
 #login{
-    margin: 20px auto;
-    max-width: 1200px;
-    padding:20px;
+    /*position: absolute;*/
+    width: 203vh;
+    height: 80vh;
+    padding: 50px 20px;
     background: rgb(23,162,207);
 
 }
