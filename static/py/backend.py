@@ -78,6 +78,30 @@ def insert_into_Paper(data):
     cursor.close()
     conn.close()
 
+#学生登录检测
+#参数为学生用户名和密码，检测是否在数据库中有记录，有记录返回1，否则返回0
+#格式:[用户名，密码]
+#例：data = ['2017201985','123456']
+def Student_Login(data):
+    conn = pymysql.connect(
+            host = "202.112.113.26",
+            port= 3306,
+            user = "test",
+            password = "123456",
+            database = "irms",
+            charset = "utf8")
+    cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
+    sql = '''
+    select * from Student_Login 
+    where S_ID = %s and Password = %s
+    '''
+    cursor.execute(sql,data)
+    ret = cursor.fetchmany(1)
+    if ret==():
+        return 0
+    else:
+        return 1
+
 @app.route('/',methods = ['POST'])
 def hello_world():
     temp = json.loads(request.get_data().decode())
@@ -85,11 +109,13 @@ def hello_world():
 
 @app.route('/login',methods = ['POST'])
 def dologin():
-    global session
-    session['password'] = request.json.get('password')
-    session['username'] = request.json.get('username')
-    print("DOLOGIN:",session)
-    return jsonify({'pw':session['password'],'usr':session['username']})
+    pwd = request.json.get('password')
+    usr = request.json.get('username')
+    data=[usr,pwd]
+    print(data)
+    ret = Student_Login(data)
+    print("ret:",ret)
+    return jsonify({'islogin':ret})
 
 @app.route('/islogin',methods = ['GET'])
 def index():

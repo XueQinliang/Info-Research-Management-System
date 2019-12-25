@@ -55,10 +55,12 @@ export default {
                 password:pw
             }).then(function(response){
                 console.log(response)
-                if(parseInt(response.status)==200){
-                    sessionStorage.setItem('accessToken',response.data.usr)
-                    localStorage.setItem('accessToken',response.data.usr)
+                if(parseInt(response.data.islogin)== 1){
+                    sessionStorage.setItem('accessToken',usr)
+                    localStorage.setItem('accessToken',usr)
                     window.location.href = '/'
+                }else{
+                    alert("用户名或密码错误")
                 }
             })
         },
