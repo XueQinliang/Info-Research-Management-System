@@ -8,6 +8,13 @@
             <input type="text" v-model="Papers.title" >
             <label>上传论文内容(PDF格式)</label>
             <input type="file" id="avatar-upload" >
+            <label>请输入您的论文篇幅</label>
+            <select name="length" v-model="Papers.length">
+              <option value="长文">长文</option>
+              <option value="短文">短文</option>
+              <option value="demo">demo</option>
+              <option value="poster">poster</option>
+            </select>
             <label>请输入在这篇论文中您的作者顺序</label>
             <input type="text" v-model="Papers.author_order" >
             
@@ -47,6 +54,7 @@
             <div id="choices">
                 <h4>您的论文主体信息</h4>
                 <p>论文题目：{{Papers.title}}</p>
+                <p>论文篇幅：{{Papers.length}}</p>
                 <p>您的作者顺序：{{Papers.author_order}}</p>
             </div>
             <div id="choices">
@@ -58,7 +66,7 @@
                 <p>会议召开时间：{{Papers.meeting_time}}</p>
             </div>
         </div>
-        <button>确定并上传</button>
+        <button @click="upload">确定并上传</button>
         
     </div>
   </div>
@@ -72,7 +80,7 @@ import pdf from 'vue-pdf'
 import PDF from 'react-pdf-js'
 import dataPicker from '../../static/js/dataPicker'
 
-
+var fly = require("flyio")
 
 export default {
   components:{
@@ -140,6 +148,8 @@ export default {
           alert("请输入论文题目")
         }else if(this.order.title == ""){
           alert("请上传论文文件(PDF格式)")
+        }else if(this.Papers.length == ""){
+          alert("请填写论文篇幅")
         }else if(this.Papers.author_order == ""){
           alert("请输入您的作者顺序")
         }else if(this.Papers.online_time == "" && this.Papers.journal_time == "" && this.Papers.meeting_time == ""){
@@ -161,6 +171,22 @@ export default {
         .then((update)=>{
             console.log('pages:',this.order.pages)
         })*/
+      },
+      upload(){
+        fly.post('http://127.0.0.1:5000/upload',{
+          sid:sessionStorage.getItem('accessToken'),
+          title:this.Papers.title,
+          length:this.Papers.length,
+          author_order:this.Papers.author_order,
+          journal_name:this.Papers.journal_name,
+          meeting_name:this.Papers.meeting_name,
+          online_time:this.Papers.online_time,
+          journal_time:this.Papers.journal_time,
+          meeting_time:this.Papers.meeting_time
+        }).then(function(response){
+          alert("上传成功")
+          window.location.href = '/'
+        })
       }
   }
 }
