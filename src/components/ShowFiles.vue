@@ -25,9 +25,13 @@ export default {
       }
   },
   beforeCreate(){
-      fly.get('http:127.0.0.1:5000/index')
+      console.log("before")
+      fly.get('http://127.0.0.1:5000/islogin')
       .then(function(response){
           console.log(response)
+          if(response.data.LOGINSTATUS=='NOT'){
+              window.location.href = '/#/login'
+          }
       })
   },
   created(){

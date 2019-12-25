@@ -8,6 +8,7 @@ import json
 
 app = Flask(__name__)
 CORS(app)
+app.config['SECRET_KEY'] = '123456'
 
 @app.route('/',methods = ['POST'])
 def hello_world():
@@ -16,21 +17,21 @@ def hello_world():
 
 @app.route('/login',methods = ['POST'])
 def dologin():
+    global session
     session['password'] = request.json.get('password')
     session['username'] = request.json.get('username')
-    print(session['password']," ",session['username'])
+    print("DOLOGIN:",session)
     return jsonify({'pw':session['password'],'usr':session['username']})
 
-@app.route('/index',methodes = ['GET'])
-
+@app.route('/islogin',methods = ['GET'])
 def index():
-
   # 如果用户名和密码都存在，则跳转到index页面，登录成功
+  print("ISLOGIN:",session)
   if 'username' in session and 'password' in session:
-      
-    return jsonify({'status':'OK'})
+      print("pwd:",session['password']," usr:",session['username'])
+      return jsonify({'LOGINSTATUS':'OK'})
   # 否则，跳转到login页面
-  return jsonify({'status':'NOT'})
+  return jsonify({'LOGINSTATUS':'NOT'})
 
 if __name__ == '__main__':
     app.run()
