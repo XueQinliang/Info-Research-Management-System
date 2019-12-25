@@ -29,6 +29,7 @@
 </template>
 
 <script>
+    var fly = require("flyio")
     export default{
         name:"blog-header",
         data(){
@@ -38,6 +39,14 @@
                     number:"2017202084"
                 }
             }
+        },
+        created(){
+            this.user.number = sessionStorage.getItem('accessToken')
+            fly.post('http://127.0.0.1/get_info',{
+                'id':this.user.number
+            }).then(function(response){
+                this.user.name = response.data.name
+            })
         }
     }
 </script>

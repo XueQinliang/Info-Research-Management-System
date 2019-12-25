@@ -49,7 +49,15 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     window.document.title = to.meta.title;
-    next()
+    if(to.path === "/login"){
+      next()
+    }else{
+      if (sessionStorage.getItem('accessToken')){
+        next()
+      } else {
+        next("/login")
+    }
+}
   })
 
 //Leancloud

@@ -24,16 +24,16 @@ export default {
           search:""
       }
   },
-  beforeCreate(){
-      console.log("before")
-      fly.get('http://127.0.0.1:5000/islogin')
-      .then(function(response){
-          console.log(response)
-          if(response.data.LOGINSTATUS=='NOT'){
-              window.location.href = '/#/login'
-          }
-      })
-  },
+//   beforeCreate(){
+//       console.log("before")
+//       fly.get('http://127.0.0.1:5000/islogin')
+//       .then(function(response){
+//           console.log(response)
+//           if(response.data.LOGINSTATUS=='NOT'){
+//               window.location.href = '/#/login'
+//           }
+//       })
+//   },
   created(){
       this.$emit('header',true)
       this.$http.get("https://jsonplaceholder.typicode.com/posts")

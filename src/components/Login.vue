@@ -37,11 +37,12 @@ export default {
             user:{
                 id:"",
                 password:""
-            }
+            },
         }
     },
     created(){
         this.$emit('header',false)
+        this.user.id = localStorage.getItem('accessToken')
     },
     methods:{
         dologin(){
@@ -55,6 +56,8 @@ export default {
             }).then(function(response){
                 console.log(response)
                 if(parseInt(response.status)==200){
+                    sessionStorage.setItem('accessToken',response.data.usr)
+                    localStorage.setItem('accessToken',response.data.usr)
                     window.location.href = '/'
                 }
             })

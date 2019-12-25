@@ -10,6 +10,9 @@ app = Flask(__name__)
 CORS(app)
 app.config['SECRET_KEY'] = '123456'
 
+
+information = {'1234':'薛钦亮'}
+
 @app.route('/',methods = ['POST'])
 def hello_world():
     temp = json.loads(request.get_data().decode())
@@ -32,6 +35,12 @@ def index():
       return jsonify({'LOGINSTATUS':'OK'})
   # 否则，跳转到login页面
   return jsonify({'LOGINSTATUS':'NOT'})
+
+@app.route('/get_info',methods = ['POST'])
+def get_info():
+    sid = request.json.get('id')
+    name = information[sid]
+    return jsonify({'sid':sid,'name':name})
 
 if __name__ == '__main__':
     app.run()
