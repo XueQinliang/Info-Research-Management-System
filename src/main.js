@@ -6,7 +6,7 @@ import VueResource from 'vue-resource'
 import App from './App'
 import Routes from './routes'
 import AV from 'leancloud-storage'
-import dataPicker from './../static/js/dataPicker'
+
 
 Vue.config.productionTip = false
 Vue.use(VueResource)

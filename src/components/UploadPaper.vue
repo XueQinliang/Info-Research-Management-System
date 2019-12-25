@@ -16,17 +16,17 @@
         <div id="choices">
             <h3>论文发表信息</h3>
             <label>请选择论文的线上发表时间</label>
-            <input class="js-date-picker1" type="text" placeholder="选择发表日期" v-model="Papers.online_time" readonly >
+            <input type="text" class="demo-input" placeholder="请选择日期" id="date1" >
             <br><br>
             <label>(如有在期刊上发表)请输入期刊全称</label>
             <input type="text" v-model="Papers.journal_name">
             <label>请选择期刊出版的时间</label>
-            <input class="js-date-picker2" type="text" placeholder="选择发表日期" v-model="Papers.journal_time" readonly>
+            <input type="text" class="demo-input" placeholder="请选择日期" id="date2">
             <br><br>
             <label>(如有在会议上发表)请输入会议全称</label>
             <input type="text" v-model="Papers.meeting_name">
             <label>请选择会议举行的时间</label>
-            <input class="js-date-picker3" type="text" placeholder="选择发表日期" v-model="Papers.meeting_time" readonly>
+            <input type="text" class="demo-input" placeholder="请选择日期" id="date3"> 
         </div>
     </form>
     <button v-if="!submitted" @click="post">上传论文信息</button>
@@ -71,6 +71,9 @@ document.title = "论文信息上传"
 import PDFJS from 'pdfjs-dist'
 import pdf from 'vue-pdf'
 import PDF from 'react-pdf-js'
+import dataPicker from '../../static/js/dataPicker'
+
+
 
 export default {
   components:{
@@ -93,68 +96,37 @@ export default {
             title:"",
             pages:0,
         },
+        time:"",
         id:"",
         src:"",
         submitted:false
     }
   },
   mounted(){
-      this.DateSelect1();
-      this.DateSelect2();
-      this.DateSelect3();
+      laydate.render({
+        elem: '#date1',
+        done: (value) => {
+          this.Papers.online_time = value
+          console.log(this.Papers.online_time)
+        }
+      })
+      laydate.render({
+        elem: '#date2',
+        done: (value) => {
+          this.Papers.journal_time = value
+          console.log(this.Papers.journal_time)
+        }
+      })
+      laydate.render({
+        elem: '#date3',
+        done: (value) => {
+          this.Papers.meeting_time = value
+          console.log(this.Papers.meeting_time)
+        }
+      })
   },
   methods:{
-    DateSelect1() {
-      var calendar = new datePicker();
-      calendar.init({
-        trigger: ".js-date-picker1" /*按钮选择器，用于触发弹出插件*/,
-        type:
-          "date" /*模式：date日期；datetime日期时间；time时间；ym年月；year:年*/,
-        minDate: "1900-1-1" /*最小日期*/,
-        maxDate: "2100-12-31" /*最大日期*/,
-        onSubmit: function() {
-          /*确认时触发事件*/
-          var theSelectData = calendar.value;
-        },
-        onClose: function() {
-          /*取消时触发事件*/
-        }
-      });
-    },
-    DateSelect2() {
-      var calendar = new datePicker();
-      calendar.init({
-        trigger: ".js-date-picker2" /*按钮选择器，用于触发弹出插件*/,
-        type:
-          "date" /*模式：date日期；datetime日期时间；time时间；ym年月；year:年*/,
-        minDate: "1900-1-1" /*最小日期*/,
-        maxDate: "2100-12-31" /*最大日期*/,
-        onSubmit: function() {
-          /*确认时触发事件*/
-          var theSelectData = calendar.value;
-        },
-        onClose: function() {
-          /*取消时触发事件*/
-        }
-      });
-    },
-    DateSelect3() {
-      var calendar = new datePicker();
-      calendar.init({
-        trigger: ".js-date-picker3" /*按钮选择器，用于触发弹出插件*/,
-        type:
-          "date" /*模式：date日期；datetime日期时间；time时间；ym年月；year:年*/,
-        minDate: "1900-1-1" /*最小日期*/,
-        maxDate: "2100-12-31" /*最大日期*/,
-        onSubmit: function() {
-          /*确认时触发事件*/
-          var theSelectData = calendar.value;
-        },
-        onClose: function() {
-          /*取消时触发事件*/
-        }
-      });
-    },
+    
      getName:function(){
         var avatarUpload = document.getElementById('avatar-upload')
         var fname = avatarUpload.value;
