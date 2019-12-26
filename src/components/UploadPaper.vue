@@ -36,7 +36,7 @@
             <input type="text" class="demo-input" placeholder="请选择日期" id="date3"> 
         </div>
     </form>
-    <button v-if="!submitted" @click="post">上传论文信息</button>
+    <button v-if="!submitted" @click="post">预览论文信息</button>
 
     <hr v-if="!submitted">
 

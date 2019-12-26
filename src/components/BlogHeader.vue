@@ -5,13 +5,26 @@
             <div class="logo">
                 <img src='./../assets/top_logo.jpg'>
                 <div class="userinfo">
-                    <div class="litxtright">
-                        <span>{{user.name}}</span><br>
-                        <span>{{user.number}}</span>
-                    </div>
-                    <div class="liimgright">
+                    <table class='tables' border="1">
+                        <tr>
+                            <td rowspan="4" height="130px" width="50px"><img src='./../assets/OIP.jpg' height="100%" width="100%"></td>
+                            <td class='txttd' >{{user.name}}</td>
+                        </tr>   
+                        <tr>
+                            <td class='txttd'>{{user.number}}</td>
+                        </tr>
+                        <tr>
+                            <td class='txttd'>{{user.identity}}</td>
+                        </tr>
+                        <tr>
+                            <td class='lktd'><a href="/#/login" class='la'>退出当前账户</a></td>
+                        </tr>
+                    </table>
+                        <!--span>{{user.name}}</span><br>
+                        <span>{{user.number}}</span-->
+                    <!--div class="liimgright">
                         <img src='./../assets/OIP.jpg' height="60px" width="50px">
-                    </div>
+                    </div-->
                 </div>
             </div>
         </div>
@@ -36,7 +49,8 @@
             return {
                 user:{
                     name:"薛钦亮",
-                    number:"2017202084"
+                    number:"2017202084",
+                    identity:"普通用户"
                 }
             }
         },
@@ -101,34 +115,65 @@ li{
 .userinfo{
     position: absolute;
     top:10px;
-    right:100px;
-    height: 70px;
-    width: 150px; 
+    right:10px;
+    height: 145px;
+    width: 300px; 
     background: rgb(99, 185, 243);
     border: 1px solid rgb(25, 21, 226)
 }
-.liimgright{
+/* .liimgright{
     float:left;
     margin: 5px 5px;
-    /* position: absolute;
+    position: absolute;
     top:15px;
-    right:150px; */
+    right:150px;
 }
 
-.litxtright{
-    float:right;
+.litxtleft{
+    float:left;
     margin:5px 5px;
-    /* position: absolute;
+    position: absolute;
     top:15px;
-    right:60px; */
-} 
-
+    right:60px;
+}  */
+.tables{
+    width: 300px;
+    height: 145px;
+    float:left;
+    table-layout: fixed;
+}
+.txttd{
+    width: 80px;
+    height: 10px;
+    font-size: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align:center;
+    background-color: rgb(58, 234, 247);
+}
+.lktd{
+    width: 80px;
+    height: 10px;
+    font-size: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align:center;
+    border:1px solid rgb(121, 31, 3);
+    background-color: rgb(121, 31, 3);
+}
 a{
     color: black;
     text-decoration: none;
     padding:12px;
     border-radius: 5px;
     font-size: 20px
+}
+.la{
+    color: rgb(228, 243, 11);
+    font-weight: bold;
+    font-size: 15px;
 }
 nav{
     background: white;
