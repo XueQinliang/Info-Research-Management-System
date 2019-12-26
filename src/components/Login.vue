@@ -43,8 +43,18 @@ export default {
     created(){
         this.$emit('header',false)
         this.user.id = localStorage.getItem('accessToken')
+        var that = this;
+        document.onkeydown = function(e) {
+            var key = window.event.keyCode;
+            if (key == 13) {
+                that.enterSearchMember();
+            }
+        }
     },
     methods:{
+        enterSearchMember() {
+            this.dologin()
+        },
         dologin(){
             $("#loginButton span").toggle();
             var usr = $("#inUsr").val();
