@@ -16,7 +16,13 @@
               <option value="poster">poster</option>
             </select>
             <label>请输入在这篇论文中您的作者顺序</label>
-            <input type="text" v-model="Papers.author_order" >
+            <!--input type="text" v-model="Papers.author_order" -->
+            <select name="order" v-model="Papers.author_order">
+              <option value="一作">一作</option>
+              <option value="二作">二作</option>
+              <option value="通讯作者">通讯作者</option>
+              <option value="其他">其他</option>
+            </select>
             
         </div>
         
