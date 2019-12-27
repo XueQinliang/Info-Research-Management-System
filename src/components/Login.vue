@@ -43,16 +43,17 @@ export default {
     created(){
         this.$emit('header',false)
         this.user.id = localStorage.getItem('accessToken')
+        sessionStorage.clear();
         var that = this;
         document.onkeydown = function(e) {
             var key = window.event.keyCode;
             if (key == 13) {
-                that.enterSearchMember();
+                that.enterlogin();
             }
         }
     },
     methods:{
-        enterSearchMember() {
+        enterlogin() {
             this.dologin()
         },
         dologin(){
