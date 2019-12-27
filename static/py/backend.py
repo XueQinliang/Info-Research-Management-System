@@ -141,6 +141,7 @@ def index():
 def get_info():
     print("Getinfo")
     sid = request.json.get('id')
+    print(sid)
     name = Get_Name_By_ID(request.json.get('id'))
     print(sid,name)
     return jsonify({'sid':sid,'name':name})
