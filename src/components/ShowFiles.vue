@@ -35,7 +35,7 @@ export default {
 //       })
 //   },
   created(){
-      this.$emit('header',true)
+      //this.$emit('header',true)
       this.$http.get("https://jsonplaceholder.typicode.com/posts")
       .then(function(data){
           //console.log(data);

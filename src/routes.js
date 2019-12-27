@@ -1,9 +1,10 @@
 import ShowFiles from './components/ShowFiles.vue'
 import UploadPaper from './components/UploadPaper.vue'
-import SingleBlog from './components/SingleBlog.vue'
+import SinglePaper from './components/SinglePaper.vue'
 import PrintLibrary from './components/PrintLibrary.vue'
-import CheckOrder from './components/CheckOrder.vue'
+import CheckPapers from './components/CheckPapers.vue'
 import Login from './components/Login.vue'
+import TeacherIndex from './components/TeacherIndex.vue'
 
 export default[
     {
@@ -28,18 +29,35 @@ export default[
         component:UploadPaper,
     },
     {
-        path:"/blog_detail/:id",
-        component:SingleBlog,
+        path:"/paper_detail/:title/:author",
+        meta:{
+            title:"论文详细信息"
+        },
+        component:SinglePaper,
     },
     {
         path:"/print_order/:library",
         component:PrintLibrary,
     },
     {
-        path:"/check_order",
+        path:"/check_papers",
         meta:{
             title:"查看我的论文"
         },
-        component:CheckOrder,
+        component:CheckPapers,
+    },
+    {
+        path:"/teacher",
+        meta:{
+            title:"教师首页"
+        },
+        component:TeacherIndex
+    },
+    {
+        path:"/teacher/paper_detail/:title/:author",
+        meta:{
+            title:"论文详细信息"
+        },
+        component:SinglePaper,
     }
 ]

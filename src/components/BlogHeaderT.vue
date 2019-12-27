@@ -26,9 +26,8 @@
         <nav>
             <ul>
                 <li>
-                    <router-link to="/" exact>首页</router-link>
-                    <router-link to="/upload-paper" exact>上传论文信息</router-link>
-                    <router-link to="/check_papers" exact>查看我的论文</router-link>
+                    <router-link to="/teacher" exact>首页</router-link>
+                    <router-link to="/upload-paper" exact>导出</router-link>
                 </li>                
             </ul>   
         </nav>
@@ -39,18 +38,19 @@
 <script>
     var fly = require("flyio")
     export default{
-        name:"blog-header",
+        name:"blog-header-t",
         data(){
             return {
                 user:{
-                    name:"薛钦亮",
-                    number:"2017202084",
-                    identity:"普通用户"
+                    name:"",
+                    number:"",
+                    identity:""
                 }
             }
         },
         created(){
             this.user.number = localStorage.getItem('accessToken')
+            this.user.identity = '教师用户'
             fly.post('http://127.0.0.1:5000/get_info',{
                 id:this.user.number
             }).then((response)=>{

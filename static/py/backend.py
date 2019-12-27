@@ -34,15 +34,55 @@ def Get_Name_By_ID(data):
             database = "irms",
             charset = "utf8")
     cursor = conn.cursor();
-    sql = """
+    sql1 = """
     select Get_Name_By_ID(%s)
     """
-    cursor.execute(sql,data)
-    ret = cursor.fetchone()
+    sql2 = """
+    select Get_Name_By_ID_T(%s)
+    """
+    cursor.execute(sql1,data)
+    ret1 = cursor.fetchone()[0]
+    cursor.execute(sql2,data)
+    ret2 = cursor.fetchone()[0]
     cursor.close()
     conn.close()
-    return ret[0]
+    if ret1 != None:
+        return ret1
+    if ret2 != None:
+        return ret2
 
+def Get_Paper_By_any(infodict):
+    conn = pymysql.connect(
+            host = "202.112.113.26",
+            port= 3306,
+            user = "test",
+            password = "123456",
+            database = "irms",
+            charset = "utf8")
+    cursor = conn.cursor();
+    conditionlist = []
+    for i in infodict:
+        conditionlist.append(i+"="+"\""+infodict[i]+"\"")
+    sql = """
+    select * from Paper 
+    """ 
+    if conditionlist != []:
+        sql += ('where ' + ' and '.join(conditionlist))
+    print(sql)
+    cursor.execute(sql)
+    ret = cursor.fetchall()
+    ret = list(ret)
+    for i in range(len(ret)):
+        ret[i] = list(ret[i])
+        for j in range(len(ret[i])):
+            if ret[i][j] == None:
+                ret[i][j] = ''
+        for k in [-1,-2,-3]:
+            if ret[i][k] != '':
+                ret[i][k] = ret[i][k].strftime("%Y-%m-%d")
+    cursor.close()
+    conn.close()
+    return ret
 
 #录入学生信息
 #参数为学生信息
@@ -99,18 +139,26 @@ def Student_Login(data):
             database = "irms",
             charset = "utf8")
     cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
-    sql = '''
+    sql1 = '''
     select * from Student_Login 
     where S_ID = %s and Password = %s
     '''
-    cursor.execute(sql,data)
-    ret = cursor.fetchmany(1)
-    #cursor.close()
-    #conn.close()
-    if ret==():
+    cursor.execute(sql1,data)
+    ret1 = cursor.fetchmany(1)
+    sql2 = '''
+    select * from Teacher_Login 
+    where T_ID = %s and Password = %s
+    '''
+    cursor.execute(sql2,data)
+    ret2 = cursor.fetchmany(1)
+    cursor.close()
+    conn.close()
+    if ret1==() and ret2==():
         return 0
-    else:
+    elif ret1!=():
         return 1
+    else:
+        return 2
 
 @app.route('/',methods = ['POST'])
 def hello_world():
@@ -123,9 +171,10 @@ def dologin():
     usr = request.json.get('username')
     data=[usr,pwd]
     print(data)
-    ret = Student_Login(data)
-    print("ret:",ret)
-    return jsonify({'islogin':ret})
+    ret1 = Student_Login(data)
+    print("ret:",ret1)
+    ret2 = Get_Name_By_ID(usr)
+    return jsonify({'islogin':ret1,'name':ret2})
 
 @app.route('/islogin',methods = ['GET'])
 def index():
@@ -160,9 +209,56 @@ def upload():
     value.append(request.json.get('journal_time'))
     name = Get_Name_By_ID(request.json.get('sid'))
     value.insert(1,name)
+    for i in range(len(value)):
+        if value[i] == '':
+            value[i] == None
     print(value)
     insert_into_Paper(value)
     return jsonify({'isupload':"OK"})
+@app.route('/check_papers',methods = ['POST'])
+def check_papers():
+    value = {}
+    name = Get_Name_By_ID(request.json.get('id'))
+    value['P_Author'] = name
+    ret = Get_Paper_By_any(value)
+    print(ret)
+    ret_value = []
+    for x in ret:
+        temp = {'title':x[0],'author':x[1],'sequence':x[2]}
+        ret_value.append(temp)
+    return jsonify(ret_value)
+
+@app.route('/all_papers',methods = ['GET'])
+def get_all():
+    ret = Get_Paper_By_any({})
+    print(ret)
+    ret_value = []
+    for x in ret:
+        temp = {'title':x[0],'author':x[1],'sequence':x[2]}
+        ret_value.append(temp)
+    return jsonify(ret_value)
+    
+@app.route('/get_detail',methods = ['POST'])
+def get_detail():
+    value = {}
+    value['P_Author'] = request.json.get('author')
+    value['P_Title'] = request.json.get('p_title')
+    print(value)
+    ret = Get_Paper_By_any(value)
+    ret_value = ret[0]
+    value.clear()
+    value['title'] = request.json.get('p_title')
+    value['author'] = request.json.get('author')
+    value['author_order'] = ret_value[2]
+    value['length'] = ret_value[3]
+    value['journal_name'] = ret_value[4]
+    value['meeting_name'] = ret_value[5]
+    value['meeting_time'] = ret_value[6]
+    value['online_time'] = ret_value[7]
+    value['journal_time'] = ret_value[8]
+    
+    return jsonify(value)
+
 
 if __name__ == '__main__':
     app.run()

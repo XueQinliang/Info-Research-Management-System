@@ -68,8 +68,16 @@ export default {
                 console.log(response)
                 if(parseInt(response.data.islogin)== 1){
                     sessionStorage.setItem('accessToken',usr)
+                    sessionStorage.setItem('identity','student')
                     localStorage.setItem('accessToken',usr)
+                    alert(response.data.name+"同学，欢迎回来")
                     window.location.href = '/'
+                }else if(parseInt(response.data.islogin)== 2){
+                    sessionStorage.setItem('accessToken',usr)
+                    sessionStorage.setItem('identity','teacher')
+                    localStorage.setItem('accessToken',usr)
+                    alert(response.data.name+"老师，欢迎回来")
+                    window.location.href = '#/teacher'
                 }else{
                     alert("用户名或密码错误")
                 }
