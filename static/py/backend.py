@@ -10,6 +10,14 @@ app = Flask(__name__)
 CORS(app)
 app.config['SECRET_KEY'] = '123456'
 
+dbinfo = {
+    'host':"202.112.113.26",
+    'port':3306,
+    'user':"test",
+    'password':"123456",
+    'database':"irms",
+    'charset':"utf8"
+}
 
 information = {'1234':'薛钦亮'}
 
@@ -97,6 +105,8 @@ def Student_Login(data):
     '''
     cursor.execute(sql,data)
     ret = cursor.fetchmany(1)
+    #cursor.close()
+    #conn.close()
     if ret==():
         return 0
     else:
@@ -129,8 +139,10 @@ def index():
 
 @app.route('/get_info',methods = ['POST'])
 def get_info():
+    print("Getinfo")
     sid = request.json.get('id')
-    name = information[sid]
+    name = Get_Name_By_ID(request.json.get('id'))
+    print(sid,name)
     return jsonify({'sid':sid,'name':name})
 
 @app.route('/upload',methods = ['POST'])

@@ -56,9 +56,9 @@
         },
         created(){
             this.user.number = sessionStorage.getItem('accessToken')
-            fly.post('http://127.0.0.1/get_info',{
+            fly.post('http://127.0.0.1:5000/get_info',{
                 'id':this.user.number
-            }).then(function(response){
+            }).then((response)=>{
                 this.user.name = response.data.name
             })
         }
