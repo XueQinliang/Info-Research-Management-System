@@ -278,6 +278,8 @@ def get_detail():
 
 @app.route('/upload_file', methods=['GET','POST'])
 def upload_file():
+    if not os.path.exists(UPLOAD_FOLDER):
+        os.mkdir(UPLOAD_FOLDER)
     print("upload_file")
     if request.method=='POST': 
         file=request.files.get('uploadfile')  
