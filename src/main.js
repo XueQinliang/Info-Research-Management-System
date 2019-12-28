@@ -55,21 +55,18 @@ router.beforeEach((to, from, next) => {
       if(sessionStorage.getItem('accessToken')){
         next()
       }else{
-        alert("需要登录")
         next("/login")
       }
     }else if(to.path.substring(0,8) === "/teacher"){
       if(sessionStorage.getItem('accessToken')&&sessionStorage.getItem('identity')=='teacher'){
         next()
       }else{
-        alert("需要以教师身份登陆")
         next("/login")
       }
     }else{
       if (sessionStorage.getItem('accessToken')&&sessionStorage.getItem('identity')=='student'){
         next()
       } else {
-        alert("需要以学生身份登录")
         next("/login")
     }
 }

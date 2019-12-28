@@ -4,7 +4,8 @@
         <div id="preview">
             <div id="choices">
                 <h3>您选择的文件</h3>
-                <p>标题：{{Papers.title}}</p>
+                <p>文件名：{{save}}</p>
+                <a :href="url" :download="save">下载</a>
             </div>
             <div id="choices">
                 <h3>您的论文主体信息</h3>
@@ -33,7 +34,9 @@ import fly from 'flyio';
             return{
                 title:this.$route.params.title,
                 author:this.$route.params.author,
-                Papers:{}
+                Papers:{},
+                url:"",
+                save:""
             }
         },
         created(){
@@ -43,9 +46,11 @@ import fly from 'flyio';
                 author:this.author
             })
             .then((response)=>{
-                this.Papers = response.data;
+                this.Papers = response.data.paper;
+                this.url = response.data.url
+                this.save = response.data.save
             })
-        }
+        },
     }
 </script>
 

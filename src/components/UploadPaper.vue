@@ -10,17 +10,17 @@
                   $('#file_form').ajaxSubmit(function(message) {
                         console.log(message)
                         // 对于表单提交成功后处理，message为提交页面saveReport.htm的返回内容
-                        if (message=='success upload file'){
-                          alert('上传文件成功')
-                        }else{
+                        if (message=='fail upload file'){
                           alert('上传文件失败')
+                        }else{
+                          alert('上传文件成功')
                         }
                   });
                   return false;"
-            enctype="multipart/form-data" id="file_form" >
+            enctype="multipart/form-data" id="file_form">
               <label>上传论文内容(PDF格式)</label>
               <input type="file" id="avatar-upload" name="uploadfile" />
-              <input type='submit' value='上传' />
+              <input type='submit' @click="isupload" value='上传' />
             </form>
             <label>请输入您的论文篇幅</label>
             <select name="length" v-model="Papers.length">
@@ -65,9 +65,7 @@
             <h3>论文信息总览</h3>
             <div id="choices">
                 <h4>您选择的文件</h4>
-                <p>标题：{{order.title}}</p>
-                <p>URL：{{src}}</p>
-                <pdf :src="src" @num-pages="order.pages=$event"></pdf>
+                <p>文件名：{{order.title}}</p>
                 <label>页数：{{order.pages}}</label>
             </div>
             <div id="choices">
@@ -127,8 +125,8 @@ export default {
         },
         time:"",
         id:"",
-        src:"",
-        submitted:false
+        submitted:false,
+        click:false
     }
   },
   updated(){
@@ -178,7 +176,9 @@ export default {
       })
   },
   methods:{
-    
+      isupload(){
+        this.click = true
+      },
       back(){
         this.submitted = false
       },
@@ -206,6 +206,8 @@ export default {
           alert("请填写期刊名称")
         }else if(this.Papers.meeting_time != "" && this.Papers.meeting_name == ""){
           alert("请填写会议名称")
+        }else if(this.click==false){
+          alert("请点击文件旁的上传按钮")
         }else{
           //文件上传
           this.submitted = true
@@ -221,7 +223,8 @@ export default {
           meeting_name:this.Papers.meeting_name,
           online_time:this.Papers.online_time,
           journal_time:this.Papers.journal_time,
-          meeting_time:this.Papers.meeting_time
+          meeting_time:this.Papers.meeting_time,
+          url:this.order.title
         }).then(function(response){
           alert("上传成功")
           window.location.href = '/'

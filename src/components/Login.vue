@@ -3,6 +3,7 @@
         <div class="top">
             <img src='./../assets/top_logo3.png'>
             <h1>中国人民大学信息学院科研管理系统</h1>
+            <!--<a href="http://202.112.113.26/hhh.c" download="hhh.c">下载试试</a>-->
         </div>
         <div id="login-inputgroup" style="margin:-5px">
             <div class="inputbox">

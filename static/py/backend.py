@@ -94,7 +94,7 @@ def Get_Paper_By_any(infodict):
         for j in range(len(ret[i])):
             if ret[i][j] == None:
                 ret[i][j] = ''
-        for k in [-1,-2,-3]:
+        for k in [-2,-3,-4]:
             if ret[i][k] != '':
                 ret[i][k] = ret[i][k].strftime("%Y-%m-%d")
     cursor.close()
@@ -136,7 +136,7 @@ def insert_into_Paper(data):
             charset = "utf8")
     cursor = conn.cursor()
     sql = """
-    call insert_into_Paper(%s,%s,%s,%s,%s,%s,%s,%s,%s)
+    call insert_into_Paper(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
     """
     cursor.execute(sql,data)
     conn.commit()
@@ -224,11 +224,12 @@ def upload():
     value.append(request.json.get('meeting_time'))
     value.append(request.json.get('online_time'))
     value.append(request.json.get('journal_time'))
+    value.append(request.json.get('url'))
     name = Get_Name_By_ID(request.json.get('sid'))
     value.insert(1,name)
     for i in range(len(value)):
         if value[i] == '':
-            value[i] == None
+            value[i] = None
     print(value)
     insert_into_Paper(value)
     return jsonify({'isupload':"OK"})
@@ -273,8 +274,10 @@ def get_detail():
     value['meeting_time'] = ret_value[6]
     value['online_time'] = ret_value[7]
     value['journal_time'] = ret_value[8]
-    
-    return jsonify(value)
+    #获取url
+    url = "http://202.112.113.26/download/"+ret_value[9]
+    save = ret_value[9]
+    return jsonify({"paper":value,'url':url,'save':save})
 
 @app.route('/upload_file', methods=['GET','POST'])
 def upload_file():
@@ -285,7 +288,9 @@ def upload_file():
         file=request.files.get('uploadfile')  
         if file and allowed_file(file.filename):
             file.save(app.config['UPLOAD_FOLDER'] + file.filename)
-            return "success upload file"
+            print(file.filename)
+            return "/download/"+file.filename
+    print("ERROR:",file.filename)
     return "fail upload file"
 
 if __name__ == '__main__':
