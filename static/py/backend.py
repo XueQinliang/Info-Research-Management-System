@@ -7,8 +7,20 @@ import json
 import pymysql
 
 app = Flask(__name__)
-CORS(app)
+CORS(app,supports_credentials=True)
 app.config['SECRET_KEY'] = '123456'
+UPLOAD_FOLDER = r'../usrupload/'
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif','doc','docx','pptx','ppt','zip','tar','rar','7z'])
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization,session_id')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS,HEAD')
+    # 这里不能使用add方法，否则会出现 The 'Access-Control-Allow-Origin' header contains multiple values 的问题
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
+
 
 dbinfo = {
     'host':"202.112.113.26",
@@ -19,8 +31,13 @@ dbinfo = {
     'charset':"utf8"
 }
 
+
 information = {'1234':'薛钦亮'}
 
+#判断后缀名
+def allowed_file(filename):
+    return '.' in filename and \
+        filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 
 #由学号得到学生信息
@@ -259,6 +276,15 @@ def get_detail():
     
     return jsonify(value)
 
+@app.route('/upload_file', methods=['GET','POST'])
+def upload_file():
+    print("upload_file")
+    if request.method=='POST': 
+        file=request.files.get('uploadfile')  
+        if file and allowed_file(file.filename):
+            file.save(app.config['UPLOAD_FOLDER'] + file.filename)
+            return "success upload file"
+    return "fail upload file"
 
 if __name__ == '__main__':
     app.run()

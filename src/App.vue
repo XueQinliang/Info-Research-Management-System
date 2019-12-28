@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <!--<add-blog></add-blog>-->
-    <!--<show-blogs></show-blogs>-->
-    <blog-header v-if="isshow"></blog-header>
-    <blog-header-t v-if="isshow_t"></blog-header-t>
-    <router-view></router-view>
+      <!--<add-blog></add-blog>-->
+      <!--<show-blogs></show-blogs>-->
+      <blog-header v-if="isshow"></blog-header>
+      <blog-header-t v-if="isshow_t"></blog-header-t>
+      <router-view></router-view>
   </div>
 </template>
 

@@ -6,8 +6,22 @@
             <h3>论文主题信息</h3>
             <label>请输入论文题目</label>
             <input type="text" v-model="Papers.title" >
-            <label>上传论文内容(PDF格式)</label>
-            <input type="file" id="avatar-upload" >
+            <form method="post" action="http://localhost:5000/upload_file" onsubmit ="
+                  $('#file_form').ajaxSubmit(function(message) {
+                        console.log(message)
+                        // 对于表单提交成功后处理，message为提交页面saveReport.htm的返回内容
+                        if (message=='success upload file'){
+                          alert('上传文件成功')
+                        }else{
+                          alert('上传文件失败')
+                        }
+                  });
+                  return false;"
+            enctype="multipart/form-data" id="file_form" >
+              <label>上传论文内容(PDF格式)</label>
+              <input type="file" id="avatar-upload" name="uploadfile" />
+              <input type='submit' value='上传' />
+            </form>
             <label>请输入您的论文篇幅</label>
             <select name="length" v-model="Papers.length">
               <option value="长文">长文</option>
@@ -16,7 +30,6 @@
               <option value="poster">poster</option>
             </select>
             <label>请输入在这篇论文中您的作者顺序</label>
-            <!--input type="text" v-model="Papers.author_order" -->
             <select name="order" v-model="Papers.author_order">
               <option value="一作">一作</option>
               <option value="二作">二作</option>
@@ -29,17 +42,17 @@
         <div id="choices">
             <h3>论文发表信息</h3>
             <label>请选择论文的线上发表时间</label>
-            <input type="text" class="demo-input" placeholder="请选择日期" id="date1" >
+            <input type="text" class="demo-input" placeholder="请选择日期" id="date1" v-model="Papers.online_time">
             <br><br>
             <label>(如有在期刊上发表)请输入期刊全称</label>
             <input type="text" v-model="Papers.journal_name">
             <label>请选择期刊出版的时间</label>
-            <input type="text" class="demo-input" placeholder="请选择日期" id="date2">
+            <input type="text" class="demo-input" placeholder="请选择日期" id="date2" v-model="Papers.journal_time">
             <br><br>
             <label>(如有在会议上发表)请输入会议全称</label>
             <input type="text" v-model="Papers.meeting_name">
             <label>请选择会议举行的时间</label>
-            <input type="text" class="demo-input" placeholder="请选择日期" id="date3"> 
+            <input type="text" class="demo-input" placeholder="请选择日期" id="date3" v-model="Papers.meeting_time"> 
         </div>
     </form>
     <button v-if="!submitted" @click="post">预览论文信息</button>
@@ -72,7 +85,10 @@
                 <p>会议召开时间：{{Papers.meeting_time}}</p>
             </div>
         </div>
-        <button @click="upload">确定并上传</button>
+        <div>
+          <button @click="upload">确定并上传</button>
+          <button @click="back">返回</button>
+        </div>
         
     </div>
   </div>
@@ -115,6 +131,29 @@ export default {
         submitted:false
     }
   },
+  updated(){
+    laydate.render({
+        elem: '#date1',
+        done: (value) => {
+          this.Papers.online_time = value
+          console.log(this.Papers.online_time)
+        }
+      })
+      laydate.render({
+        elem: '#date2',
+        done: (value) => {
+          this.Papers.journal_time = value
+          console.log(this.Papers.journal_time)
+        }
+      })
+      laydate.render({
+        elem: '#date3',
+        done: (value) => {
+          this.Papers.meeting_time = value
+          console.log(this.Papers.meeting_time)
+        }
+      })
+  },
   mounted(){
       laydate.render({
         elem: '#date1',
@@ -140,6 +179,9 @@ export default {
   },
   methods:{
     
+      back(){
+        this.submitted = false
+      },
      getName:function(){
         var avatarUpload = document.getElementById('avatar-upload')
         var fname = avatarUpload.value;
@@ -169,15 +211,6 @@ export default {
           this.submitted = true
         }
       },
-      update:function(){
-        /*console.log('pages:',this.order.pages)
-        var update = AV.Object.createWithoutData('testtest',this.id)
-        update.set('pages',this.order.pages)
-        update.save()
-        .then((update)=>{
-            console.log('pages:',this.order.pages)
-        })*/
-      },
       upload(){
         fly.post('http://127.0.0.1:5000/upload',{
           sid:sessionStorage.getItem('accessToken'),
@@ -193,7 +226,8 @@ export default {
           alert("上传成功")
           window.location.href = '/'
         })
-      }
+      },
+     
   }
 }
 </script>
@@ -251,6 +285,16 @@ button{
     border-radius: 4px;
     font-size: 18px;
     cursor: pointer;
+}
+.upload{
+  display: block;
+  padding:6px;
+  margin:20px 0;
+  height:25px;
+  width:75px;
+  background: rgb(185, 184, 189);
+  color:black;
+  font-size:12px;
 }
 #preview{
     padding: 10px 20px;
