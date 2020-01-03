@@ -1,5 +1,5 @@
 <template>
-  <div id="show-files">
+  <div id="show-files" :style="bgimg">
       <br>
       <div id="text">
         <h1>欢迎来到中国人民大学信息学院科研管理系统</h1>
@@ -23,8 +23,9 @@ export default {
   name: 'show-files',
   data(){
       return{
-          files:[],
-          search:""
+          bgimg:{
+              backgroundImage: 'url(' + require('../assets/indexbg.jpg') + ')'
+          }
       }
   }
 }
@@ -35,7 +36,7 @@ export default {
     max-width: 100%;
     max-height: 100%;
     margin:0 auto;
-    background-image: url("../assets/indexbg.jpg");
+    background-repeat: space;
     background-size: 100% 100%;
 }
 
