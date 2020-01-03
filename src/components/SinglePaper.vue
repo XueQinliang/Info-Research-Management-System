@@ -13,6 +13,7 @@
                 <p>论文篇幅：{{Papers.length}}</p>
                 <p>作者：{{Papers.author}}</p>
                 <p>您的作者顺序：{{Papers.author_order}}</p>
+                <p>审核状态：{{Papers.status}}</p>
             </div>
             <div id="choices">
                 <h3>论文的发表信息</h3>
@@ -22,11 +23,17 @@
                 <p>会议发表名称：{{Papers.meeting_name}}</p>
                 <p>会议召开时间：{{Papers.meeting_time}}</p>
             </div>
+            <br><br>
+            <div v-if="show">
+                <button @click="check_pass">审核通过</button>
+                <button @click="check_notpass">审核不通过</button>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+import global from './Global'
 import fly from 'flyio';
     export default {
         name:"single-blog",
@@ -36,12 +43,16 @@ import fly from 'flyio';
                 author:this.$route.params.author,
                 Papers:{},
                 url:"",
-                save:""
+                save:"",
+                show:false
             }
         },
         created(){
+            if(sessionStorage.getItem('identity')=='teacher'){
+                this.show = true
+            }
             console.log(this.$route.params.title)
-            fly.post('http://127.0.0.1:5000/get_detail',{
+            fly.post(global.Url+'get_detail',{
                 p_title:this.title,
                 author:this.author
             })
@@ -51,6 +62,32 @@ import fly from 'flyio';
                 this.save = response.data.save
             })
         },
+        methods:{
+            check_pass(){
+                fly.post(global.Url+'check_pass',{
+                    title:this.title,
+                    author:this.author
+                })
+                .then((response)=>{
+                    if(response.data.issuccess == 'Success'){
+                        this.Papers.status = '审查通过'
+                        alert('审查更改成功')
+                    }
+                })
+            },
+            check_notpass(){
+                fly.post(global.Url+'check_notpass',{
+                    title:this.title,
+                    author:this.author
+                })
+                .then((response)=>{
+                    if(response.data.issuccess == 'Success'){
+                        this.Papers.status = '审查不通过'
+                        alert('审查更改成功')
+                    }
+                })
+            }
+        }
     }
 </script>
 

@@ -13,13 +13,6 @@ UPLOAD_FOLDER = r'../usrupload/'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif','doc','docx','pptx','ppt','zip','tar','rar','7z'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-@app.after_request
-def after_request(response):
-    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization,session_id')
-    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS,HEAD')
-    # 这里不能使用add方法，否则会出现 The 'Access-Control-Allow-Origin' header contains multiple values 的问题
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    return response
 
 
 dbinfo = {
@@ -33,6 +26,25 @@ dbinfo = {
 
 
 information = {'1234':'薛钦亮'}
+
+#论文审核状态查询
+def Paper_Status(Title,Name):
+    conn = pymysql.connect(
+            host = "202.112.113.26",
+            port= 3306,
+            user = "test",
+            password = "123456",
+            database = "irms",
+            charset = "utf8")
+    cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)   
+    sql = '''
+            select Status from Paper_Status
+            where P_Title = %s and P_Author = %s
+        '''
+    data = [Title,Name]
+    cursor.execute(sql,data)
+    ret = cursor.fetchmany(1)
+    return ret[0]['Status']
 
 #判断后缀名
 def allowed_file(filename):
@@ -177,6 +189,48 @@ def Student_Login(data):
     else:
         return 2
 
+#新增论文状态设为待审核
+def New_Paper(Title,Name):
+    conn = pymysql.connect(
+            host = "202.112.113.26",
+            port= 3306,
+            user = "test",
+            password = "123456",
+            database = "irms",
+            charset = "utf8")
+    cursor = conn.cursor()
+    sql='''
+        insert into Paper_Status
+        values(%s,%s,"待审核")
+    '''
+    data =[Title,Name]
+    cursor.execute(sql,data)
+    conn.commit()
+    cursor.close()
+    conn.close()
+    
+#论文信息审核
+def Examine_Paper(Title,Name,Status):
+    conn = pymysql.connect(
+            host = "202.112.113.26",
+            port= 3306,
+            user = "test",
+            password = "123456",
+            database = "irms",
+            charset = "utf8")
+    cursor = conn.cursor()
+    sql='''
+        update Paper_Status
+        set Status = %s
+        where P_Title = %s and P_Author = %s
+    '''
+    data =[Status,Title,Name]
+    cursor.execute(sql,data)
+    conn.commit()
+    cursor.close()
+    conn.close()         
+
+
 @app.route('/',methods = ['POST'])
 def hello_world():
     temp = json.loads(request.get_data().decode())
@@ -232,6 +286,7 @@ def upload():
             value[i] = None
     print(value)
     insert_into_Paper(value)
+    New_Paper(request.json.get('title'),name)
     return jsonify({'isupload':"OK"})
 @app.route('/check_papers',methods = ['POST'])
 def check_papers():
@@ -274,6 +329,8 @@ def get_detail():
     value['meeting_time'] = ret_value[6]
     value['online_time'] = ret_value[7]
     value['journal_time'] = ret_value[8]
+    value['status'] = Paper_Status(value['title'],value['author'])
+    print(value['status'])
     #获取url
     url = "http://202.112.113.26/download/"+ret_value[9]
     save = ret_value[9]
@@ -292,6 +349,19 @@ def upload_file():
             return "/download/"+file.filename
     print("ERROR:",file.filename)
     return "fail upload file"
+
+@app.route('/check_pass',methods=['POST'])
+def check_pass():
+    Examine_Paper(request.json.get('title'),request.json.get('author'),"审核通过")
+    return jsonify({'issuccess':'Success'})
+
+@app.route('/check_notpass',methods=['POST'])
+def check_notpass():
+    Examine_Paper(request.json.get('title'),request.json.get('author'),"审核不通过")
+    return jsonify({'issuccess':'Success'})
+
+
+
 
 if __name__ == '__main__':
     app.run()

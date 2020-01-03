@@ -6,7 +6,7 @@
             <h3>论文主题信息</h3>
             <label>请输入论文题目</label>
             <input type="text" v-model="Papers.title" >
-            <form method="post" action="http://localhost:5000/upload_file" onsubmit ="
+            <form method="post" onsubmit ="
                   $('#file_form').ajaxSubmit(function(message) {
                         console.log(message)
                         // 对于表单提交成功后处理，message为提交页面saveReport.htm的返回内容
@@ -94,13 +94,14 @@
 
 
 <script>
-
+import global from './Global'
 import PDFJS from 'pdfjs-dist'
 import pdf from 'vue-pdf'
 import PDF from 'react-pdf-js'
 import dataPicker from '../../static/js/dataPicker'
 
 var fly = require("flyio")
+
 
 export default {
   components:{
@@ -126,7 +127,8 @@ export default {
         time:"",
         id:"",
         submitted:false,
-        click:false
+        click:false,
+        url:global.Url
     }
   },
   updated(){
@@ -153,6 +155,9 @@ export default {
       })
   },
   mounted(){
+    $(function(){
+  file_form.action = global.Url+'upload_file'
+}),
       laydate.render({
         elem: '#date1',
         done: (value) => {
@@ -214,7 +219,7 @@ export default {
         }
       },
       upload(){
-        fly.post('http://127.0.0.1:5000/upload',{
+        fly.post(global.Url+'upload',{
           sid:sessionStorage.getItem('accessToken'),
           title:this.Papers.title,
           length:this.Papers.length,

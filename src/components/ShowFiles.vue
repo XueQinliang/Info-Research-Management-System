@@ -1,15 +1,18 @@
 <template>
-  <div v-theme:column="'wide'" id="show-files">
-      <h1>文件总览</h1>
-      <input type="text" v-model = "search" placeholder="搜索">
-      <div v-for="(x,index) in filterblogs" :key="index" class="single-blog">
-          <router-link v-bind:to="'/blog_detail/'+x.id">
-            <h2 v-rainbow>{{x.title | to-uppercase}}</h2>
-          </router-link>
-          <article>
-              {{x.body | snippet}}
-          </article>
+  <div id="show-files">
+      <br>
+      <div id="text">
+        <h1>欢迎来到中国人民大学信息学院科研管理系统</h1>
+        <br><br>
+        <p>本系统为信息学院学生的科研成果一个统一的管理系统；</p>
+        <p>对于学生：</p>
+        <p>可以简便、直观地上传自己取得的科研成果；</p>
+        <p>查看、修正自己已经上传的记录；</p>
+        <p>对于老师：</p>
+        <p>可以查看、审核、导出学生上传的科研成果信息；</p>
+        <p>下载相关的佐证材料，如论文PDF、出版物照片等</p>
       </div>
+      <br><br><br>
   </div>
 </template>
 
@@ -23,68 +26,35 @@ export default {
           files:[],
           search:""
       }
-  },
-//   beforeCreate(){
-//       console.log("before")
-//       fly.get('http://127.0.0.1:5000/islogin')
-//       .then(function(response){
-//           console.log(response)
-//           if(response.data.LOGINSTATUS=='NOT'){
-//               window.location.href = '/#/login'
-//           }
-//       })
-//   },
-  created(){
-      //this.$emit('header',true)
-      this.$http.get("https://jsonplaceholder.typicode.com/posts")
-      .then(function(data){
-          //console.log(data);
-          this.files = data.body.slice(0,10);
-      })
-  },
-  computed:{
-      filterblogs:function(){
-          return this.files.filter((x) =>{
-              return x.title.match(this.search)
-          })
-      }
-  },
-  filters:{
-      "to-uppercase":function(value){
-          return value.toUpperCase();
-      }
-  },
-  directives:{
-      'rainbow':{
-          bind(el,binding,vnode){
-              el.style.color = "red";
-          }
-      }
   }
 }
 </script>
 
 <style scoped>
 #show-files{
-    max-width: 800px;
+    max-width: 100%;
+    max-height: 100%;
     margin:0 auto;
+    background-image: url("../assets/indexbg.jpg");
+    background-size: 100% 100%;
 }
 
-.single-blog{
-    padding:20px;
-    margin: 20px 0;
-    background: #eee;
-    border:1px dotted #aaa;
-}
 
-#show-files a{
-    color:#444;
+#show-files p{
+    color:black;
     text-decoration: none;
+    text-align: center;
+    font-size: 20px;
 }
-
-input[type="text"]{
-    padding: 8px;
-    width:100%;
-    box-sizing: border-box;
+#show-files h1{
+    text-align: center;
+    padding: 30px
+}
+#text{
+    margin: 0 auto;
+    width:50%;
+    height: 50%;
+    border: 2px solid;
+    background: rgba(255, 255, 255, 0.6)
 }
 </style>

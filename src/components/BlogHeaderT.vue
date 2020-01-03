@@ -36,6 +36,7 @@
 </template>
 
 <script>
+    import global from './Global'
     var fly = require("flyio")
     export default{
         name:"blog-header-t",
@@ -51,7 +52,7 @@
         created(){
             this.user.number = localStorage.getItem('accessToken')
             this.user.identity = '教师用户'
-            fly.post('http://127.0.0.1:5000/get_info',{
+            fly.post(global.Url+'get_info',{
                 id:this.user.number
             }).then((response)=>{
                 this.user.name = response.data.name

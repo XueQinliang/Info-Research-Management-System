@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import global from './Global'
 var fly = require('flyio')
 
 export default {
@@ -28,7 +29,7 @@ export default {
   },
   created(){
       //this.$emit('header',true)
-      fly.post("http://127.0.0.1:5000/check_papers",{
+      fly.post(global.Url+"check_papers",{
           id:localStorage.getItem('accessToken')
       })
       .then((response)=>{

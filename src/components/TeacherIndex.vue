@@ -1,6 +1,6 @@
 <template>
   <div v-theme:column="'wide'" id="show-files">
-      <h1>我的论文</h1>
+      <h1>学生论文</h1>
       <div v-for="(paper,index) in papers" :key="index" class="single-blog">
           <router-link v-bind:to="'/teacher/paper_detail/'+paper.title+'/'+paper.author">
             <h2 v-rainbow>{{paper.title}}</h2>
@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import global from './Global'
 var fly = require('flyio')
 
 export default {
@@ -28,7 +29,7 @@ export default {
   },
   created(){
       //this.$emit('header',true)
-      fly.get("http://127.0.0.1:5000/all_papers")
+      fly.get(global.Url+"all_papers")
       .then((response)=>{
           this.papers = response.data
       })

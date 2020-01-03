@@ -28,6 +28,7 @@
 <script>
 
 import $ from 'jquery';
+import global from './Global'
 
 var fly = require('flyio')
 
@@ -62,7 +63,7 @@ export default {
             var usr = $("#inUsr").val();
             var pw = $("#inPw").val();
             //alert(usr+pw)
-            fly.post('http://127.0.0.1:5000/login',{
+            fly.post(global.Url+'login',{
                 username:usr,
                 password:pw
             }).then(function(response){
