@@ -7,7 +7,10 @@
             <label>请输入论文题目</label>
             <input type="text" v-model="Papers.title" >
             <form method="post" onsubmit ="
-                  $('#file_form').ajaxSubmit(function(message) {
+                  $('#file_form').ajaxSubmit({
+                    async: false,
+                    data:{'usr': sessionStorage.getItem('accessToken')},
+                    success:function(message) {
                         console.log(message)
                         // 对于表单提交成功后处理，message为提交页面saveReport.htm的返回内容
                         if (message=='fail upload file'){
@@ -15,7 +18,7 @@
                         }else{
                           alert('上传文件成功')
                         }
-                  });
+                  }});
                   return false;"
             enctype="multipart/form-data" id="file_form">
               <label>上传论文内容(PDF格式)</label>

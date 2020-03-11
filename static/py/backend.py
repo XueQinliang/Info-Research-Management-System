@@ -1,8 +1,10 @@
 from flask import Flask, render_template, session, redirect, url_for, request, jsonify, make_response, send_file, send_from_directory
 from flask_cors import CORS
 import os
+import datetime
 import time
 import string
+import random
 import json
 import pymysql
 
@@ -12,7 +14,6 @@ app.config['SECRET_KEY'] = '123456'
 UPLOAD_FOLDER = r'../usrupload/'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif','doc','docx','pptx','ppt','zip','tar','rar','7z'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
 
 
 dbinfo = {
@@ -26,6 +27,10 @@ dbinfo = {
 
 
 information = {'1234':'薛钦亮'}
+
+#生成随机字符串
+def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
+    return ''.join(random.choice(chars) for _ in range(size))
 
 #论文审核状态查询
 def Paper_Status(Title,Name):
@@ -245,6 +250,8 @@ def dologin():
     ret1 = Student_Login(data)
     print("ret:",ret1)
     ret2 = Get_Name_By_ID(usr)
+    if not os.path.exists(app.config['UPLOAD_FOLDER']+usr):
+        os.mkdir(app.config['UPLOAD_FOLDER']+usr)
     return jsonify({'islogin':ret1,'name':ret2})
 
 @app.route('/islogin',methods = ['GET'])
@@ -342,11 +349,15 @@ def upload_file():
         os.mkdir(UPLOAD_FOLDER)
     print("upload_file")
     if request.method=='POST': 
-        file=request.files.get('uploadfile')  
+        file=request.files.get('uploadfile')
+        nowid = request.values.get('usr')
         if file and allowed_file(file.filename):
-            file.save(app.config['UPLOAD_FOLDER'] + file.filename)
-            print(file.filename)
-            return "/download/"+file.filename
+            print('是谁的文件',nowid)
+#            nowtime = datetime.datetime.now()
+            randomid = id_generator()
+            file.save(app.config['UPLOAD_FOLDER'] + nowid+"/"+randomid+file.filename)
+            print(app.config['UPLOAD_FOLDER'] + nowid+"/"+randomid+file.filename)
+            return "/download/"+nowid+"/"+randomid+file.filename
     print("ERROR:",file.filename)
     return "fail upload file"
 
