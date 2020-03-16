@@ -5,7 +5,7 @@
             <div id="choices">
                 <h3>您选择的文件</h3>
                 <p>文件名：{{save}}</p>
-                <a :href="url" :download="save">下载</a>
+                <button @click="downloadFileClick">下载</button>
             </div>
             <div id="choices">
                 <h3>您的论文主体信息</h3>
@@ -63,6 +63,15 @@ import fly from 'flyio';
             })
         },
         methods:{
+            downloadFileClick() {
+                console.log(this.url);
+            　　//在本页打开窗口
+                let $eleForm = $("<form method='get'></form>");
+                $eleForm.attr("action",this.url);
+                $(document.body).append($eleForm);
+                //提交表单，实现下载
+                $eleForm.submit();
+            },
             check_pass(){
                 fly.post(global.Url+'check_pass',{
                     title:this.title,
