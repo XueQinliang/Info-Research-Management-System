@@ -12,7 +12,7 @@ app = Flask(__name__)
 CORS(app,supports_credentials=True)
 app.config['SECRET_KEY'] = '123456'
 UPLOAD_FOLDER = r'../usrupload/'
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif','doc','docx','pptx','ppt','zip','tar','rar','7z'])
+ALLOWED_EXTENSIONS = set(['xlsx','txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif','doc','docx','pptx','ppt','zip','tar','rar','7z'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
@@ -339,8 +339,9 @@ def get_detail():
     value['status'] = Paper_Status(value['title'],value['author'])
     print(value['status'])
     #获取url
-    url = "http://202.112.113.26/download/"+ret_value[9]
+    url = "http://irms.ruc.edu.cn/download/"+ret_value[9]
     save = ret_value[9]
+    save = save.split('/')[1][6:]
     return jsonify({"paper":value,'url':url,'save':save})
 
 @app.route('/upload_file', methods=['GET','POST'])
@@ -357,7 +358,7 @@ def upload_file():
             randomid = id_generator()
             file.save(app.config['UPLOAD_FOLDER'] + nowid+"/"+randomid+file.filename)
             print(app.config['UPLOAD_FOLDER'] + nowid+"/"+randomid+file.filename)
-            return "/download/"+nowid+"/"+randomid+file.filename
+            return nowid+"/"+randomid+file.filename
     print("ERROR:",file.filename)
     return "fail upload file"
 

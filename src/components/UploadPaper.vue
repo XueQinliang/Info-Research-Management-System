@@ -17,6 +17,8 @@
                           alert('上传文件失败')
                         }else{
                           alert('上传文件成功')
+                          sessionStorage.setItem('url',message)
+                          console.log(sessionStorage.getItem('url'))
                         }
                   }});
                   return false;"
@@ -232,7 +234,7 @@ export default {
           online_time:this.Papers.online_time,
           journal_time:this.Papers.journal_time,
           meeting_time:this.Papers.meeting_time,
-          url:this.order.title
+          url:sessionStorage.getItem('url')
         }).then(function(response){
           alert("上传成功")
           window.location.href = '/'
