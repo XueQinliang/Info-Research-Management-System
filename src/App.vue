@@ -18,6 +18,7 @@ import Login from './components/Login'
 import TeacherIndex from './components/TeacherIndex'
 import BlogHeaderT from './components/BlogHeaderT'
 
+
 export default {
   name: 'App',
   components: {

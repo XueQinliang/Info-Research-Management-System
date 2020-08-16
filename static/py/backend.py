@@ -62,9 +62,9 @@ def allowed_file(filename):
 def Get_Name_By_ID(data):
     conn = pymysql.connect(
             host = "202.112.113.26",
-            port= 3306,
-            user = "test",
-            password = "123456",
+            port= 5412,
+            user = "root",
+            password = "j&ipH9yITl^3Sce8AvsO",
             database = "irms",
             charset = "utf8")
     cursor = conn.cursor();

@@ -50,6 +50,15 @@
             <input type="text" class="demo-input" placeholder="请选择日期" id="date1" v-model="Papers.online_time">
             <br><br>
             <label>(如有在期刊上发表)请输入期刊全称</label>
+
+            <select class="selectpicker" data-live-search="true" v-model="fuzzymatchtest"> 
+              <option>Alfa Romeo</option> 
+              <option>Audi</option> 
+           
+              <option>BMW</option> 
+            </select> 
+            <h3>{{fuzzymatchtest}}</h3>
+            <label>hhhhh</label>
             <input type="text" v-model="Papers.journal_name">
             <label>请选择期刊出版的时间</label>
             <input type="text" class="demo-input" placeholder="请选择日期" id="date2" v-model="Papers.journal_time">
@@ -96,14 +105,13 @@
     </div>
   </div>
 </template>
-
-
 <script>
 import global from './Global'
 import PDFJS from 'pdfjs-dist'
 import pdf from 'vue-pdf'
 import PDF from 'react-pdf-js'
 import dataPicker from '../../static/js/dataPicker'
+import $ from 'jquery'
 
 var fly = require("flyio")
 
@@ -115,6 +123,7 @@ export default {
   name: 'upload_paper',
   data () {
     return {
+        fuzzymatchtest:'',
         Papers:{
             title:"",
             length:"",
@@ -210,12 +219,14 @@ export default {
           alert("请填写论文篇幅")
         }else if(this.Papers.author_order == ""){
           alert("请输入您的作者顺序")
-        }else if(this.Papers.online_time == "" && this.Papers.journal_time == "" && this.Papers.meeting_time == ""){
-          alert("线上发表时间、会议发表时间、期刊发表时间请至少填写一项")
-        }else if(this.Papers.journal_time != "" && this.Papers.journal_name == ""){
-          alert("请填写期刊名称")
-        }else if(this.Papers.meeting_time != "" && this.Papers.meeting_name == ""){
-          alert("请填写会议名称")
+        }else if(this.Papers.online_time == ""){
+          alert("请填写线上发表时间")
+        }else if(this.Papers.journal_name == "" && this.Papers.meeting_name == ""){
+          alert("会议发表、期刊发表请至少填写一项")
+        }else if(this.Papers.journal_time == "" && this.Papers.journal_name != ""){
+          alert("请填写期刊发表时间")
+        }else if(this.Papers.meeting_time == "" && this.Papers.meeting_name != ""){
+          alert("请填写会议发表时间")
         }else if(this.click==false){
           alert("请点击文件旁的上传按钮")
         }else{
@@ -241,7 +252,7 @@ export default {
         })
       },
      
-  }
+  },
 }
 </script>
 
