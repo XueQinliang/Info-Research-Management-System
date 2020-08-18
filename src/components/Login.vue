@@ -43,7 +43,7 @@
                                 data-toggle="popover" data-placement="bottom" data-content="请输入您的原始密码">
                             </div>
                             <div class="form-group">
-                                <label for="name">密码（5-20位）</label>
+                                <label for="name">密码（6-20位）</label>
                                 <input v-model="alter.npwd" type="password" class="form-control" id="npwd" placeholder="请输入新密码"
                                  data-toggle="popover" data-placement="bottom" data-content="请输入新密码">
                             </div>
@@ -103,7 +103,9 @@ export default {
     },
     methods:{
         changepwd(){
-            if(this.alter.cpwd!=this.alter.npwd){
+            if(this.alter.npwd.length > 20 || this.alter.npwd.length < 6){
+                alert("密码长度应在6-20位，请调整")
+            }else if(this.alter.cpwd!=this.alter.npwd){
                 alert("两次输入密码不相同")
                 $("[data-toggle='popover']").popover('hide');
                 $('#cpwd').popover('show')

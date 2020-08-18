@@ -51,15 +51,8 @@
             <br><br>
             <label>(如有在期刊上发表)请输入期刊全称</label>
 
-            <select class="selectpicker" data-live-search="true" v-model="fuzzymatchtest"> 
-              <option>Alfa Romeo</option> 
-              <option>Audi</option> 
-           
-              <option>BMW</option> 
+            <select class="selectpicker" data-live-search="true" v-model="Papers.journal_name" data-size="5" selected=""> 
             </select> 
-            <h3>{{fuzzymatchtest}}</h3>
-            <label>hhhhh</label>
-            <input type="text" v-model="Papers.journal_name">
             <label>请选择期刊出版的时间</label>
             <input type="text" class="demo-input" placeholder="请选择日期" id="date2" v-model="Papers.journal_time">
             <br><br>
@@ -142,7 +135,8 @@ export default {
         id:"",
         submitted:false,
         click:false,
-        url:global.Url
+        url:global.Url,
+        journals:[]
     }
   },
   updated(){
@@ -169,8 +163,10 @@ export default {
       })
   },
   mounted(){
+    
     $(function(){
   file_form.action = global.Url+'upload_file'
+  $(".selectpicker").selectpicker('refresh');
 }),
       laydate.render({
         elem: '#date1',
@@ -253,6 +249,26 @@ export default {
       },
      
   },
+  created(){
+    let setting = {
+      method: "POST",
+      url: global.Url+"fuzzyjournal",
+      data: {
+        "string":""
+      },
+    }
+    this.$axios(setting).then((response)=>{
+      var temp = "空"
+      $(".selectpicker").html('')
+      $(".selectpicker").append("<option value=''>"+temp+"</option>")
+      $.each(response.data,function(index,item){
+        var typestr = '<option>'+item.J_Name+'</option>'
+        $(".selectpicker").append(typestr)
+      })
+      $(".selectpicker").selectpicker('refresh');
+      $(".selectpicker").selectpicker('show');
+    })
+  }
 }
 </script>
 
@@ -327,5 +343,9 @@ button{
 }
 h3{
     margin-top: 10px;
+}
+.selectpicker{
+  position: relative;
+  width: 100%;
 }
 </style>
