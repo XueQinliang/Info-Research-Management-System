@@ -10,7 +10,7 @@ import pymysql
 
 app = Flask(__name__)
 CORS(app,supports_credentials=True)
-app.config['SECRET_KEY'] = '123456'
+app.config['SECRET_KEY'] = 'T8mT#DS!NVjrR8*ATUUR'
 UPLOAD_FOLDER = r'../usrupload/'
 ALLOWED_EXTENSIONS = set(['xlsx','txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif','doc','docx','pptx','ppt','zip','tar','rar','7z'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -18,10 +18,10 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 dbinfo = {
     'host':"202.112.113.26",
-    'port':3306,
-    'user':"test",
-    'password':"123456",
-    'database':"irms",
+    'port':5412,
+    'user':"root",
+    'password':"j&ipH9yITl^3Sce8AvsO",
+    'database':"irmsdata",
     'charset':"utf8"
 }
 
@@ -36,10 +36,10 @@ def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
 def Paper_Status(Title,Name):
     conn = pymysql.connect(
             host = "202.112.113.26",
-            port= 3306,
-            user = "test",
-            password = "123456",
-            database = "irms",
+            port= 5412,
+            user = "root",
+            password = "j&ipH9yITl^3Sce8AvsO",
+            database = "irmsdata",
             charset = "utf8")
     cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)   
     sql = '''
@@ -62,57 +62,79 @@ def allowed_file(filename):
 def Get_Name_By_ID(data):
     conn = pymysql.connect(
             host = "202.112.113.26",
-            port= 3306,
-            user = "test",
-            password = "123456",
-            database = "irms",
+            port= 5412,
+            user = "root",
+            password = "j&ipH9yITl^3Sce8AvsO",
+            database = "irmsdata",
             charset = "utf8")
-    cursor = conn.cursor();
+    cursor = conn.cursor()
     sql1 = """
-    select Get_Name_By_ID(%s)
+    select S_Name from Student where S_ID = %s
     """
     sql2 = """
-    select Get_Name_By_ID_T(%s)
+    select T_Name from Teacher where T_ID = %s
     """
     cursor.execute(sql1,data)
-    ret1 = cursor.fetchone()[0]
+    ret1 = cursor.fetchone()
     cursor.execute(sql2,data)
-    ret2 = cursor.fetchone()[0]
+    ret2 = cursor.fetchone()
     cursor.close()
     conn.close()
     if ret1 != None:
-        return ret1
+        return ret1[0]
     if ret2 != None:
-        return ret2
+        return ret2[0]
 
-def Get_Paper_By_any(infodict):
+def Get_Paper_By_any(infodict,status=None):
     conn = pymysql.connect(
             host = "202.112.113.26",
-            port= 3306,
-            user = "test",
-            password = "123456",
-            database = "irms",
+            port= 5412,
+            user = "root",
+            password = "j&ipH9yITl^3Sce8AvsO",
+            database = "irmsdata",
             charset = "utf8")
-    cursor = conn.cursor();
+    cursor = conn.cursor()
     conditionlist = []
     for i in infodict:
-        conditionlist.append(i+"="+"\""+infodict[i]+"\"")
+        conditionlist.append("Paper."+i+"="+"\""+infodict[i]+"\"")
     sql = """
-    select * from Paper 
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
     """ 
+    time_position = [-2,-3,-4]
+    if status != None:
+        time_position = [-3,-4,-5]
+        sql = """
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        """ 
     if conditionlist != []:
         sql += ('where ' + ' and '.join(conditionlist))
+    elif status != None:
+        sql += 'where ' 
+    if status != None:
+        if conditionlist != []:
+            sql += 'and '
+        if status != 'all':
+            sql += ( 'Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author and Paper_Status.Status = \'{}\''.format(status) )
+        elif status == 'all':
+            sql += ( 'Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author')
     print(sql)
     cursor.execute(sql)
     ret = cursor.fetchall()
     ret = list(ret)
+    print(ret)
     for i in range(len(ret)):
         ret[i] = list(ret[i])
         for j in range(len(ret[i])):
             if ret[i][j] == None:
                 ret[i][j] = ''
-        for k in [-2,-3,-4]:
+        for k in time_position:
             if ret[i][k] != '':
+                print(ret[i][k])
                 ret[i][k] = ret[i][k].strftime("%Y-%m-%d")
     cursor.close()
     conn.close()
@@ -120,19 +142,19 @@ def Get_Paper_By_any(infodict):
 
 #录入学生信息
 #参数为学生信息
-#格式：[学号，姓名。年级，班级，学生类型]
+#格式：[学号，姓名,年级，班级，学生类型]
 #例：data = ['2017201984','朱子恒','大三','17级理科实验班','本科生']
 def insert_into_Student(data):
     conn = pymysql.connect(
             host = "202.112.113.26",
-            port= 3306,
-            user = "test",
-            password = "123456",
-            database = "irms",
+            port= 5412,
+            user = "root",
+            password = "j&ipH9yITl^3Sce8AvsO",
+            database = "irmsdata",
             charset = "utf8")
     cursor = conn.cursor()
     sql = """
-    call insert_into_Student(%s,%s,%s,%s,%s)
+    insert into Student (S_ID,S_Name,S_Grade,S_Class,S_Level,S_Major) values (%s,%s,%s,%s,%s,%s)
     """
     cursor.execute(sql,data)
     conn.commit()
@@ -146,14 +168,14 @@ def insert_into_Student(data):
 def insert_into_Paper(data):
     conn = pymysql.connect(
             host = "202.112.113.26",
-            port= 3306,
-            user = "test",
-            password = "123456",
-            database = "irms",
+            port= 5412,
+            user = "root",
+            password = "j&ipH9yITl^3Sce8AvsO",
+            database = "irmsdata",
             charset = "utf8")
     cursor = conn.cursor()
     sql = """
-    call insert_into_Paper(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+    insert into Paper (P_Title,P_Author,P_ASequence,P_Size,P_Journal,P_Meeting,P_Mtime,P_Otime,P_Jtime,P_url) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
     """
     cursor.execute(sql,data)
     conn.commit()
@@ -167,10 +189,10 @@ def insert_into_Paper(data):
 def Student_Login(data):
     conn = pymysql.connect(
             host = "202.112.113.26",
-            port= 3306,
-            user = "test",
-            password = "123456",
-            database = "irms",
+            port= 5412,
+            user = "root",
+            password = "j&ipH9yITl^3Sce8AvsO",
+            database = "irmsdata",
             charset = "utf8")
     cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
     sql1 = '''
@@ -198,10 +220,10 @@ def Student_Login(data):
 def New_Paper(Title,Name):
     conn = pymysql.connect(
             host = "202.112.113.26",
-            port= 3306,
-            user = "test",
-            password = "123456",
-            database = "irms",
+            port= 5412,
+            user = "root",
+            password = "j&ipH9yITl^3Sce8AvsO",
+            database = "irmsdata",
             charset = "utf8")
     cursor = conn.cursor()
     sql='''
@@ -218,10 +240,10 @@ def New_Paper(Title,Name):
 def Examine_Paper(Title,Name,Status):
     conn = pymysql.connect(
             host = "202.112.113.26",
-            port= 3306,
-            user = "test",
-            password = "123456",
-            database = "irms",
+            port= 5412,
+            user = "root",
+            password = "j&ipH9yITl^3Sce8AvsO",
+            database = "irmsdata",
             charset = "utf8")
     cursor = conn.cursor()
     sql='''
@@ -253,6 +275,60 @@ def dologin():
     if not os.path.exists(app.config['UPLOAD_FOLDER']+usr):
         os.mkdir(app.config['UPLOAD_FOLDER']+usr)
     return jsonify({'islogin':ret1,'name':ret2})
+
+@app.route('/revisepswd',methods=['POST'])
+def revisepswd():
+    uid = request.json.get('uid')
+    old = request.json.get('oldpswd')
+    new1 = request.json.get('newpswd1')
+    new2 = request.json.get('newpswd2')
+    if(new1 != new2):
+        return jsonify({'status':2}) #两次密码不同
+    ret1 = Student_Login([uid,old])
+    if(ret1==1):
+        conn = pymysql.connect(
+            host = "202.112.113.26",
+            port= 5412,
+            user = "root",
+            password = "j&ipH9yITl^3Sce8AvsO",
+            database = "irmsdata",
+            charset = "utf8")
+        cursor = conn.cursor()
+        sql='''
+            update Student_Login
+            set Password = %s
+            where S_ID = %s and Password = %s
+        '''
+        data =[new1,uid,old]
+        cursor.execute(sql,data)
+        conn.commit()
+        cursor.close()
+        conn.close()
+        return jsonify({'status':0}) #修改成功
+    elif(ret1==2):
+        conn = pymysql.connect(
+            host = "202.112.113.26",
+            port= 5412,
+            user = "root",
+            password = "j&ipH9yITl^3Sce8AvsO",
+            database = "irmsdata",
+            charset = "utf8")
+        cursor = conn.cursor()
+        sql='''
+            update Teacher_Login
+            set Password = %s
+            where T_ID = %s and Password = %s
+        '''
+        data =[new1,uid,old]
+        cursor.execute(sql,data)
+        conn.commit()
+        cursor.close()
+        conn.close()
+        return jsonify({'status':0}) #修改成功
+    else:
+        return jsonify({'status':1}) #旧密码错误
+    
+    
 
 @app.route('/islogin',methods = ['GET'])
 def index():
@@ -310,11 +386,11 @@ def check_papers():
 
 @app.route('/all_papers',methods = ['GET'])
 def get_all():
-    ret = Get_Paper_By_any({})
+    ret = Get_Paper_By_any({},status='all')
     print(ret)
     ret_value = []
     for x in ret:
-        temp = {'title':x[0],'author':x[1],'sequence':x[2]}
+        temp = {'title':x[0],'author':x[1],'sequence':x[2],'size':x[3],'journal':x[4],'meeting':x[5],'P_Mtime':x[6],'P_Otime':x[7],'P_Jtime':x[8],'url':x[9],'status':x[10]}
         ret_value.append(temp)
     return jsonify(ret_value)
     
@@ -372,9 +448,77 @@ def check_notpass():
     Examine_Paper(request.json.get('title'),request.json.get('author'),"审核不通过")
     return jsonify({'issuccess':'Success'})
 
+@app.route('/fuzzyjournal',methods=['POST'])
+def fuzzyjournal():
+    string = request.json.get('string')
+    conn = pymysql.connect(
+            host = "202.112.113.26",
+            port= 5412,
+            user = "root",
+            password = "j&ipH9yITl^3Sce8AvsO",
+            database = "irmsdata",
+            charset = "utf8")
+    cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
+    sql1 = '''
+    select J_Name from Journal 
+    where J_Name like '%{}%'
+    '''.format(string)
+    cursor.execute(sql1)
+    ret1 = cursor.fetchmany(10)
+    #print(ret1)
+    return jsonify(ret1)
 
+@app.route('/fuzzymeeting',methods=['POST'])
+def fuzzymeeting():
+    string = request.json.get('string')
+    conn = pymysql.connect(
+            host = "202.112.113.26",
+            port= 5412,
+            user = "root",
+            password = "j&ipH9yITl^3Sce8AvsO",
+            database = "irmsdata",
+            charset = "utf8")
+    cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
+    sql1 = '''
+    select M_FName from Meeting 
+    where M_FName like '%{}%'
+    '''.format(string)
+    cursor.execute(sql1)
+    ret1 = cursor.fetchmany(10)
+    #print(ret1)
+    return jsonify(ret1)
 
+@app.route('/filter_papers',methods=['POST'])
+def filter_papers():
+    author = request.json.get('author')
+    journal = request.json.get('journal')
+    meeting = request.json.get('meeting')
+    sequence = request.json.get('sequence')
+    size = request.json.get('size')
+    status = request.json.get('status')
+    if status == None:
+        status = 'all'
+    time = request.json.get('time')
+    value = {}
+    if author != None:
+        value['P_Author'] = author
+    if journal != None:
+        value['P_Journal'] = journal
+    if meeting != None:
+        value['P_Meeting'] = meeting
+    if sequence != None:
+        value['P_ASequence'] = sequence
+    if size != None:
+        value['P_Size'] = size
+    ret = Get_Paper_By_any(value,status)
+    print(ret)
+    ret_value = []
+    for x in ret:
+        temp = {'title':x[0],'author':x[1],'sequence':x[2],'size':x[3],'journal':x[4],'meeting':x[5],'P_Mtime':x[6],'P_Otime':x[7],'P_Jtime':x[8],'url':x[9],'status':x[10]}
+        if time == None or temp['P_Mtime'][:4] == time or temp['P_Otime'][:4] == time or temp['P_Jtime'][:4] == time:
+            ret_value.append(temp)
+    return jsonify(ret_value)
 
 if __name__ == '__main__':
-    app.run()
-    #app.run(host='202.112.113.26',port=5000)
+    #app.run()
+    app.run(host='202.112.113.26',port=5000)
