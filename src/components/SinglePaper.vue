@@ -4,7 +4,6 @@
         <div id="preview">
             <div id="choices">
                 <h3>您选择的文件</h3>
-                <p>文件名：{{save}}</p>
                 <button @click="downloadFileClick">下载</button>
             </div>
             <div id="choices">
@@ -27,6 +26,12 @@
             <div v-if="show">
                 <button @click="check_pass">审核通过</button>
                 <button @click="check_notpass">审核不通过</button>
+            </div>
+            <div v-if="show">
+                <router-link v-bind:to="'/teacher/alter_paper/'+title+'/'+author">修改信息</router-link>
+            </div>
+            <div v-if="!show">
+                <router-link v-bind:to="'/alter_paper/'+title+'/'+author">修改信息</router-link>
             </div>
         </div>
     </div>

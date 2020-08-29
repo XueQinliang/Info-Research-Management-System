@@ -17,12 +17,13 @@ import CheckPapers from './components/CheckPapers'
 import Login from './components/Login'
 import TeacherIndex from './components/TeacherIndex'
 import BlogHeaderT from './components/BlogHeaderT'
+import AlterPaper from './components/AlterPaper'
 
 
 export default {
   name: 'App',
   components: {
-    UploadPaper,ShowFiles,BlogHeader,PrintLibrary,CheckPapers,Login,TeacherIndex,BlogHeaderT
+    UploadPaper,ShowFiles,BlogHeader,PrintLibrary,CheckPapers,Login,TeacherIndex,BlogHeaderT,AlterPaper
   },
   data(){
     return{

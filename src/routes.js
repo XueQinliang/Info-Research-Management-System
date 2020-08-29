@@ -5,6 +5,7 @@ import PrintLibrary from './components/PrintLibrary.vue'
 import CheckPapers from './components/CheckPapers.vue'
 import Login from './components/Login.vue'
 import TeacherIndex from './components/TeacherIndex.vue'
+import AlterPaper from './components/AlterPaper.vue'
 
 export default[
     {
@@ -59,5 +60,19 @@ export default[
             title:"论文详细信息"
         },
         component:SinglePaper,
+    },
+    {
+        path:"/teacher/alter_paper/:title/:author",
+        meta:{
+            title:"修改论文信息"
+        },
+        component:AlterPaper
+    },
+    {
+        path:"/alter_paper/:title/:author",
+        meta:{
+            title:"修改论文信息"
+        },
+        component:AlterPaper
     }
 ]

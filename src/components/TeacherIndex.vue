@@ -45,8 +45,9 @@
                 <label>审查结果</label><br>
                 <select name="status" class="searchbox" v-model="search.status">
                     <option value="全部">全部</option>
-                    <option value="是">审查通过</option>
-                    <option value="否">审查不通过</option>
+                    <option value="审核通过">审核通过</option>
+                    <option value="审核不通过">审核不通过</option>
+                    <option value="待审核">待审核</option>
                 </select>
             </div>
           </div>
@@ -54,6 +55,9 @@
       </div>
       <div id="searchbutton">
           <button type="button" class="btn btn-primary" @click="search_papers">搜索</button>
+      </div>
+      <div id="choices">
+        <button class="btn btn-primary" @click="download_info">信息下载</button>
       </div>
       <div v-for="(paper,index) in papers" :key="index" class="single-blog">
           <router-link v-bind:to="'/teacher/paper_detail/'+paper.title+'/'+paper.author">
@@ -79,6 +83,10 @@ export default {
           papers:[
 
           ],
+          Papers:{
+              author:[],
+              title:[]
+          },
           search:{
               author:null,
               journal:null,
@@ -96,9 +104,28 @@ export default {
       fly.get(global.Url+"all_papers")
       .then((response)=>{
           this.papers = response.data
+          for(var i=0;i<this.papers.length;i++){
+                this.Papers.title.push(this.papers[i].title)
+                this.Papers.author.push(this.papers[i].author)
+            }
       })
   },
   methods:{
+      download_info(){
+            console.log(this.Papers)
+            let setting = {
+                method: "POST",
+                url: global.Url+"csvdownload",
+                data: {
+                    "title":this.Papers.title,
+                    "author":this.Papers.author
+                },
+            }
+            this.$axios(setting).then((response)=>{
+                console.log(response)
+                    
+            })
+        },
       search_papers(){
           if(this.search.size=="全部"){
               this.search.size = null
@@ -204,7 +231,13 @@ export default {
     background: #eee;
     border:1px dotted #aaa;
 }
-
+#choices{
+    position: absolute;
+    text-align: center;
+    left: 80%;
+    top: 7%;
+    z-index: 100;
+}
 #show-files a{
     color:#444;
     text-decoration: none;

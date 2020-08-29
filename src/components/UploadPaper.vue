@@ -6,7 +6,45 @@
             <h3>论文主题信息</h3>
             <label>请输入论文题目</label>
             <input type="text" v-model="Papers.title" >
-            <form method="post" onsubmit ="
+            
+            <label>请输入您的论文篇幅</label>
+            <select name="length" v-model="Papers.length">
+              <option value="长文">长文</option>
+              <option value="短文">短文</option>
+              <option value="demo">demo</option>
+              <option value="poster">poster</option>
+            </select>
+            <label>请输入在这篇论文中您的作者顺序</label>
+            <select name="order" v-model="Papers.author_order">
+              <option value="一作">一作</option>
+              <option value="二作">二作</option>
+              <option value="通讯作者">通讯作者</option>
+              <option value="其他">其他</option>
+            </select>
+            
+            
+        </div>
+        
+        <div id="choices">
+            <h3>论文发表信息</h3>
+            <label>请选择论文的线上发表时间</label>
+            <input type="text" class="demo-input" placeholder="请选择日期" id="date1" v-model="Papers.online_time">
+            <br><br>
+            <label>(如有在期刊上发表)请输入期刊全称</label>
+
+            <select class="selectpicker" id="sp1" data-live-search="true" v-model="Papers.journal_name" data-size="5" > 
+            </select> 
+            <label>请选择期刊出版的时间</label>
+            <input type="text" class="demo-input" placeholder="请选择日期" id="date2" v-model="Papers.journal_time">
+            <br><br>
+            <label>(如有在会议上发表)请输入会议全称</label>
+            <select class="selectpicker" id="sp2" data-live-search="true" v-model="Papers.meeting_name" data-size="5" >
+            </select>
+            <label>请选择会议举行的时间</label>
+            <input type="text" class="demo-input" placeholder="请选择日期" id="date3" v-model="Papers.meeting_time"> 
+        </div>
+        <div id="choices">
+          <form method="post" onsubmit ="
                   $('#file_form').ajaxSubmit({
                     async: false,
                     data:{'usr': sessionStorage.getItem('accessToken')},
@@ -25,41 +63,8 @@
             enctype="multipart/form-data" id="file_form">
               <label>上传论文内容(PDF格式)</label>
               <input type="file" id="avatar-upload" name="uploadfile" />
-              <input type='submit' @click="isupload" value='上传' />
+              <input id="upload_button" type='submit' @click="isupload" value='上传' />
             </form>
-            <label>请输入您的论文篇幅</label>
-            <select name="length" v-model="Papers.length">
-              <option value="长文">长文</option>
-              <option value="短文">短文</option>
-              <option value="demo">demo</option>
-              <option value="poster">poster</option>
-            </select>
-            <label>请输入在这篇论文中您的作者顺序</label>
-            <select name="order" v-model="Papers.author_order">
-              <option value="一作">一作</option>
-              <option value="二作">二作</option>
-              <option value="通讯作者">通讯作者</option>
-              <option value="其他">其他</option>
-            </select>
-            
-        </div>
-        
-        <div id="choices">
-            <h3>论文发表信息</h3>
-            <label>请选择论文的线上发表时间</label>
-            <input type="text" class="demo-input" placeholder="请选择日期" id="date1" v-model="Papers.online_time">
-            <br><br>
-            <label>(如有在期刊上发表)请输入期刊全称</label>
-
-            <select class="selectpicker" data-live-search="true" v-model="Papers.journal_name" data-size="5" selected=""> 
-            </select> 
-            <label>请选择期刊出版的时间</label>
-            <input type="text" class="demo-input" placeholder="请选择日期" id="date2" v-model="Papers.journal_time">
-            <br><br>
-            <label>(如有在会议上发表)请输入会议全称</label>
-            <input type="text" v-model="Papers.meeting_name">
-            <label>请选择会议举行的时间</label>
-            <input type="text" class="demo-input" placeholder="请选择日期" id="date3" v-model="Papers.meeting_time"> 
         </div>
     </form>
     <button v-if="!submitted" @click="post">预览论文信息</button>
@@ -73,7 +78,6 @@
             <div id="choices">
                 <h4>您选择的文件</h4>
                 <p>文件名：{{order.title}}</p>
-                <label>页数：{{order.pages}}</label>
             </div>
             <div id="choices">
                 <h4>您的论文主体信息</h4>
@@ -88,6 +92,9 @@
                 <p>期刊出版时间：{{Papers.journal_time}}</p>
                 <p>会议发表名称：{{Papers.meeting_name}}</p>
                 <p>会议召开时间：{{Papers.meeting_time}}</p>
+            </div>
+            <div id="chioces">
+              <button @click="downloadFileClick">论文下载</button>
             </div>
         </div>
         <div>
@@ -125,7 +132,8 @@ export default {
             meeting_name:"",
             online_time:"",
             journal_time:"",
-            meeting_time:""
+            meeting_time:"",
+            url:""
         },
         order:{
             title:"",
@@ -191,6 +199,15 @@ export default {
       })
   },
   methods:{
+      downloadFileClick() {
+        console.log(this.Papers.url);
+        //在本页打开窗口
+        let $eleForm = $("<form method='get'></form>");
+        $eleForm.attr("action",'irms.ruc.edu.cn/download/'+this.Papers.url);
+        $(document.body).append($eleForm);
+        //提交表单，实现下载
+        $eleForm.submit();
+      },
       isupload(){
         this.click = true
       },
@@ -227,21 +244,28 @@ export default {
           alert("请点击文件旁的上传按钮")
         }else{
           //文件上传
+          this.Papers.url = sessionStorage.getItem('url')
+          console.log(this.Papers.url)
           this.submitted = true
         }
       },
       upload(){
         fly.post(global.Url+'upload',{
           sid:sessionStorage.getItem('accessToken'),
+          author:sessionStorage.getItem('name'),
           title:this.Papers.title,
-          length:this.Papers.length,
-          author_order:this.Papers.author_order,
-          journal_name:this.Papers.journal_name,
-          meeting_name:this.Papers.meeting_name,
-          online_time:this.Papers.online_time,
-          journal_time:this.Papers.journal_time,
-          meeting_time:this.Papers.meeting_time,
-          url:sessionStorage.getItem('url')
+          size:this.Papers.length,
+          sequence:this.Papers.author_order,
+          journal:this.Papers.journal_name,
+          meeting:this.Papers.meeting_name,
+          otime:this.Papers.online_time,
+          jtime:this.Papers.journal_time,
+          mtime:this.Papers.meeting_time,
+          purl:sessionStorage.getItem('url'),
+          jlevel:"",
+          jsname:"",
+          mlevel:"",
+          msname:""
         }).then(function(response){
           alert("上传成功")
           window.location.href = '/'
@@ -250,23 +274,42 @@ export default {
      
   },
   created(){
-    let setting = {
+    let setting1 = {
       method: "POST",
       url: global.Url+"fuzzyjournal",
       data: {
         "string":""
       },
     }
-    this.$axios(setting).then((response)=>{
+    this.$axios(setting1).then((response)=>{
       var temp = "空"
-      $(".selectpicker").html('')
-      $(".selectpicker").append("<option value=''>"+temp+"</option>")
+      $("#sp1").html('')
+      $("#sp1").append("<option value=''>"+temp+"</option>")
       $.each(response.data,function(index,item){
         var typestr = '<option>'+item.J_Name+'</option>'
-        $(".selectpicker").append(typestr)
+        $("#sp1").append(typestr)
       })
-      $(".selectpicker").selectpicker('refresh');
-      $(".selectpicker").selectpicker('show');
+      $("#sp1").selectpicker('refresh');
+      $("#sp1").selectpicker('show');
+    })
+    let setting2 = {
+      method: "POST",
+      url: global.Url+"fuzzymeeting",
+      data: {
+        "string":""
+      },
+    }
+    this.$axios(setting2).then((response)=>{
+      console.log(response)
+      var temp = "空"
+      $("#sp2").html('')
+      $("#sp2").append("<option value=''>"+temp+"</option>")
+      $.each(response.data,function(index,item){
+        var typestr = '<option>'+item.M_FName+'</option>'
+        $("#sp2").append(typestr)
+      })
+      $("#sp2").selectpicker('refresh');
+      $("#sp2").selectpicker('show');
     })
   }
 }
