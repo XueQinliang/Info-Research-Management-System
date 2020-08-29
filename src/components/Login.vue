@@ -162,6 +162,7 @@ export default {
                     sessionStorage.setItem('accessToken',usr)
                     sessionStorage.setItem('identity','student')
                     localStorage.setItem('accessToken',usr)
+                    sessionStorage.setItem('name',response.data.name)
                     alert(response.data.name+"同学，欢迎回来")
                     window.location.href = '/'
                 }else if(parseInt(response.data.islogin)== 2){
