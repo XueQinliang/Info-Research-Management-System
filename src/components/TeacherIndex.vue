@@ -1,6 +1,60 @@
 <template>
   <div v-theme:column="'wide'" id="show-files">
-      <h1>学生论文</h1>
+      <h2>学生论文</h2>
+      <div id="select_box">
+          <div id="selectpart1">
+            <div class="selectinput">
+                <label>作者姓名：</label>
+                <input class="searchbox" type="text" v-model="search.author">
+            </div>
+            <div class="selectinput">
+                <label>期刊：</label>
+                <input class="searchbox" type="text" v-model="search.journal">
+            </div>
+            <div class="selectinput">
+                <label>论文篇幅：</label><br>
+                <select name="length" class="searchbox" v-model="search.size">
+                    <option value="全部">全部</option>
+                    <option value="长文">长文</option>
+                    <option value="短文">短文</option>
+                    <option value="demo">demo</option>
+                    <option value="poster">poster</option>
+                </select>
+            </div>
+            <div class="selectinput">
+                <label>作者序：</label><br>
+                <select name="order" v-model="search.sequence">
+                    <option value="全部">全部</option>
+                    <option value="一作">一作</option>
+                    <option value="二作">二作</option>
+                    <option value="通讯作者">通讯作者</option>
+                    <option value="其他">其他</option>
+                </select>
+            </div>
+          </div>
+          <div id="selectpart2">
+            <div class="selectinput">
+                <label>会议：</label>
+                <input class="searchbox" type="text" v-model="search.meeting">
+            </div>
+            <div class="selectinput">
+                <label>线上发布年份(例：2019)：</label>
+                <input class="searchbox" type="text" v-model="search.time">
+            </div>
+            <div class="selectinput">
+                <label>审查结果</label><br>
+                <select name="status" class="searchbox" v-model="search.status">
+                    <option value="全部">全部</option>
+                    <option value="是">审查通过</option>
+                    <option value="否">审查不通过</option>
+                </select>
+            </div>
+          </div>
+          
+      </div>
+      <div id="searchbutton">
+          <button type="button" class="btn btn-primary" @click="search_papers">搜索</button>
+      </div>
       <div v-for="(paper,index) in papers" :key="index" class="single-blog">
           <router-link v-bind:to="'/teacher/paper_detail/'+paper.title+'/'+paper.author">
             <h2 v-rainbow>{{paper.title}}</h2>
@@ -8,6 +62,7 @@
           <article>
               <b class="author">作者：{{paper.author}} </b>
               <b class="seq">作者序：{{paper.sequence}}</b>
+              <b class="status">审查结果：{{paper.status}}</b>
           </article>
       </div>
   </div>
@@ -24,7 +79,16 @@ export default {
           papers:[
 
           ],
-          search:""
+          search:{
+              author:null,
+              journal:null,
+              meeting:null,
+              size:null,
+              time:null,
+              status:null,
+              sequence:null
+          }
+
       }
   },
   created(){
@@ -33,6 +97,48 @@ export default {
       .then((response)=>{
           this.papers = response.data
       })
+  },
+  methods:{
+      search_papers(){
+          if(this.search.size=="全部"){
+              this.search.size = null
+          }
+          if(this.search.status=="全部"){
+              this.search.status = null
+          }
+          if(this.search.sequence=="全部"){
+              this.search.sequence = null
+          }
+          if(this.search.author==""){
+              this.search.author = null
+          }
+          if(this.search.journal==""){
+              this.search.journal = null
+          }
+          if(this.search.meeting==""){
+              this.search.meeting = null
+          }
+          if(this.search.time==""){
+              this.search.time = null
+          }
+          let setting={
+            method: "POST",
+            url: global.Url+"filter_papers",
+            data: {
+                "status":this.search.status,
+                "author": this.search.author,
+                "journal": this.search.journal,
+                "meeting": this.search.meeting,
+                "size": this.search.size,
+                "time": this.search.time,
+                "sequence": this.search.sequence
+            },
+          }
+          this.$axios(setting).then((response)=>{
+              console.log(response)
+              this.papers = response.data
+          })
+      }
   },
   directives:{
       'rainbow':{
@@ -46,11 +152,51 @@ export default {
 
 <style scoped>
 #show-files{
+    position: absolute;
     max-width: 800px;
-    margin:0 auto;
+    height: 100%;
+    left: 15%;
+    width: 70%;
+    top: 30%;
+    bottom: 0%;
 }
 .seq{
     padding-left: 20px;
+}
+#select_box{
+    top: 15%;
+    left: 5%;
+    width: 90%;
+}
+#selectpart1{
+    position: relative;
+    top: 15%;
+    left:5%;
+    width: 100%;
+}
+#selectpart2{
+    position: relative;
+    top: 35%;
+    left:5%;
+    width: 100%;
+    height: 10%;
+}
+.selectinput{
+    width: 22%;
+    display: inline-block;
+}
+.searchbox{
+    height: 20px;
+    width: 100%;
+}
+
+#searchbutton button{
+    position: absolute;
+    text-align: center;
+    left: 65%;
+    top: 25%;
+    height:30px;
+    width: 11%;
 }
 .single-blog{
     padding:20px;

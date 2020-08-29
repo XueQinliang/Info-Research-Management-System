@@ -6,7 +6,15 @@ import VueResource from 'vue-resource'
 import App from './App'
 import Routes from './routes'
 import AV from 'leancloud-storage'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
+import 'bootstrap-select/dist/css/bootstrap-select.min.css'
+import 'bootstrap-select/dist/js/bootstrap-select.min.js'
+import axios from 'axios'
 
+import $ from 'jquery'
+
+Vue.prototype.$axios = axios
 
 Vue.config.productionTip = false
 Vue.use(VueResource)
