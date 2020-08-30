@@ -321,8 +321,10 @@ export default {
     box-sizing: border-box;
 }
 #upload_paper{
-    margin:20px auto;
-    max-width: 600px;
+    position: absolute;
+    top: 13%;
+    left: 30%;
+    width: 50%;
     padding:20px;
     background: rgb(222, 230, 193);
 }

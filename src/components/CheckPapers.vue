@@ -121,12 +121,13 @@ export default {
 <style scoped>
 #show-files{
     max-width: 800px;
-    margin:0 auto;position: absolute;
+    margin:0 auto;
+    position: absolute;
     max-width: 800px;
     height: 100%;
-    left: 15%;
-    width: 70%;
-    top: 30%;
+    left: 24%;
+    width: 68%;
+    top: 13%;
     bottom: 0%;
 }
 .seq{

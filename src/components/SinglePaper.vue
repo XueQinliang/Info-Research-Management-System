@@ -30,7 +30,7 @@
             <div v-if="show">
                 <router-link v-bind:to="'/teacher/alter_paper/'+title+'/'+author">修改信息</router-link>
             </div>
-            <div v-if="!show">
+            <div v-if="show2">
                 <router-link v-bind:to="'/alter_paper/'+title+'/'+author">修改信息</router-link>
             </div>
         </div>
@@ -49,14 +49,11 @@ import fly from 'flyio';
                 Papers:{},
                 url:"",
                 save:"",
-                show:false
+                show:false,
+                show2:false
             }
         },
         created(){
-            if(sessionStorage.getItem('identity')=='teacher'){
-                this.show = true
-            }
-            console.log(this.$route.params.title)
             fly.post(global.Url+'get_detail',{
                 p_title:this.title,
                 author:this.author
@@ -65,6 +62,17 @@ import fly from 'flyio';
                 this.Papers = response.data.paper;
                 this.url = response.data.url
                 this.save = response.data.save
+                console.log(this.url)
+                 if(response.data.paper.status == "审核通过"){
+                    this.show2 = false
+                    this.show = false
+                }else if(sessionStorage.getItem('identity')=='teacher'){
+                    this.show = true
+                    this.show2 = false
+                }else{
+                    this.show = false
+                    this.show2 = true
+                }
             })
         },
         methods:{
@@ -86,6 +94,7 @@ import fly from 'flyio';
                     if(response.data.issuccess == 'Success'){
                         this.Papers.status = '审查通过'
                         alert('审查更改成功')
+                        window.location.href = '#/teacher'
                     }
                 })
             },
@@ -98,6 +107,7 @@ import fly from 'flyio';
                     if(response.data.issuccess == 'Success'){
                         this.Papers.status = '审查不通过'
                         alert('审查更改成功')
+                        window.location.href = '#/teacher'
                     }
                 })
             }
@@ -107,8 +117,10 @@ import fly from 'flyio';
 
 <style scoped>
 #single-blog{
-    max-width: 960px;
-    margin:0 auto;
+    position: absolute;
+    top: 13%;
+    left: 26%;
+    width: 60%;
     padding:20px;
     background: #eee;
     border:1px dotted #aaa;

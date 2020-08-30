@@ -243,10 +243,10 @@ var fly = require("flyio")
         },
         methods:{
             downloadFileClick() {
-                console.log(this.url);
+                console.log(this.Papers.url);
             　　//在本页打开窗口
                 let $eleForm = $("<form method='get'></form>");
-                $eleForm.attr("action",this.Papers.url);
+                $eleForm.attr("action","http://irms.ruc.edu.cn/download/"+this.Papers.url);
                 $(document.body).append($eleForm);
                 //提交表单，实现下载
                 $eleForm.submit();
@@ -323,8 +323,10 @@ var fly = require("flyio")
     box-sizing: border-box;
 }
 #alter-paper{
-    margin:20px auto;
-    max-width: 600px;
+    position: absolute;
+    top: 13%;
+    left: 30%;
+    width: 50%;
     padding:20px;
     background: rgb(222, 230, 193);
 }
