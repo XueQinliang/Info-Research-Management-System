@@ -1,36 +1,31 @@
 
 <template>
     <div>
-        <div class="header">
+        <div class="header navbar navbar-fixed-top">
             <div class="logo">
-                <img src='./../assets/top_logo.jpg'>
+                <h1>信研小屋~</h1>
+
                 <div class="userinfo">
                     <table class='tables' border="1">
                         <tr>
-                            <td rowspan="4" height="130px" width="50px"><img src='./../assets/OIP.jpg' height="100%" width="100%"></td>
                             <td class='txttd' >{{user.name}}</td>
-                        </tr>   
+                        </tr>  
                         <tr>
                             <td class='txttd'>{{user.number}}</td>
                         </tr>
-                        <tr>
-                            <td class='txttd'>{{user.identity}}</td>
-                        </tr>
-                        <tr>
-                            <td class='lktd'><a href="/#/login" class='la'>退出当前账户</a></td>
-                        </tr>
                     </table>
+                    <button type="button" id="userbutton" class="btn btn-info btn-lg btn-block">><a href="/#/login" class='la'>退出当前账户</a></button>
                 </div>
             </div>
         </div>
-        <nav>
-            <ul>
-                <li>
-                    <router-link to="/teacher" exact>首页</router-link>
-                    <router-link to="/upload-paper" exact>导出</router-link>
-                </li>                
-            </ul>   
-        </nav>
+        <div id="left" class="navbar navbar-fixed-top">
+            <nav>
+            <ul class="nav nav-pills nav-stacked">
+                <li><router-link to="/teacher" exact>首页</router-link></li>
+            </ul>
+            </nav>
+        <img src="./../assets/top_logo.jpg">
+        </div>
            
     </div>
 </template>
@@ -62,29 +57,24 @@
 </script>
 
 <style scoped>
-/* .brand img{
-    margin:0 auto;
-    width:35%;
-    text-align:center;
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    padding:0;
-}
-.brand{
-    background: #1d50a2
-} */
 .header{
-    background: #1d50a2
+    background: #1d50a2;
+    height:13%;
+    width: 100%;
 }
 .logo{
     margin:0px;
-    width:35%;
+    width:100%;
+    height: 100%;
     display: flex;
     padding:0px 40px;
-    background: #1d50a2;
+    background: -webkit-linear-gradient(right,rgb(119, 173, 224),#1d50a2,) no-repeat;
 
 }
+.logo h1{
+    color: white;
+}
+
 hr{
     margin-top:7px;
     *margin: 0;
@@ -93,72 +83,22 @@ hr{
     background-color: #1d50a2; 
     height: 2px
 }
-ul{
-    list-style-type: none;
-    text-align: center;
-    margin:0;
-    margin-bottom: 20px;
-    padding:20px 40px;
-    border: 10px solid #1d50a2;
-    border-left-width: 40px;
-    border-right-width: 40px;
-}
-li{
-    display: inline-block;
-    margin: 0 10px;
-    background: white;
-}
+
+
 .userinfo{
     position: absolute;
-    top:10px;
-    right:10px;
-    height: 145px;
-    width: 300px; 
-    background: rgb(99, 185, 243);
-    border: 1px solid rgb(25, 21, 226)
+    top:0%;
+    right:0%;
+    height: 100%;
+    width: 22%; 
 }
-/* .liimgright{
-    float:left;
-    margin: 5px 5px;
-    position: absolute;
-    top:15px;
-    right:150px;
+button{
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
 }
 
-.litxtleft{
-    float:left;
-    margin:5px 5px;
-    position: absolute;
-    top:15px;
-    right:60px;
-}  */
-.tables{
-    width: 300px;
-    height: 145px;
-    float:left;
-    table-layout: fixed;
-}
-.txttd{
-    width: 80px;
-    height: 10px;
-    font-size: 15px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-align:center;
-    background-color: rgb(58, 234, 247);
-}
-.lktd{
-    width: 80px;
-    height: 10px;
-    font-size: 15px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-align:center;
-    border:1px solid rgb(121, 31, 3);
-    background-color: rgb(121, 31, 3);
-}
 a{
     color: black;
     text-decoration: none;
@@ -167,18 +107,57 @@ a{
     font-size: 20px
 }
 .la{
-    color: rgb(228, 243, 11);
     font-weight: bold;
     font-size: 15px;
 }
 nav{
-    background: white;
-    margin-bottom: 40px;
-    
+    margin-top: 5%;
+    background: -webkit-linear-gradient(top,rgb(119, 173, 224),rgb(203, 225, 245)) no-repeat;;
+    border-radius: 12px;
+    width: 100%;
+}
+.router-link-active{
+    background: rgba(226, 227, 243, 0.8);
+    color:rgb(43, 61, 223);
+    font:bold 20px Pingfang SC;
+}
+#docCollapse{
+    padding: 0% 10px;
+}
+#docCollapse2{
+    padding: 0% 10px;
+}
+#left{
+    top: 13%;
+    width: 15%;
+    height: 200vh;
+    background:  -webkit-linear-gradient(top,rgb(119, 173, 224),rgb(203, 225, 245),white) no-repeat;
+}
+img{
+    position: absolute;
+    top: 41%;
+    left: 0%;
+    width: 100%;
+}
+h1{
+    font-family:'Microsoft JhengHei';
 }
 
-.router-link-active{
-    background: rgba(175, 12, 12, 0.8);
-    color:white;
+.tables{
+    height: 100%;
+    width: 45%;
+    float:left;
+    table-layout: fixed;
+}
+.txttd{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align:center;
+    background-color: rgb(58, 234, 247);
+}
+#userbutton{
+    height: 100%;
+    width: 55%;
 }
 </style>

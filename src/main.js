@@ -65,6 +65,12 @@ router.beforeEach((to, from, next) => {
       }else{
         next("/login")
       }
+    }else if(to.path.substring(0,9)==="/download"){
+      if(sessionStorage.getItem('accessToken')){
+        next
+      }else{
+        next("/login")
+      }
     }else if(to.path.substring(0,8) === "/teacher"){
       if(sessionStorage.getItem('accessToken')&&sessionStorage.getItem('identity')=='teacher'){
         next()

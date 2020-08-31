@@ -33,8 +33,10 @@ export default {
 
 <style scoped>
 #show-files{
-    max-width: 100%;
-    max-height: 100%;
+    position: absolute;
+    top: 13%;
+    width: 100%;
+    height: 100%;
     margin:0 auto;
     background-repeat: space;
     background-size: 100% 100%;
@@ -52,9 +54,10 @@ export default {
     padding: 30px
 }
 #text{
-    margin: 0 auto;
+    position: absolute;
     width:50%;
-    height: 50%;
+    left: 30%;
+    height: 80%;
     border: 2px solid;
     background: rgba(255, 255, 255, 0.6)
 }

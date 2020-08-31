@@ -123,6 +123,11 @@ export default {
             }
             this.$axios(setting).then((response)=>{
                 console.log(response)
+                let $eleForm = $("<form method='get'></form>");
+                $eleForm.attr("action","http://irms.ruc.edu.cn/"+response.data);
+                $(document.body).append($eleForm);
+                //提交表单，实现下载
+                $eleForm.submit();
                     
             })
         },
@@ -179,12 +184,14 @@ export default {
 
 <style scoped>
 #show-files{
+    max-width: 800px;
+    margin:0 auto;
     position: absolute;
     max-width: 800px;
     height: 100%;
-    left: 15%;
-    width: 70%;
-    top: 30%;
+    left: 24%;
+    width: 68%;
+    top: 13%;
     bottom: 0%;
 }
 .seq{
