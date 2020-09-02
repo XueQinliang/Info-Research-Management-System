@@ -169,6 +169,7 @@ export default {
                     sessionStorage.setItem('accessToken',usr)
                     sessionStorage.setItem('identity','teacher')
                     localStorage.setItem('accessToken',usr)
+                    sessionStorage.setItem('name',response.data.name)
                     alert(response.data.name+"老师，欢迎回来")
                     window.location.href = '#/teacher'
                 }else{
