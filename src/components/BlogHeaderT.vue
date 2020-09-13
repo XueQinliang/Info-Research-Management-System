@@ -6,15 +6,9 @@
                 <h1>信研小屋~</h1>
 
                 <div class="userinfo">
-                    <table class='tables' border="1">
-                        <tr>
-                            <td class='txttd' >{{user.name}}</td>
-                        </tr>  
-                        <tr>
-                            <td class='txttd'>{{user.number}}</td>
-                        </tr>
-                    </table>
-                    <button type="button" id="userbutton" class="btn btn-info btn-lg btn-block">><a href="/#/login" class='la'>退出当前账户</a></button>
+                    <button href="#" type="button" class="btn btn-default btn-lg" data-container="body" data-toggle="popover" 
+                    data-placement="bottom"><span class="glyphicon glyphicon-user"></span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -32,6 +26,7 @@
 
 <script>
     import global from './Global'
+    import $ from 'jquery'
     var fly = require("flyio")
     export default{
         name:"blog-header-t",
@@ -52,8 +47,37 @@
             }).then((response)=>{
                 this.user.name = response.data.name
             })
+            $(function (){
+                var temp="<table style='height:30px;width:200px'><p style='font-size:15px;border-bottom:1px solid #D5D5D5'>学号："+
+                            sessionStorage.getItem('accessToken')+"</p><p style='font-size:15px;border-bottom:1px solid #D5D5D5'>姓名："+sessionStorage.getItem('name')+
+                            "</p><p style='font-size:15px;border-bottom:1px solid #D5D5D5'>身份：教师用户</p>"+
+                            "</table><button id='userbutton' type='button' class='btn btn-lg btn-block' style='background:rgb(119, 173, 224)'><a href='/#/login'>退出当前账户</a></button>"
+                $("[data-toggle='popover']").popover({
+                    html : true,
+                    trigger:"manaul",    
+                    title: "个人信息",
+                    animation:false,      
+                    content: temp
+                        
+                }).on("mouseenter", function() {
+                    // console.log($(".hx-flot_window li a").css)
+                    var _this = this; // 这里的this触发的dom,需要存起来 否则在下面 .popover的逻辑中this会变为弹出的dom
+                    $(this).popover("show");
+                    $(".popover").on("mouseleave", function() {
+                        $(_this).popover('hide');
+                    });
+                }).on("mouseleave", function() {
+                    var _this = this;
+                    setTimeout(function() {
+                        if (!$(".popover:hover").length) {
+                            $(_this).popover("hide");
+                        }
+                    }, 300);
+                });
+            });
         }
     }
+    
 </script>
 
 <style scoped>
@@ -90,14 +114,9 @@ hr{
     top:0%;
     right:0%;
     height: 100%;
-    width: 22%; 
+    width: 5%; 
 }
-button{
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    border: 1px solid black;
-}
+
 
 a{
     color: black;
@@ -142,22 +161,10 @@ img{
 h1{
     font-family:'Microsoft JhengHei';
 }
+button{
+    background: rgba(0,0,0,0);
+    height: 100%;
+    border: hidden;
+}
 
-.tables{
-    height: 100%;
-    width: 45%;
-    float:left;
-    table-layout: fixed;
-}
-.txttd{
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-align:center;
-    background-color: rgb(58, 234, 247);
-}
-#userbutton{
-    height: 100%;
-    width: 55%;
-}
 </style>

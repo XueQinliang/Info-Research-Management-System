@@ -228,7 +228,7 @@ export default {
     position: absolute;
     text-align: center;
     left: 65%;
-    top: 25%;
+    top: 23%;
     height:30px;
     width: 11%;
 }
@@ -242,7 +242,9 @@ export default {
     position: absolute;
     text-align: center;
     left: 80%;
-    top: 7%;
+    top: 23%;
+    height: 30px;
+    width: 11%;
     z-index: 100;
 }
 #show-files a{

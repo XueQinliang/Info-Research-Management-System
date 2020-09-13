@@ -5,15 +5,9 @@
                 <h1>信研小屋~</h1>
 
                 <div class="userinfo">
-                    <table class='tables' border="1">  
-                        <tr>
-                            <td class='txttd' >{{user.name}}</td>
-                        </tr>
-                        <tr>
-                            <td class='txttd'>{{user.number}}</td>
-                        </tr>
-                    </table>
-                    <button id="userbutton" type="button" class="btn btn-info btn-lg btn-block">><a href="/#/login" class='la'>退出当前账户</a></button>
+                    <button href="#" type="button" class="btn btn-default btn-lg" data-container="body" data-toggle="popover" 
+                    data-placement="bottom" data-trigger="manul click"><span class="glyphicon glyphicon-user"></span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -36,47 +30,12 @@
     </div>
 </template>
 
-<!--<template>
-    <div>
-        <div class="header">
-            <div class="logo">
-                <img src='./../assets/top_logo.jpg'>
-                <div class="userinfo">
-                    <table class='tables' border="1">
-                        <tr>
-                            <td rowspan="4" height="130px" width="50px"><img src='./../assets/OIP.jpg' height="100%" width="100%"></td>
-                            <td class='txttd' >{{user.name}}</td>
-                        </tr>   
-                        <tr>
-                            <td class='txttd'>{{user.number}}</td>
-                        </tr>
-                        <tr>
-                            <td class='txttd'>{{user.identity}}</td>
-                        </tr>
-                        <tr>
-                            <td class='lktd'><a href="/#/login" class='la'>退出当前账户</a></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <nav>
-            <ul>
-                <li>
-                    <router-link to="/" exact>首页</router-link>
-                    <router-link to="/upload-paper" exact>上传论文信息</router-link>
-                    <router-link to="/check_papers" exact>查看我的论文</router-link>
-                </li>                
-            </ul>   
-        </nav>
-           
-    </div>
-</template>-->
 
 <script>
     import global from './Global'
+    import $ from 'jquery'
     var fly = require("flyio")
-    export default{
+    var e = {
         name:"blog-header",
         data(){
             return {
@@ -88,12 +47,41 @@
             }
         },
         created(){
+            console.log(this)
             this.user.number = localStorage.getItem('accessToken')
             fly.post(global.Url+'get_info',{
                 id:this.user.number
             }).then((response)=>{
                 this.user.name = response.data.name
             })
+            $(function (){
+                $("[data-toggle='popover']").popover({
+                    html : true,    
+                    title: "个人信息",    
+                    delay:{show:500},  
+                    content: function() {
+                        var html_content = "<table style='height:30px;width:200px'><p style='font-size:15px;border-bottom:1px solid #D5D5D5'>学号："+
+                            sessionStorage.getItem('accessToken')+"</p><p style='font-size:15px;border-bottom:1px solid #D5D5D5'>姓名："+sessionStorage.getItem('name')+
+                            "</p><p style='font-size:15px;border-bottom:1px solid #D5D5D5'>身份：学生用户"+
+                            "</table><button id='userbutton' type='button' class='btn btn-lg btn-block' style='background:rgb(119, 173, 224)'><a href='/#/login'>退出当前账户</a></button>"
+                        return html_content;    
+                    }   
+                }).on("mouseenter", function() {
+                    // console.log($(".hx-flot_window li a").css)
+                    var _this = this; // 这里的this触发的dom,需要存起来 否则在下面 .popover的逻辑中this会变为弹出的dom
+                    $(this).popover("show");
+                    $(".popover").on("mouseleave", function() {
+                        $(_this).popover('hide');
+                    });
+                }).on("mouseleave", function() {
+                    var _this = this;
+                    setTimeout(function() {
+                        if (!$(".popover:hover").length) {
+                            $(_this).popover("hide");
+                        }
+                    }, 300);
+                });
+            });
         },
         methods:{
             chevron_toggle(){
@@ -102,6 +90,9 @@
             },
         }
     }
+    export default e
+    
+    
 </script>
 
 <style scoped>
@@ -138,14 +129,9 @@ hr{
     top:0%;
     right:0%;
     height: 100%;
-    width: 22%; 
+    width: 5%; 
 }
-button{
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    border: 1px solid black;
-}
+
 
 a{
     color: black;
@@ -190,23 +176,11 @@ img{
 h1{
     font-family:'Microsoft JhengHei';
 }
+button{
+    background: rgba(0,0,0,0);
+    height: 100%;
+    border: hidden;
+}
 
-.tables{
-    height: 100%;
-    width: 45%;
-    float:left;
-    table-layout: fixed;
-}
-.txttd{
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-align:center;
-    background-color: rgb(58, 234, 247);
-}
-#userbutton{
-    height: 100%;
-    width: 55%;
-}
 
 </style>
