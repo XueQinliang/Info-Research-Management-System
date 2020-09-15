@@ -26,7 +26,14 @@
             </nav>
         <img src="./../assets/top_logo.jpg">
         </div>
-           
+        <div id="popovercontent" style="display:none">
+            <table style="height:30px;width:200px">
+                <p style="font-size:15px;border-bottom:1px solid #D5D5D5;">学号：{{user.number}}</p>
+                <p style="font-size:15px;border-bottom:1px solid #D5D5D5;">姓名：{{user.name}}</p>
+                <p style="font-size:15px;border-bottom:1px solid #D5D5D5;">身份：学生用户</p>
+            </table>
+            <button id="userbutton" type="button" class="btn btn-lg btn-block" style="background:rgb(119, 173, 224);"><a href="/#/login">退出当前账户</a></button>
+        </div>
     </div>
 </template>
 
@@ -60,11 +67,8 @@
                     title: "个人信息",    
                     delay:{show:500},  
                     content: function() {
-                        var html_content = "<table style='height:30px;width:200px'><p style='font-size:15px;border-bottom:1px solid #D5D5D5'>学号："+
-                            sessionStorage.getItem('accessToken')+"</p><p style='font-size:15px;border-bottom:1px solid #D5D5D5'>姓名："+sessionStorage.getItem('name')+
-                            "</p><p style='font-size:15px;border-bottom:1px solid #D5D5D5'>身份：学生用户"+
-                            "</table><button id='userbutton' type='button' class='btn btn-lg btn-block' style='background:rgb(119, 173, 224)'><a href='/#/login'>退出当前账户</a></button>"
-                        return html_content;    
+                        
+                        return $('#popovercontent').html();    
                     }   
                 }).on("mouseenter", function() {
                     // console.log($(".hx-flot_window li a").css)
