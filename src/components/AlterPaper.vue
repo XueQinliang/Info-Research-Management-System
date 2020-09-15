@@ -92,8 +92,8 @@
                 </div>
             </div>
             <div>
-            <button @click="upload">确定并上传</button>
-            <button @click="back">返回</button>
+                <button style="float:left;margin-right:10px;" @click="upload">确定并上传</button>
+                <button style="float:left" @click="back">返回</button>
             </div>
             
         </div>
@@ -328,7 +328,7 @@ var fly = require("flyio")
     left: 30%;
     width: 50%;
     padding:20px;
-    background: rgb(222, 230, 193);
+    background: rgb(210, 225, 241);
 }
 #choices{
     padding:20px;
@@ -365,7 +365,7 @@ textarea{
 button{
     display: block;
     margin:20px 0;
-    background: rgb(49, 15, 199);
+    background: rgb(35, 101, 223);
     color:#fff;
     border:0;
     padding:14px;
@@ -386,7 +386,7 @@ button{
 #preview{
     padding: 10px 20px;
     border:1px dotted #ccc;
-    margin:30px 0;
+    margin:30px 0 0 0;
 }
 h3{
     margin-top: 10px;
