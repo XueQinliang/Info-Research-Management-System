@@ -1,6 +1,7 @@
 <template>
-  <div v-theme:column="'wide'" id="show-files">
+  <div  id="show-files">
       <h1>我的论文</h1>
+      <img src="./../assets/main_background.jpg">
       <div class="selectinput">
              <label>审查结果</label><br>
             <select name="status" class="searchbox" v-model="search.status">
@@ -10,7 +11,7 @@
                 <option value="待审核">待审核</option>
             </select>
         </div>
-      <button id="search" @click="search_papers">搜索</button>
+      <button id="search" class="btn btn-primary" @click="search_papers">搜索</button>
       <div v-for="(paper,index) in papers" :key="index" class="single-blog">
           <router-link v-bind:to="'/paper_detail/'+paper.title+'/'+paper.author">
             <h2 v-rainbow>{{paper.title}}</h2>
@@ -136,7 +137,7 @@ export default {
 .single-blog{
     padding:20px;
     margin: 20px 0;
-    background: #eee;
+    background:  rgba(240, 243, 240,0.4);
     border:1px dotted #aaa;
 }
 
@@ -153,5 +154,12 @@ input[type="text"]{
 .selectinput{
     width: 22%;
     display: inline-block;
+}
+img{
+    z-index: -1;
+    width: 40%;
+    left: 33%;
+    opacity: 0.8;
+    position: fixed;
 }
 </style>
