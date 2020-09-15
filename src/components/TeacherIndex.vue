@@ -1,6 +1,7 @@
 <template>
-  <div v-theme:column="'wide'" id="show-files">
+  <div id="show-files">
       <h2>学生论文</h2>
+      <img src="./../assets/main_background.jpg">
       <div id="select_box">
           <div id="selectpart1">
             <div class="selectinput">
@@ -50,14 +51,14 @@
                     <option value="待审核">待审核</option>
                 </select>
             </div>
+            <div id="searchbutton">
+                <button type="button" class="btn btn-primary" @click="search_papers">搜索</button>
+            </div>
+            <div id="choices">
+                <button class="btn btn-primary" @click="download_info">信息下载</button>
+            </div>
           </div>
           
-      </div>
-      <div id="searchbutton">
-          <button type="button" class="btn btn-primary" @click="search_papers">搜索</button>
-      </div>
-      <div id="choices">
-        <button class="btn btn-primary" @click="download_info">信息下载</button>
       </div>
       <div v-for="(paper,index) in papers" :key="index" class="single-blog">
           <router-link v-bind:to="'/teacher/paper_detail/'+paper.title+'/'+paper.author">
@@ -212,11 +213,15 @@ export default {
     position: relative;
     top: 35%;
     left:5%;
-    width: 100%;
+    width: 120%;
     height: 10%;
 }
-.selectinput{
+#selectpart1 .selectinput{
     width: 22%;
+    display: inline-block;
+}
+#selectpart2 .selectinput{
+    width: 18.5%;
     display: inline-block;
 }
 .searchbox{
@@ -224,26 +229,21 @@ export default {
     width: 100%;
 }
 
-#searchbutton button{
-    position: absolute;
+#searchbutton{
     text-align: center;
-    left: 65%;
-    top: 23%;
-    height:30px;
+    display: inline-block;
     width: 11%;
 }
 .single-blog{
     padding:20px;
     margin: 20px 0;
-    background: #eee;
+    background: rgba(240, 243, 240,0.4);
     border:1px dotted #aaa;
 }
 #choices{
-    position: absolute;
     text-align: center;
-    left: 80%;
-    top: 23%;
-    height: 30px;
+    display: inline-block;
+    height: 20px;
     width: 11%;
     z-index: 100;
 }
@@ -256,5 +256,16 @@ input[type="text"]{
     padding: 8px;
     width:100%;
     box-sizing: border-box;
+}
+button{
+    width: 100%;
+    height: 30px;
+}
+img{
+    z-index: -1;
+    width: 40%;
+    left: 33%;
+    opacity: 0.8;
+    position: fixed;
 }
 </style>

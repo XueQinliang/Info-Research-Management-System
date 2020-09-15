@@ -4,6 +4,7 @@
         <div id="preview">
             <div id="choices">
                 <h3>您选择的文件</h3>
+                <p>文件名：{{file_name}}</p>
                 <button @click="downloadFileClick">下载</button>
             </div>
             <div id="choices">
@@ -46,6 +47,7 @@ import fly from 'flyio';
             return{
                 title:this.$route.params.title,
                 author:this.$route.params.author,
+                file_name:"",
                 Papers:{},
                 url:"",
                 save:"",
@@ -62,7 +64,9 @@ import fly from 'flyio';
                 this.Papers = response.data.paper;
                 this.url = response.data.url
                 this.save = response.data.save
-                console.log(this.url)
+                var temp=this.url.split('/')
+                console.log(temp[temp.length-1].slice(6,))
+                this.file_name = temp[temp.length-1].slice(6,)
                  if(response.data.paper.status == "审核通过"){
                     this.show2 = false
                     this.show = false
