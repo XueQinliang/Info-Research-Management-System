@@ -159,7 +159,7 @@ img{
     z-index: -1;
     width: 40%;
     left: 33%;
-    opacity: 0.8;
+    opacity: 0.3;
     position: fixed;
 }
 </style>
