@@ -21,12 +21,10 @@
         <img src="./../assets/top_logo.jpg">
         </div>
         <div id="popovercontent" style="display:none">
-            <table style="height:30px;width:200px">
-                <p style="font-size:15px;border-bottom:1px solid #D5D5D5">学号：{{user.number}}</p>
-                <p style="font-size:15px;border-bottom:1px solid #D5D5D5">姓名：{{user.name}}</p>
-                <p style="font-size:15px;border-bottom:1px solid #D5D5D5">身份：教师用户</p>
-            </table>
-            <button id="userbutton" type="button" class="btn btn-lg btn-block" style="background:rgb(119, 173, 224)"><a href="/#/login">退出当前账户</a></button>
+            <p>学号：{{user.number}}</p>
+            <p>姓名：{{user.name}}</p>
+            <p>身份：教师用户</p>
+            <button id="userbutton" type="button" class="btn btn-lg btn-block"><a href="/#/login">退出当前账户</a></button>
         </div>
     </div>
 </template>
@@ -172,5 +170,15 @@ button{
     height: 100%;
     border: hidden;
 }
-
+#popovercontent{
+    height:30px;
+    width:200px
+}
+p{
+    font-size:15px;
+    border-bottom:1px solid #D5D5D5;
+}
+#userbutton{
+    background:rgb(119, 173, 224);
+}
 </style>
