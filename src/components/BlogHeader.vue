@@ -5,7 +5,7 @@
                 <h1>信研小屋~</h1>
 
                 <div class="userinfo">
-                    <button href="#" type="button" class="btn btn-default btn-lg" data-container="body" data-toggle="popover" 
+                    <button href="#" type="button" class="useravatar btn btn-default btn-lg" data-container="body" data-toggle="popover" 
                     data-placement="bottom" data-trigger="manul click"><span class="glyphicon glyphicon-user"></span>
                     </button>
                 </div>
@@ -30,7 +30,7 @@
             <p >学号：{{user.number}}</p>
             <p>姓名：{{user.name}}</p>
             <p>身份：学生用户</p>
-            <button id="userbutton" type="button" class="btn btn-lg btn-block"><a href="/#/login">退出当前账户</a></button>
+            <div id="userbutton" type="button" class="useravatar btn btn-lg btn-block"><a href="/#/login">退出当前账户</a></div>
         </div>
     </div>
 </template>
@@ -125,6 +125,9 @@ hr{
     height: 2px
 }
 
+.useravatar{
+    color: white;
+}
 
 .userinfo{
     position: absolute;

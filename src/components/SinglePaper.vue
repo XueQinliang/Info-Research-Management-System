@@ -5,7 +5,7 @@
             <div id="choices">
                 <h3>您选择的文件</h3>
                 <p>文件名：{{file_name}}</p>
-                <button @click="downloadFileClick">下载</button>
+                <button class="mybutton" @click="downloadFileClick">下载</button>
             </div>
             <div id="choices">
                 <h3>您的论文主体信息</h3>
@@ -29,10 +29,14 @@
                 <button @click="check_notpass">审核不通过</button>
             </div>
             <div v-if="show">
-                <router-link v-bind:to="'/teacher/alter_paper/'+title+'/'+author">修改信息</router-link>
+                <button class="mybutton2">
+                    <router-link class="ptext" v-bind:to="'/teacher/alter_paper/'+title+'/'+author">修改信息</router-link>
+                </button>
             </div>
             <div v-if="show2">
-                <router-link v-bind:to="'/alter_paper/'+title+'/'+author">修改信息</router-link>
+                <button class="mybutton2">
+                    <router-link class="ptext" v-bind:to="'/alter_paper/'+title+'/'+author">修改信息</router-link>
+                </button>
             </div>
         </div>
     </div>
@@ -126,23 +130,51 @@ import fly from 'flyio';
     left: 26%;
     width: 60%;
     padding:20px;
-    background: #eee;
+    background:rgb(210, 225, 241);
     border:1px dotted #aaa;
 }
 label{
     display: block;
     margin:20px 0 10px;
 }
+
+.mybutton{
+    display: block;
+    background: rgb(35, 101, 223);
+    color:#fff;
+    border:0;
+    border-radius: 4px;
+    width:60px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.mybutton2{
+    display: block;
+    background: rgb(35, 101, 223);
+    color:#fff;
+    border:0;
+    border-radius: 4px;
+    width:120px;
+    height: 40px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.ptext{
+    color: #fff;
+}
+
 #preview{
     padding: 10px 20px;
-    border:1px dotted #ccc;
-    margin:30px 0;
+    background: rgb(210, 225, 241);
+    margin:0;
 }
 #choices{
     padding:20px;
     max-width: 800px;
     margin:10px 0 auto;
-    background: rgb(45, 179, 231);
+    background: #eee;
     border: 1px dotted #aaa;
 }
 </style>

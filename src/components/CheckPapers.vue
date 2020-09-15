@@ -1,9 +1,9 @@
 <template>
   <div  id="show-files">
-      <h1>我的论文</h1>
+      <!-- <h1>我的论文</h1> -->
       <img src="./../assets/main_background.jpg">
+      <h3>根据审核状态筛选论文</h3><br>
       <div class="selectinput">
-             <label>审查结果</label><br>
             <select name="status" class="searchbox" v-model="search.status">
                 <option value="全部">全部</option>
                 <option value="审核通过">审核通过</option>
@@ -11,7 +11,7 @@
                 <option value="待审核">待审核</option>
             </select>
         </div>
-      <button id="search" class="btn btn-primary" @click="search_papers">搜索</button>
+      <button id="search" class="btn btn-primary" @click="search_papers">筛选</button>
       <div v-for="(paper,index) in papers" :key="index" class="single-blog">
           <router-link v-bind:to="'/paper_detail/'+paper.title+'/'+paper.author">
             <h2 v-rainbow>{{paper.title}}</h2>
@@ -42,7 +42,7 @@ export default {
               meeting:null,
               size:null,
               time:null,
-              status:null,
+              status:"全部",
               sequence:null
           }
       }
@@ -134,6 +134,11 @@ export default {
 .seq{
     padding-left: 20px;
 }
+
+.searchbox{
+    height: 30px;
+}
+
 .single-blog{
     padding:20px;
     margin: 20px 0;
