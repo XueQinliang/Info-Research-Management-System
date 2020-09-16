@@ -22,6 +22,7 @@
               <b class="status">审核状态：{{paper.status}}</b>
           </article>
       </div>
+      <h2 v-if="noresult">对不起，无搜索结果。</h2>
   </div>
 </template>
 
@@ -44,7 +45,8 @@ export default {
               time:null,
               status:"全部",
               sequence:null
-          }
+          },
+          noresult:false
       }
   },
   methods:{
@@ -84,8 +86,11 @@ export default {
             },
           }
           this.$axios(setting).then((response)=>{
-              console.log(response)
+              
               this.papers = response.data
+              if(this.papers.length==0){
+                  this.noresult = true
+              }
           })
       }
   },

@@ -213,6 +213,7 @@ export default {
       },
       back(){
         this.submitted = false
+        location.reload(false)
       },
      getName:function(){
         var avatarUpload = document.getElementById('avatar-upload')
