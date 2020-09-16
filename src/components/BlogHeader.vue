@@ -100,20 +100,22 @@
 <style scoped>
 .header{
     background: #1d50a2;
-    height:13%;
+    height:10%;
     width: 100%;
 }
 .logo{
     margin:0px;
     width:100%;
     height: 100%;
-    display: flex;
-    padding:0px 40px;
+    display: inline-block;
+    padding:0px 30px;
     background: -webkit-linear-gradient(right,rgb(119, 173, 224),#1d50a2,) no-repeat;
 
 }
 .logo h1{
+    position: absolute;
     color: white;
+    bottom: 10%;
 }
 
 hr{
@@ -167,14 +169,14 @@ nav{
     padding: 0% 10px;
 }
 #left{
-    top: 13%;
+    top: 10%;
     width: 15%;
-    height: 200vh;
-    background:  -webkit-linear-gradient(top,rgb(119, 173, 224),rgb(203, 225, 245),white) no-repeat;
+    height: 90%;
+    background:  -webkit-linear-gradient(top,rgb(119, 173, 224),rgb(203, 225, 245),rgb(218, 234, 252)) no-repeat;
 }
 img{
     position: absolute;
-    top: 41%;
+    bottom: 0;
     left: 0%;
     width: 100%;
 }

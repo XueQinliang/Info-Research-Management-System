@@ -13,7 +13,7 @@
                 <p>论文篇幅：{{Papers.length}}</p>
                 <p>作者：{{Papers.author}}</p>
                 <p>您的作者顺序：{{Papers.author_order}}</p>
-                <p>审核状态：{{Papers.status}}</p>
+                <p>审核结果：{{Papers.status}}</p>
             </div>
             <div id="choices">
                 <h3>论文的发表信息</h3>

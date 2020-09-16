@@ -42,6 +42,10 @@
                 <input type="text" class="demo-input" placeholder="请选择日期" id="date3" v-model="Papers.meeting_time"> 
             </div>
             <div id="choices">
+                <label>上传论文内容(PDF格式)</label>
+                <div id="filename">
+                    已选文件：{{save}}
+                </div>
                 <form method="post" onsubmit ="
                     $('#file_form').ajaxSubmit({
                         async: false,
@@ -53,23 +57,26 @@
                             alert('上传文件失败')
                             }else{
                             alert('上传文件成功')
-                            sessionStorage.setItem('url',message)
-                            console.log(sessionStorage.getItem('url'))
-                            
+                            var temp = 'http://irms.ruc.edu.cn/download/'+message
+                            sessionStorage.setItem('url',temp)
                             }
                     }});
                     return false;"
                 enctype="multipart/form-data" id="file_form">
-                <label>上传论文内容(PDF格式)</label>
-                <div>
-                    <input type="file" id="avatar-upload" name="uploadfile" /><input type='submit' id="upload_button" @click="isupload" value='上传' />
+                <div id="upload-part">
+                       <p>重新上传：<input type="file" id="avatar-upload" name="uploadfile" value="重新上传"/></p> 
+                    
+                    <input type='submit' id="upload_button" @click="isupload" value='上传' />
+                </div>
+                <div id="download_front">
+                    <button  @click="downloadFileClick">下载</button>
                 </div>
                 
                 </form>
-                <div id="filename">文件名：{{save}}</div>
+                
             </div>
         </form>
-        <button v-if="!submitted" @click="post">预览论文信息</button>
+        <button class="b2" v-if="!submitted" @click="post">预览论文信息</button>
 
         <hr v-if="!submitted">
 
@@ -93,12 +100,12 @@
                     <p>会议召开时间：{{Papers.meeting_time}}</p>
                 </div>
                 <div id="chioces">
-                    <button @click="downloadFileClick">论文下载</button>
+                    <button class="b2" @click="downloadFileClick">论文下载</button>
                 </div>
             </div>
             <div>
-                <button style="float:left;margin-right:10px;" @click="upload">确定并上传</button>
-                <button style="float:left" @click="back">返回</button>
+                <button class="b2" style="float:left;margin-right:10px;" @click="upload">确定并上传</button>
+                <button class="b2" style="float:left" @click="back">返回</button>
             </div>
             
         </div>
@@ -172,7 +179,7 @@ var fly = require("flyio")
         mounted(){
             
             $(function(){
-            file_form.action = global.Url+'upload_file'
+            
             $(".selectpicker").selectpicker('refresh');
             }),
             laydate.render({
@@ -207,6 +214,7 @@ var fly = require("flyio")
                 console.log(response)
                 this.Papers = response.data.paper;
                 sessionStorage.setItem('url',response.data.url)
+                this.url = response.data.url
                 this.save = response.data.save
                 console.log(this.Papers)
             })
@@ -268,8 +276,23 @@ var fly = require("flyio")
             downloadFileClick() {
                 console.log(this.Papers.url);
             　　//在本页打开窗口
+                let $eleForm = $("<form id='newform' method='get'></form>");
+                $eleForm.attr("action",sessionStorage.getItem('url'));
+                $(document.body).append($eleForm);
+                try{
+                    file_form.action = ""
+                }catch(e){
+                    console.log('not defined')
+                }
+                
+                //提交表单，实现下载
+                $eleForm.submit()
+            },
+            downloadFileClick2() {
+                console.log(this.Papers.url);
+            　　//在本页打开窗口
                 let $eleForm = $("<form method='get'></form>");
-                $eleForm.attr("action","http://irms.ruc.edu.cn/download/"+this.Papers.url);
+                $eleForm.attr("action",sessionStorage.getItem('url'));
                 $(document.body).append($eleForm);
                 //提交表单，实现下载
                 $eleForm.submit();
@@ -281,6 +304,7 @@ var fly = require("flyio")
                 var filename=fname.substring(pos+1); 
                 this.save = filename
                 this.click = true
+                file_form.action = global.Url+'upload_file'
             },
             back(){
                 this.submitted = false
@@ -367,15 +391,35 @@ var fly = require("flyio")
     border: 1px dotted #aaa;
 }
 #file_form{
-    display: inline-block;
+    width: 100%;
 }
 #filename{
     display: inline-block;
     position: relative;
-    left: 30%;
+    left: 0%;
+}
+#upload-part{
+    display: inline-block;
+    width: 70%;
 }
 #upload_button{
+    position: relative;
+    left: 0px;
+}
+#download_front{
+    position: absolute;
+    bottom: 11.5%;
+    left: 16%;
+    width: 50px;
+}
+#download_front button{
+    font-size: 14px;
+}
+
+#avatar-upload{
     display: inline-block;
+    width: 50%;
+    left: 0;
 }
 label{
     display: block;
@@ -402,7 +446,7 @@ textarea{
     display: inline-block;
     margin-right: 10px;
 }
-button{
+.b2{
     display: block;
     margin:20px 0;
     background: rgb(35, 101, 223);
