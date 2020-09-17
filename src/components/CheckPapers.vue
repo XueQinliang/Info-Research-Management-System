@@ -14,14 +14,15 @@
       <button id="search" class="btn btn-primary" @click="search_papers">筛选</button>
       <div v-for="(paper,index) in papers" :key="index" class="single-blog">
           <router-link v-bind:to="'/paper_detail/'+paper.title+'/'+paper.author">
-            <h2 v-rainbow>{{paper.title}}</h2>
+            <h2 class="titles">{{paper.title}}</h2>
           </router-link>
           <article>
               <b class="author">作者：{{paper.author}} </b>
               <b class="seq">作者序：{{paper.sequence}}</b>
-              <b class="status">审核状态：{{paper.status}}</b>
+              <b class="status">审核结果：{{paper.status}}</b>
           </article>
       </div>
+      <h2 v-if="noresult">对不起，无搜索结果。</h2>
   </div>
 </template>
 
@@ -44,7 +45,8 @@ export default {
               time:null,
               status:"全部",
               sequence:null
-          }
+          },
+          noresult:false
       }
   },
   methods:{
@@ -84,8 +86,13 @@ export default {
             },
           }
           this.$axios(setting).then((response)=>{
-              console.log(response)
+              
               this.papers = response.data
+              if(this.papers.length==0){
+                  this.noresult = true
+              }else{
+                  this.noresult = false
+              }
           })
       }
   },
@@ -134,7 +141,9 @@ export default {
 .seq{
     padding-left: 20px;
 }
-
+.status{
+    padding-left: 20px;
+}
 .searchbox{
     height: 30px;
 }
@@ -166,5 +175,8 @@ img{
     left: 33%;
     opacity: 0.3;
     position: fixed;
+}
+.titles{
+    color: blue;
 }
 </style>

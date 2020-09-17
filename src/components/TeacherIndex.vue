@@ -43,7 +43,7 @@
                 <input class="searchbox" type="text" v-model="search.time">
             </div>
             <div class="selectinput">
-                <label>审查结果</label><br>
+                <label>审核结果</label><br>
                 <select name="status" class="searchbox" v-model="search.status">
                     <option value="全部">全部</option>
                     <option value="审核通过">审核通过</option>
@@ -62,14 +62,15 @@
       </div>
       <div v-for="(paper,index) in papers" :key="index" class="single-blog">
           <router-link v-bind:to="'/teacher/paper_detail/'+paper.title+'/'+paper.author">
-            <h2 v-rainbow>{{paper.title}}</h2>
+            <h2 class="titles">{{paper.title}}</h2>
           </router-link>
           <article>
               <b class="author">作者：{{paper.author}} </b>
               <b class="seq">作者序：{{paper.sequence}}</b>
-              <b class="status">审查结果：{{paper.status}}</b>
+              <b class="status">审核结果：{{paper.status}}</b>
           </article>
       </div>
+      <h2 v-if="noresult">对不起，无搜索结果。</h2>
   </div>
 </template>
 
@@ -96,7 +97,8 @@ export default {
               time:null,
               status:null,
               sequence:null
-          }
+          },
+          noresult:false
 
       }
   },
@@ -170,6 +172,11 @@ export default {
           this.$axios(setting).then((response)=>{
               console.log(response)
               this.papers = response.data
+              if(this.papers.length==0){
+                  this.noresult = true
+              }else{
+                  this.noresult = false
+              }
           })
       }
   },
@@ -196,6 +203,9 @@ export default {
     bottom: 0%;
 }
 .seq{
+    padding-left: 20px;
+}
+.status{
     padding-left: 20px;
 }
 #select_box{
@@ -267,5 +277,8 @@ img{
     left: 33%;
     opacity: 0.3;
     position: fixed;
+}
+.titles{
+    color: blue;
 }
 </style>

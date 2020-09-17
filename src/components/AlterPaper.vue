@@ -36,12 +36,16 @@
                 <input type="text" class="demo-input" placeholder="请选择日期" id="date2" v-model="Papers.journal_time">
                 <br><br>
                 <label>(如有在会议上发表)请输入会议全称</label>
-                <select class="selectpicker" id="sp2" data-live-search="true" v-model="Papers.meeting_name" data-size="5" selected="">
+                <select class="selectpicker" id="sp2" data-live-search="true" v-model="Papers.meeting_name" data-size="5">
                 </select>
                 <label>请选择会议举行的时间</label>
                 <input type="text" class="demo-input" placeholder="请选择日期" id="date3" v-model="Papers.meeting_time"> 
             </div>
             <div id="choices">
+                <label>上传论文内容(PDF格式)</label>
+                <div id="filename">
+                    已选文件：{{save}}
+                </div>
                 <form method="post" onsubmit ="
                     $('#file_form').ajaxSubmit({
                         async: false,
@@ -53,19 +57,26 @@
                             alert('上传文件失败')
                             }else{
                             alert('上传文件成功')
-                            sessionStorage.setItem('url',message)
-                            console.log(sessionStorage.getItem('url'))
+                            var temp = 'http://irms.ruc.edu.cn/download/'+message
+                            sessionStorage.setItem('url',temp)
                             }
                     }});
                     return false;"
                 enctype="multipart/form-data" id="file_form">
-                <label>上传论文内容(PDF格式)</label>
-                <input type="file" id="avatar-upload" name="uploadfile" />
-                <input type='submit' @click="isupload" value='上传' />
+                <div id="upload-part">
+                       <p>重新上传：<input type="file" id="avatar-upload" name="uploadfile" value="重新上传"/></p> 
+                    
+                    <input type='submit' id="upload_button" @click="isupload" value='上传' />
+                </div>
+                <div id="download_front">
+                    <button  @click="downloadFileClick">下载</button>
+                </div>
+                
                 </form>
+                
             </div>
         </form>
-        <button v-if="!submitted" @click="post">预览论文信息</button>
+        <button class="b2" v-if="!submitted" @click="post">预览论文信息</button>
 
         <hr v-if="!submitted">
 
@@ -75,6 +86,7 @@
                 <h3>论文信息总览</h3>
                 <div id="choices">
                     <h4>您的论文主体信息</h4>
+                    <p>文件名：{{save}}</p>
                     <p>论文题目：{{Papers.title}}</p>
                     <p>论文篇幅：{{Papers.length}}</p>
                     <p>您的作者顺序：{{Papers.author_order}}</p>
@@ -88,12 +100,12 @@
                     <p>会议召开时间：{{Papers.meeting_time}}</p>
                 </div>
                 <div id="chioces">
-                    <button @click="downloadFileClick">论文下载</button>
+                    <button class="b2" @click="downloadFileClick">论文下载</button>
                 </div>
             </div>
             <div>
-                <button style="float:left;margin-right:10px;" @click="upload">确定并上传</button>
-                <button style="float:left" @click="back">返回</button>
+                <button class="b2" style="float:left;margin-right:10px;" @click="upload">确定并上传</button>
+                <button class="b2" style="float:left" @click="back">返回</button>
             </div>
             
         </div>
@@ -115,7 +127,6 @@ var fly = require("flyio")
             return{
                 title:this.$route.params.title,
                 author:this.$route.params.author,
-                Papers:{},
                 url:"",
                 Papers:{
                     title:null,
@@ -136,7 +147,8 @@ var fly = require("flyio")
                 id:"",
                 submitted:false,
                 click:false,
-                journals:[]
+                journals:[],
+                save:""
             }
         },
         updated(){
@@ -162,10 +174,12 @@ var fly = require("flyio")
                 }
             })
         },
+        beforeMount(){
+        },
         mounted(){
             
             $(function(){
-            file_form.action = global.Url+'upload_file'
+            
             $(".selectpicker").selectpicker('refresh');
             }),
             laydate.render({
@@ -197,65 +211,104 @@ var fly = require("flyio")
                 author:this.author
             })
             .then((response)=>{
-                console.log(response.data)
+                console.log(response)
                 this.Papers = response.data.paper;
-                this.Papers.url = response.data.url
                 sessionStorage.setItem('url',response.data.url)
+                this.url = response.data.url
                 this.save = response.data.save
+                console.log(this.Papers)
             })
-            let setting1 = {
-                method: "POST",
-                url: global.Url+"fuzzyjournal",
-                data: {
-                    "string":""
-                },
-            }
-            this.$axios(setting1).then((response)=>{
-            var temp = "空"
-            $("#sp1").html('')
-            $("#sp1").append("<option value=''>"+temp+"</option>")
-            $.each(response.data,function(index,item){
-                var typestr = '<option>'+item.J_Name+'</option>'
-                $("#sp1").append(typestr)
-            })
-            $("#sp1").selectpicker('refresh');
-            $("#sp1").selectpicker('show');
-            })
-            let setting2 = {
-                method: "POST",
-                url: global.Url+"fuzzymeeting",
-                data: {
-                    "string":""
-                },
-            }
-            this.$axios(setting2).then((response)=>{
-            console.log(response)
-            var temp = "空"
-            $("#sp2").html('')
-            $("#sp2").append("<option value=''>"+temp+"</option>")
-            $.each(response.data,function(index,item){
-                var typestr = '<option>'+item.M_FName+'</option>'
-                $("#sp2").append(typestr)
-            })
-            $("#sp2").selectpicker('refresh');
-            $("#sp2").selectpicker('show');
-            })
+            var _this = this
+            setTimeout(function(){
+                let setting1 = {
+                    method: "POST",
+                    url: global.Url+"fuzzyjournal",
+                    data: {
+                        "string":""
+                    },
+                }
+                _this.$axios(setting1).then((response)=>{
+                var temp = "空"
+                $("#sp1").html('')
+                $("#sp1").append("<option value=''>"+temp+"</option>")
+                $.each(response.data,function(index,item){
+                    var typestr = ""
+                    if(item.J_Name==_this.Papers.journal_name){
+                        typestr = "<option selected>"+item.J_Name+"</option>"
+                    }else{
+                        typestr = "<option>"+item.J_Name+"</option>"
+                    }
+                    $("#sp1").append(typestr)
+                })
+                $("#sp1").selectpicker('refresh');
+                $("#sp1").selectpicker('show');
+                
+                })
+                let setting2 = {
+                    method: "POST",
+                    url: global.Url+"fuzzymeeting",
+                    data: {
+                        "string":""
+                    },
+                }
+                _this.$axios(setting2).then((response)=>{
+                console.log(response)
+                var temp = "空"
+                $("#sp2").html('')
+                $("#sp2").append("<option value=''>"+temp+"</option>")
+                console.log(_this.Papers.meeting_name)
+                $.each(response.data,function(index,item){
+                    var typestr=""
+                    if(item.M_FName==_this.Papers.meeting_name){
+                        typestr = "<option selected>"+item.M_FName+"</option>"
+                    }else{
+                        typestr = "<option>"+item.M_FName+"</option>"
+                    }
+                    $("#sp2").append(typestr)
+                })
+                $("#sp2").selectpicker('refresh');
+                $("#sp2").selectpicker('show');
+                })
+            },1000)
+            
         },
         methods:{
             downloadFileClick() {
                 console.log(this.Papers.url);
             　　//在本页打开窗口
+                let $eleForm = $("<form id='newform' method='get'></form>");
+                $eleForm.attr("action",sessionStorage.getItem('url'));
+                $(document.body).append($eleForm);
+                try{
+                    file_form.action = ""
+                }catch(e){
+                    console.log('not defined')
+                }
+                
+                //提交表单，实现下载
+                $eleForm.submit()
+            },
+            downloadFileClick2() {
+                console.log(this.Papers.url);
+            　　//在本页打开窗口
                 let $eleForm = $("<form method='get'></form>");
-                $eleForm.attr("action","http://irms.ruc.edu.cn/download/"+this.Papers.url);
+                $eleForm.attr("action",sessionStorage.getItem('url'));
                 $(document.body).append($eleForm);
                 //提交表单，实现下载
                 $eleForm.submit();
             },
             isupload(){
+                var avatarUpload = document.getElementById('avatar-upload')
+                var fname = avatarUpload.value;
+                var pos=fname.lastIndexOf("\\");
+                var filename=fname.substring(pos+1); 
+                this.save = filename
                 this.click = true
+                file_form.action = global.Url+'upload_file'
             },
             back(){
                 this.submitted = false
+                location.reload(false)
             },
             getName:function(){
                 var avatarUpload = document.getElementById('avatar-upload')
@@ -337,6 +390,37 @@ var fly = require("flyio")
     background: #eee;
     border: 1px dotted #aaa;
 }
+#file_form{
+    width: 100%;
+}
+#filename{
+    display: inline-block;
+    position: relative;
+    left: 0%;
+}
+#upload-part{
+    display: inline-block;
+    width: 70%;
+}
+#upload_button{
+    position: relative;
+    left: 0px;
+}
+#download_front{
+    position: absolute;
+    bottom: 11.5%;
+    left: 16%;
+    width: 50px;
+}
+#download_front button{
+    font-size: 14px;
+}
+
+#avatar-upload{
+    display: inline-block;
+    width: 50%;
+    left: 0;
+}
 label{
     display: block;
     margin:20px 0 10px;
@@ -362,7 +446,7 @@ textarea{
     display: inline-block;
     margin-right: 10px;
 }
-button{
+.b2{
     display: block;
     margin:20px 0;
     background: rgb(35, 101, 223);
