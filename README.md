@@ -20,11 +20,14 @@ vue.js + flask + mysql<br>
 这一步之后可以生成dist文件夹，内部包含生成的前端代码
 5. 删除~/tools/apache-tomcat-8.0.24/webapps/ROOT文件夹的一切内容
 6. 复制dist到~/tools/apache-tomcat-8.0.24/webapps/ROOT
-7. 进入ROOT文件夹，建立软连接：ln -s ~/Info-Research-Management-System/static/usrupload download，将服务器的路径映射为真实的物理路径
-8. 到~/目录下，sudo bash shutdown.sh，再sudo bash startup.sh<br>
+7. 复制node_modules到~/tools/apache-tomcat-8.0.24/webapps/ROOT/
+8. 进入ROOT文件夹，建立软连接：ln -s ~/Info-Research-Management-System/static/usrupload download，将服务器的路径映射为真实的物理路径
+9. 进入static/css文件夹，mkdir static
+10. 把../fonts文件夹复制到static下
+11. 到~/目录下，sudo bash shutdown.sh，再sudo bash startup.sh<br>
 这两个均为建立的软链接，真实位置在~/tools/apache-tomcat-8.0.24/bin下，sudo的原因是启动端口为80，1024以下端口均需要sudo权限
-9. screen -r runpy，然后到~/Info-Research-Management-System/static/py/下，启动backend.py，运行后台程序
-10. 打开浏览器，输入202.112.113.26或者绑定的域名：irms.ruc.edu.cn，即可打开网页
+12. screen -r runpy，然后到~/Info-Research-Management-System/static/py/下，启动backend.py，运行后台程序
+13. 打开浏览器，输入202.112.113.26或者绑定的域名：irms.ruc.edu.cn，即可打开网页
 ## 本地运行方式
 前三步同服务器端<br>第四步命令为npm run build，推荐使用visual studio<br>第五步为启动python后台程序<br>第六步为打开localhost:8080。
 ## 注意事项

@@ -1,0 +1,1972 @@
+ * Serving Flask app "backend" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+Getinfo
+20172017
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+20172017 杜忠朝
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮" and Paper.P_Journal="Jtest"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮" and Paper.P_Journal="Jtest" and Paper.P_Size="长文"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-09-02
+2020-08-31
+2020-09-30
+2020-08-18
+2020-08-19
+[['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮" and Paper.P_Journal="Jtest1" and Paper.P_Size="长文"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[]
+[]
+['2017202084', 'xql123']
+ret: 1
+Getinfo
+2017202084
+2017202084 薛钦亮
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author and Paper_Status.Status = '审核不通过'
+[]
+[]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author and Paper_Status.Status = '待审核'
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author and Paper_Status.Status = '审核不通过'
+[]
+[]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author and Paper_Status.Status = '待审核'
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+Getinfo
+2017202084
+2017202084 薛钦亮
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+Getinfo
+2017202084
+2017202084 薛钦亮
+{'P_Author': '薛钦亮', 'P_Title': 'ceshi'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="ceshi"
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx')]
+2020-08-04
+2020-08-17
+审核通过
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+['2017202084', 'xql123']
+ret: 1
+Getinfo
+2017202084
+2017202084 薛钦亮
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+待审核
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/I2MPPJ学年自评.docx
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+Getinfo
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+2017202084
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+2017202084 薛钦亮
+待审核
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+['2017202084', 'xql123']
+ret: 1
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/B1CYO9故宫游记.docx
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/SAO85Y代码部分.txt
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/HL5K4D代码部分.txt
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/ZG45JG代码部分.txt
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/A539QU代码部分.txt
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/U7XQJF代码部分.txt
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/J82XKC代码部分.txt
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/K4TXIJ军博感想.pdf
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+upload_file
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/YUG5NM军博感想.docx
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/ACPYBZ军博感想.docx
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/7R77WV军博感想.docx
+Getinfo
+2017202084
+2017202084 薛钦亮
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+upload_file
+Getinfo
+2017202084
+2017202084 薛钦亮
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+upload_file
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/NDD2ZI故宫游记.docx
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/DFOHDS故宫游记.docx
+Getinfo
+2017202084
+2017202084 薛钦亮
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/R62YTJ军博感想.docx
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/JP5SAS军博感想.docx
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/13IIDX军博感想.docx
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/HD4CDL军博感想.docx
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+upload_file
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/622K74故宫游记.docx
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/G35LQU故宫游记.docx
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/Y4U7DK故宫游记.docx
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/LPXRN0故宫游记.docx
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+Getinfo
+2017202084
+2017202084 薛钦亮
+Getinfo
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+2017202084
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+2017202084 薛钦亮
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+Getinfo
+2017202084
+2017202084 薛钦亮
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+['2017202084', 'xql123']
+ret: 1
+Getinfo
+2017202084
+2017202084 薛钦亮
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+Getinfo
+2017202084
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+2017202084 薛钦亮
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+Getinfo
+2017202084
+2017202084 薛钦亮
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'wdcs'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="wdcs"
+[('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf')]
+2020-09-03
+2020-09-01
+2020-09-05
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+Getinfo
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+2017202084
+2017202084 薛钦亮
+Getinfo
+2017202084
+2017202084 薛钦亮
+['2017202084', 'xql123']
+ret: 1
+Getinfo
+2017202084
+2017202084 薛钦亮
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+Getinfo
+2017202084
+2017202084 薛钦亮
+Getinfo
+2017202084
+2017202084 薛钦亮
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+Getinfo
+2017202084
+2017202084 薛钦亮
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+upload_file
+Getinfo
+2017202084
+2017202084 薛钦亮
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+Getinfo
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+2017202084
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+2017202084 薛钦亮
+待审核
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+upload_file
+Getinfo
+2017202084
+2017202084 薛钦亮
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+upload_file
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/2J3IEQ学年自评.docx
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/QELRGO学年自评.docx
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/L96F9A学年自评.docx
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/PYD7QW学年自评.docx
+Getinfo
+2017202084
+2017202084 薛钦亮
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/3ZUMG0故宫游记.docx
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/GVPMCV故宫游记.docx
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/8BR1NZ故宫游记.docx
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/MDHT4T故宫游记.docx
+Getinfo
+2017202084
+2017202084 薛钦亮
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/ZDZMY8代码部分.txt
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/REL3JT代码部分.txt
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/U5VLHS代码部分.txt
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/RBG82E代码部分.txt
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/5HHGLE故宫游记.docx
+Getinfo
+2017202084
+2017202084 薛钦亮
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/VELBDA代码部分.txt
+Getinfo
+2017202084
+2017202084 薛钦亮
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/IWA39P代码部分.txt
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+upload_file
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/MZMGPF代码部分.txt
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+Getinfo
+2017202084
+2017202084 薛钦亮
+['20172017', 'dzc123']
+ret: 2
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+Getinfo
+20172017
+20172017 杜忠朝
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Size="长文"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-09-02

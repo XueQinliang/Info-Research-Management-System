@@ -732,13 +732,14 @@ def csvdownload():
     pub_datas = []
     # 将所有的字段名放在list中
     col_names = []
+    col_ch_names = ["论文标题","论文作者","作者序","论文篇幅","在线发表日期","期刊名称","期刊发表日期","期刊等级","期刊缩写","会议名称","会议发表日期","会议等级","会议缩写"]
     flag = 1
     for i in range(len(titles)):  # 遍历每一个主键
         # 从数据库中筛选需要的条目
         sqls = """
             SELECT 
             p.P_Title,p.P_Author,p.P_ASequence,p.P_Size,
-            p.P_Otime,p.P_Journal,p.P_Jtime,j.J_Level,j.J_SName,p.P_Meeting,p.P_Mtime,m.M_Level,m.M_SName,p.P_url
+            p.P_Otime,p.P_Journal,p.P_Jtime,j.J_Level,j.J_SName,p.P_Meeting,p.P_Mtime,m.M_Level,m.M_SName
             FROM 
             ( SELECT * FROM Paper WHERE Paper.P_Title = %s AND Paper.P_Author = %s ) p
             LEFT JOIN Journal AS j ON p.P_Journal = j.J_Name
@@ -765,9 +766,9 @@ def csvdownload():
             print(e)
             return -1
     # 将获取的论文信息与字段名称转换成dataframe，再输出成excel文件
-    df = pd.DataFrame(pub_datas, columns=col_names)
-    out_path = "download/result.csv"
-    df.to_csv("../usrupload/result.csv", sep=",", index=False, header=True)  # tocsv函数会将重名文件覆盖
+    df = pd.DataFrame(pub_datas, columns=col_ch_names)
+    out_path = "download/信院学生论文信息汇总.csv"
+    df.to_csv("../usrupload/信院学生论文信息汇总.csv", sep=",", index=False, header=True)  # tocsv函数会将重名文件覆盖
     return out_path  # 返回文件路径
 
 
