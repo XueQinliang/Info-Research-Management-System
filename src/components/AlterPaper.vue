@@ -55,7 +55,7 @@
                             // 对于表单提交成功后处理，message为提交页面saveReport.htm的返回内容
                             if (message=='fail upload file'){
                             alert('上传文件失败')
-                            }else{
+                            }else if(message!=''){
                             alert('上传文件成功')
                             var temp = 'http://irms.ruc.edu.cn/download/'+message
                             sessionStorage.setItem('url',temp)
@@ -68,9 +68,7 @@
                     
                     <input type='submit' id="upload_button" @click="isupload" value='上传' />
                 </div>
-                <div id="download_front">
-                    <button  @click="downloadFileClick">下载</button>
-                </div>
+                
                 
                 </form>
                 
