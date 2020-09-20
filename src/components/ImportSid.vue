@@ -13,7 +13,7 @@
                         <input type="text" placeholder="学生姓名" v-model="name">
                         <button id="addbutton" class="btn btn-success btn-sm" @click="addone">添加</button>
                         <h3>方法二：</h3>
-                        <h4>传入Excel文档<strong>(其中第一例标题为“学号”，第二列标题为“姓名”)</strong></h4> 
+                        <h4>传入Excel文档<strong>(其中第一列标题为“学号”，第二列标题为“姓名”)</strong></h4> 
                         <input type="file" ref="upload" accept=".xls,.xlsx" @change="readExcel"/>
                         <br>
                         <div v-for="(member,index) in newmembers" :key="index" class="new">
@@ -58,6 +58,7 @@ export default {
             this.$axios(setting).then((response)=>{
                 if(response.data.status=='OK'){
                     alert("信息导入成功")
+                    this.newmembers = []
                 }else if(response.data.status=='error'){
                     alert("学号格式不规范，请检查")
                 }
