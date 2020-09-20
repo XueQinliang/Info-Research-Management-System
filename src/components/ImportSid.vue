@@ -50,7 +50,7 @@ export default {
         create_add_all(){
             let setting = {
                 method: "POST",
-                url: global.Url+"importsid/",
+                url: global.Url+"importsid",
                 data: {
                     "students":this.newmembers,
                 },

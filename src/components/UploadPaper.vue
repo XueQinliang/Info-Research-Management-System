@@ -213,6 +213,7 @@ export default {
       },
       back(){
         this.submitted = false
+        $(".selectpicker").selectpicker("render");
       },
      getName:function(){
         var avatarUpload = document.getElementById('avatar-upload')
