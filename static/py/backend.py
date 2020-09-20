@@ -353,6 +353,38 @@ def index():
     # 否则，跳转到login页面
     return jsonify({'LOGINSTATUS': 'NOT'})
 
+@app.route('/importsid', methods=['POST'])
+def importsid():
+    infos = request.json.get('students')
+    conn = pymysql.connect(
+        host="202.112.113.26",
+        port=5412,
+        user="root",
+        password="j&ipH9yITl^3Sce8AvsO",
+        database="irmsdata",
+        charset="utf8")
+    cursor = conn.cursor()
+    for info in infos:
+        sid = info['sid']
+        name = info['name']
+        sql1 = '''
+            insert into Student(S_ID,S_Name)
+            values (%s,%s)
+        '''
+        data1 = [sid,name]
+        sql2 = '''
+            insert into Student_Login(S_ID,Password)
+            values (%s,%s)
+        '''
+        data2 = [sid,sid]
+        cursor.execute(sql1, data1)
+        cursor.execute(sql2, data2)
+        conn.commit()
+
+    cursor.close()
+    conn.close()
+    return jsonify({'status': 'OK'})
+
 
 @app.route('/get_info', methods=['POST'])
 def get_info():

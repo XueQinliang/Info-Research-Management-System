@@ -1970,3 +1970,1032 @@ Getinfo
         where Paper.P_Size="长文"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
 [('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
 2020-09-02
+2020-08-31
+2020-09-30
+2020-08-18
+2020-08-19
+[['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Size="demo"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核')]
+2020-09-18
+2020-09-21
+[['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核']]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_ASequence="一作" and Paper.P_Size="demo"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[]
+[]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_ASequence="通讯作者" and Paper.P_Size="demo"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核')]
+2020-09-18
+2020-09-21
+[['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核']]
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+['2017202084', 'xql123']
+ret: 1
+Getinfo
+2017202084
+2017202084 薛钦亮
+['2017202084', 'xql123']
+ret: 1
+Getinfo
+2017202084
+2017202084 薛钦亮
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+['2017201984', 'xql123']
+ret: 0
+['2017202084', 'xql123']
+ret: 1
+Getinfo
+2017202084
+2017202084 薛钦亮
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+{'P_Author': '薛钦亮', 'P_Title': 'ceshi'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="ceshi"
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx')]
+2020-08-04
+2020-08-17
+审核通过
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+['20172017', 'dzc123']
+ret: 2
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+Getinfo
+20172017
+20172017 杜忠朝
+{'P_Author': '薛钦亮', 'P_Title': 'ceshi'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="ceshi"
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx')]
+2020-08-04
+2020-08-17
+审核通过
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+{'P_Author': '薛钦亮', 'P_Title': 'nnn'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="nnn"
+[('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx')]
+2020-10-01
+2020-09-21
+待审核
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+Getinfo
+20172017
+20172017 杜忠朝
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+Getinfo
+20172017
+20172017 杜忠朝
+{'P_Author': '薛钦亮', 'P_Title': '测试4'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="测试4"
+[('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx')]
+2020-09-18
+2020-09-21
+待审核
+['2017202084', 'xql123']
+ret: 1
+Getinfo
+2017202084
+2017202084 薛钦亮
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+['20172017', 'dzc123']
+ret: 2
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Jtest', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Jtest', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Jtest', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Jtest', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Jtest', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Jtest2', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Jtest', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+Getinfo
+20172017
+20172017 杜忠朝
+['2017202084', 'xql123']
+ret: 1
+Getinfo
+2017202084
+2017202084 薛钦亮
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Biennial IEEE International Nonvolatile Memory Technology Conference', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Biennial IEEE International Nonvolatile Memory Technology Conference', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Biennial IEEE International Nonvolatile Memory Technology Conference', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Biennial IEEE International Nonvolatile Memory Technology Conference', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Biennial IEEE International Nonvolatile Memory Technology Conference', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Biennial IEEE International Nonvolatile Memory Technology Conference', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+['20172017', 'dzc123']
+ret: 2
+Getinfo
+20172017
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('ceshi', '薛钦亮', '二作', '短文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx', '审核通过'), ('nnn', '薛钦亮', '通讯作者', '短文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 10, 1), '2017202084/8OZO6S9月感想.docx', '待审核'), ('wdcs', '薛钦亮', '通讯作者', '短文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', 'Mtest', datetime.date(2020, 9, 5), datetime.date(2020, 9, 1), datetime.date(2020, 9, 3), '2017202084/9N76C6295 Submission.pdf', '待审核'), ('xql的测试', '薛钦亮', '一作', '长文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', 'Mtest', datetime.date(2020, 9, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 2), '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'), ('测试4', '薛钦亮', '通讯作者', 'demo', 'Biennial IEEE International Nonvolatile Memory Technology Conference', None, None, datetime.date(2020, 9, 21), datetime.date(2020, 9, 18), '2017202084/3YT9LL法国文化与社会.pptx', '待审核'), ('薛钦亮的测试', '薛钦亮', '一作', '长文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', None, None, datetime.date(2020, 8, 19), datetime.date(2020, 8, 18), '2017202084/WIQKF6WebLens.pptx', '待审核')]
+2020-08-04
+2020-08-17
+2020-10-01
+2020-09-21
+2020-09-03
+2020-09-01
+2020-09-05
+2020-09-02
+2020-08-31
+2020-09-30
+2020-09-18
+2020-09-21
+2020-08-18
+2020-08-19
+[['ceshi', '薛钦亮', '二作', '短文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', '', '', '2020-08-17', '2020-08-04', '2017202084/UH7RHI学年自评.docx', '审核通过'], ['nnn', '薛钦亮', '通讯作者', '短文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', '', '', '2020-09-21', '2020-10-01', '2017202084/8OZO6S9月感想.docx', '待审核'], ['wdcs', '薛钦亮', '通讯作者', '短文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', 'Mtest', '2020-09-05', '2020-09-01', '2020-09-03', '2017202084/9N76C6295 Submission.pdf', '待审核'], ['xql的测试', '薛钦亮', '一作', '长文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', 'Mtest', '2020-09-30', '2020-08-31', '2020-09-02', '2017202084/GSW9TS17级反馈（薛钦亮）.docx', '待审核'], ['测试4', '薛钦亮', '通讯作者', 'demo', 'Biennial IEEE International Nonvolatile Memory Technology Conference', '', '', '2020-09-21', '2020-09-18', '2017202084/3YT9LL法国文化与社会.pptx', '待审核'], ['薛钦亮的测试', '薛钦亮', '一作', '长文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', '', '', '2020-08-19', '2020-08-18', '2017202084/WIQKF6WebLens.pptx', '待审核']]
+20172017 杜忠朝
+{'P_Author': '薛钦亮', 'P_Title': 'ceshi'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="ceshi"
+[('ceshi', '薛钦亮', '二作', '短文', 'Biennial IEEE International Nonvolatile Memory Technology Conference, Proceedings', None, None, datetime.date(2020, 8, 17), datetime.date(2020, 8, 4), '2017202084/UH7RHI学年自评.docx')]
+2020-08-04
+2020-08-17
+审核通过
+['2017201985', '2017201985']
+ret: 1
+Getinfo
+2017201985
+2017201985 陶俊屹
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="陶俊屹"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[]
+[]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="陶俊屹"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[]
+[]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="陶俊屹"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[]
+[]
+['2017202084', 'xql123']
+ret: 1
+Getinfo
+2017202084
+2017202084 薛钦亮
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[]
+[]
+['20172017', 'dzc123']
+ret: 2
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[]
+[]
+Getinfo
+20172017
+20172017 杜忠朝
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[]
+[]
+Getinfo
+20172017
+20172017 杜忠朝
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[]
+[]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[]
+[]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[]
+[]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[]
+[]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[]
+[]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[]
+[]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[]
+[]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author and Paper_Status.Status = '审核通过'
+[]
+[]
+['2017202084', 'xql123']
+ret: 1
+Getinfo
+2017202084
+2017202084 薛钦亮
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/PSQASXp2925-yu.pdf
+Getinfo
+2017202084
+2017202084 薛钦亮
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', datetime.date(2020, 9, 2), datetime.date(2020, 8, 31), datetime.date(2020, 8, 31), '2017202084/PSQASXp2925-yu.pdf', '待审核')]
+2020-08-31
+2020-08-31
+2020-09-02
+[['Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', '2020-09-02', '2020-08-31', '2020-08-31', '2017202084/PSQASXp2925-yu.pdf', '待审核']]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', datetime.date(2020, 9, 2), datetime.date(2020, 8, 31), datetime.date(2020, 8, 31), '2017202084/PSQASXp2925-yu.pdf', '待审核')]
+2020-08-31
+2020-08-31
+2020-09-02
+[['Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', '2020-09-02', '2020-08-31', '2020-08-31', '2017202084/PSQASXp2925-yu.pdf', '待审核']]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', datetime.date(2020, 9, 2), datetime.date(2020, 8, 31), datetime.date(2020, 8, 31), '2017202084/PSQASXp2925-yu.pdf', '待审核')]
+2020-08-31
+2020-08-31
+2020-09-02
+[['Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', '2020-09-02', '2020-08-31', '2020-08-31', '2017202084/PSQASXp2925-yu.pdf', '待审核']]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', datetime.date(2020, 9, 2), datetime.date(2020, 8, 31), datetime.date(2020, 8, 31), '2017202084/PSQASXp2925-yu.pdf', '待审核')]
+2020-08-31
+2020-08-31
+2020-09-02
+[['Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', '2020-09-02', '2020-08-31', '2020-08-31', '2017202084/PSQASXp2925-yu.pdf', '待审核']]
+{'P_Author': '薛钦亮', 'P_Title': 'Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards."
+[('Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', datetime.date(2020, 9, 2), datetime.date(2020, 8, 31), datetime.date(2020, 8, 31), '2017202084/PSQASXp2925-yu.pdf')]
+2020-08-31
+2020-08-31
+2020-09-02
+待审核
+{'P_Author': '薛钦亮', 'P_Title': 'Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="薛钦亮" and Paper.P_Title="Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards."
+[('Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', datetime.date(2020, 9, 2), datetime.date(2020, 8, 31), datetime.date(2020, 8, 31), '2017202084/PSQASXp2925-yu.pdf')]
+2020-08-31
+2020-08-31
+2020-09-02
+待审核
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', datetime.date(2020, 9, 2), datetime.date(2020, 8, 31), datetime.date(2020, 8, 31), '2017202084/PSQASXp2925-yu.pdf', '待审核')]
+2020-08-31
+2020-08-31
+2020-09-02
+[['Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', '2020-09-02', '2020-08-31', '2020-08-31', '2017202084/PSQASXp2925-yu.pdf', '待审核']]
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/6P1DVO09086762.pdf
+Getinfo
+2017202084
+2017202084 薛钦亮
+['2017201985', '2017201985']
+ret: 1
+Getinfo
+2017201985
+2017201985 陶俊屹
+upload_file
+是谁的文件 2017201985
+../usrupload/2017201985/41V20I09076686.pdf
+Getinfo
+2017201985
+2017201985 陶俊屹
+Getinfo
+2017201985
+2017201985 陶俊屹
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('An Efficient Cluster Based Resource Management Scheme and its Performance Analysis for V2X Networks.', '薛钦亮', '二作', '长文', 'Frontiers of Computer Science', 'International Conference on Very Large Data Bases', datetime.date(2019, 9, 19), datetime.date(2019, 9, 9), datetime.date(2019, 8, 23), '2017202084/6P1DVO09086762.pdf', '待审核'), ('Fast Representative Sampling in Large-Scale Online Social Networks', '陶俊屹', '二作', '短文', 'Artificial Intelligence', 'International Conference on Software Quality, Reliability and Security', datetime.date(2020, 8, 30), datetime.date(2020, 8, 30), datetime.date(2020, 8, 30), '2017201985/41V20I09076686.pdf', '待审核'), ('Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', datetime.date(2020, 9, 2), datetime.date(2020, 8, 31), datetime.date(2020, 8, 31), '2017202084/PSQASXp2925-yu.pdf', '待审核')]
+2019-08-23
+2019-09-09
+2019-09-19
+2020-08-30
+2020-08-30
+2020-08-30
+2020-08-31
+2020-08-31
+2020-09-02
+[['An Efficient Cluster Based Resource Management Scheme and its Performance Analysis for V2X Networks.', '薛钦亮', '二作', '长文', 'Frontiers of Computer Science', 'International Conference on Very Large Data Bases', '2019-09-19', '2019-09-09', '2019-08-23', '2017202084/6P1DVO09086762.pdf', '待审核'], ['Fast Representative Sampling in Large-Scale Online Social Networks', '陶俊屹', '二作', '短文', 'Artificial Intelligence', 'International Conference on Software Quality, Reliability and Security', '2020-08-30', '2020-08-30', '2020-08-30', '2017201985/41V20I09076686.pdf', '待审核'], ['Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', '2020-09-02', '2020-08-31', '2020-08-31', '2017202084/PSQASXp2925-yu.pdf', '待审核']]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('An Efficient Cluster Based Resource Management Scheme and its Performance Analysis for V2X Networks.', '薛钦亮', '二作', '长文', 'Frontiers of Computer Science', 'International Conference on Very Large Data Bases', datetime.date(2019, 9, 19), datetime.date(2019, 9, 9), datetime.date(2019, 8, 23), '2017202084/6P1DVO09086762.pdf', '待审核'), ('Fast Representative Sampling in Large-Scale Online Social Networks', '陶俊屹', '二作', '短文', 'Artificial Intelligence', 'International Conference on Software Quality, Reliability and Security', datetime.date(2020, 8, 30), datetime.date(2020, 8, 30), datetime.date(2020, 8, 30), '2017201985/41V20I09076686.pdf', '待审核'), ('Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', datetime.date(2020, 9, 2), datetime.date(2020, 8, 31), datetime.date(2020, 8, 31), '2017202084/PSQASXp2925-yu.pdf', '待审核')]
+2019-08-23
+2019-09-09
+2019-09-19
+2020-08-30
+2020-08-30
+2020-08-30
+2020-08-31
+2020-08-31
+2020-09-02
+[['An Efficient Cluster Based Resource Management Scheme and its Performance Analysis for V2X Networks.', '薛钦亮', '二作', '长文', 'Frontiers of Computer Science', 'International Conference on Very Large Data Bases', '2019-09-19', '2019-09-09', '2019-08-23', '2017202084/6P1DVO09086762.pdf', '待审核'], ['Fast Representative Sampling in Large-Scale Online Social Networks', '陶俊屹', '二作', '短文', 'Artificial Intelligence', 'International Conference on Software Quality, Reliability and Security', '2020-08-30', '2020-08-30', '2020-08-30', '2017201985/41V20I09076686.pdf', '待审核'], ['Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', '2020-09-02', '2020-08-31', '2020-08-31', '2017202084/PSQASXp2925-yu.pdf', '待审核']]
+['2017202084', 'xql123']
+ret: 0
+['2017201985', '2017201985']
+ret: 1
+Getinfo
+2017201985
+2017201985 陶云浩
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="陶云浩"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[]
+[]
+['2017202084', 'xql123']
+ret: 0
+['2017202084', '2017202084']
+ret: 1
+Getinfo
+2017202084
+2017202084 薛钦亮
+upload_file
+是谁的文件 2017201985
+../usrupload/2017201985/9T4IB6Efﬁcient and Robust Automated Machine Learning.pdf
+执行sql语句发生错误 insert
+(1406, "Data too long for column 'P_Title' at row 1")
+执行sql语句发生错误 insert
+(1406, "Data too long for column 'P_Title' at row 1")
+执行sql语句发生错误 insert
+(1406, "Data too long for column 'P_Title' at row 1")
+执行sql语句发生错误 insert
+(1406, "Data too long for column 'P_Title' at row 1")
+执行sql语句发生错误 insert
+(1406, "Data too long for column 'P_Title' at row 1")
+执行sql语句发生错误 insert
+(1406, "Data too long for column 'P_Title' at row 1")
+执行sql语句发生错误 insert
+(1406, "Data too long for column 'P_Title' at row 1")
+执行sql语句发生错误 insert
+(1406, "Data too long for column 'P_Title' at row 1")
+执行sql语句发生错误 insert
+(1406, "Data too long for column 'P_Title' at row 1")
+执行sql语句发生错误 insert
+(1406, "Data too long for column 'P_Title' at row 1")
+执行sql语句发生错误 insert
+(1406, "Data too long for column 'P_Title' at row 1")
+执行sql语句发生错误 insert
+(1406, "Data too long for column 'P_Title' at row 1")
+执行sql语句发生错误 insert
+(1406, "Data too long for column 'P_Title' at row 1")
+执行sql语句发生错误 insert
+(1406, "Data too long for column 'P_Title' at row 1")
+执行sql语句发生错误 insert
+(1406, "Data too long for column 'P_Title' at row 1")
+Getinfo
+2017201985
+2017201985 陶云浩
+upload_file
+是谁的文件 2017201985
+../usrupload/2017201985/KDVQXCdata validation for mechine learning.pdf
+Getinfo
+2017201985
+2017201985 陶云浩
+upload_file
+是谁的文件 2017201985
+../usrupload/2017201985/UZEI2CAutomaticHyper-ParameterOptimizationBasedonMappingDiscoveryfrom DatatoHyper-Parameters .pdf
+Getinfo
+2017201985
+2017201985 陶云浩
+['2017202095', '2017202095']
+ret: 1
+Getinfo
+2017202095
+2017202095 陈冠华
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Author="薛钦亮"and Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('An Efficient Cluster Based Resource Management Scheme and its Performance Analysis for V2X Networks.', '薛钦亮', '二作', '长文', 'Frontiers of Computer Science', 'International Conference on Very Large Data Bases', datetime.date(2019, 9, 19), datetime.date(2019, 9, 9), datetime.date(2019, 8, 23), '2017202084/6P1DVO09086762.pdf', '待审核'), ('Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', datetime.date(2020, 9, 2), datetime.date(2020, 8, 31), datetime.date(2020, 8, 31), '2017202084/PSQASXp2925-yu.pdf', '待审核')]
+2019-08-23
+2019-09-09
+2019-09-19
+2020-08-31
+2020-08-31
+2020-09-02
+[['An Efficient Cluster Based Resource Management Scheme and its Performance Analysis for V2X Networks.', '薛钦亮', '二作', '长文', 'Frontiers of Computer Science', 'International Conference on Very Large Data Bases', '2019-09-19', '2019-09-09', '2019-08-23', '2017202084/6P1DVO09086762.pdf', '待审核'], ['Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', '2020-09-02', '2020-08-31', '2020-08-31', '2017202084/PSQASXp2925-yu.pdf', '待审核']]
+upload_file
+是谁的文件 2017202095
+../usrupload/2017202095/YI6XF6Hyper-Parameter Selection in Convolutional Neural Networks Using Microcanonical Optimization Algorithm.pdf
+Getinfo
+2017202095
+2017202095 陈冠华
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/5VJ5LX学生学号.xlsx
+Getinfo
+2017202084
+2017202084 薛钦亮
+['20172017', 'dzc123']
+ret: 2
+Getinfo
+20172017
+20172017 杜忠朝
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('An Efficient Cluster Based Resource Management Scheme and its Performance Analysis for V2X Networks.', '薛钦亮', '二作', '长文', 'Frontiers of Computer Science', 'International Conference on Very Large Data Bases', datetime.date(2019, 9, 19), datetime.date(2019, 9, 9), datetime.date(2019, 8, 23), '2017202084/6P1DVO09086762.pdf', '待审核'), ('Fast Representative Sampling in Large-Scale Online Social Networks', '陶俊屹', '二作', '短文', 'Artificial Intelligence', 'International Conference on Software Quality, Reliability and Security', datetime.date(2020, 8, 30), datetime.date(2020, 8, 30), datetime.date(2020, 8, 30), '2017201985/41V20I09076686.pdf', '待审核'), ('Flexible Resource Block Allocation to Multiple Slices', '陶云浩', '一作', 'demo', 'ACM Transactions on Privacy and Security', 'ACM SIGPLAN Symposium on Programming Language Design & Implementation', datetime.date(2020, 8, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 14), '2017201985/UZEI2CAutomaticHyper-ParameterOptimizationBasedonMappingDiscoveryfrom DatatoHyper-Parameters .pdf', '待审核'), ('Optimal Data Routing Algorithm for Mine WSNs Based on Maximum Life Cycle', '陈冠华', '通讯作者', '短文', 'Human Computer Interaction', 'SIAM International Conference on Data Mining', datetime.date(2020, 8, 31), datetime.date(2020, 9, 15), datetime.date(2020, 8, 30), '2017202095/YI6XF6Hyper-Parameter Selection in Convolutional Neural Networks Using Microcanonical Optimization Algorithm.pdf', '待审核'), ('Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', datetime.date(2020, 9, 2), datetime.date(2020, 8, 31), datetime.date(2020, 8, 31), '2017202084/PSQASXp2925-yu.pdf', '待审核')]
+2019-08-23
+2019-09-09
+2019-09-19
+2020-08-30
+2020-08-30
+2020-08-30
+2020-09-14
+2020-08-31
+2020-08-30
+2020-08-30
+2020-09-15
+2020-08-31
+2020-08-31
+2020-08-31
+2020-09-02
+[['An Efficient Cluster Based Resource Management Scheme and its Performance Analysis for V2X Networks.', '薛钦亮', '二作', '长文', 'Frontiers of Computer Science', 'International Conference on Very Large Data Bases', '2019-09-19', '2019-09-09', '2019-08-23', '2017202084/6P1DVO09086762.pdf', '待审核'], ['Fast Representative Sampling in Large-Scale Online Social Networks', '陶俊屹', '二作', '短文', 'Artificial Intelligence', 'International Conference on Software Quality, Reliability and Security', '2020-08-30', '2020-08-30', '2020-08-30', '2017201985/41V20I09076686.pdf', '待审核'], ['Flexible Resource Block Allocation to Multiple Slices', '陶云浩', '一作', 'demo', 'ACM Transactions on Privacy and Security', 'ACM SIGPLAN Symposium on Programming Language Design & Implementation', '2020-08-30', '2020-08-31', '2020-09-14', '2017201985/UZEI2CAutomaticHyper-ParameterOptimizationBasedonMappingDiscoveryfrom DatatoHyper-Parameters .pdf', '待审核'], ['Optimal Data Routing Algorithm for Mine WSNs Based on Maximum Life Cycle', '陈冠华', '通讯作者', '短文', 'Human Computer Interaction', 'SIAM International Conference on Data Mining', '2020-08-31', '2020-09-15', '2020-08-30', '2017202095/YI6XF6Hyper-Parameter Selection in Convolutional Neural Networks Using Microcanonical Optimization Algorithm.pdf', '待审核'], ['Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', '2020-09-02', '2020-08-31', '2020-08-31', '2017202084/PSQASXp2925-yu.pdf', '待审核']]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('An Efficient Cluster Based Resource Management Scheme and its Performance Analysis for V2X Networks.', '薛钦亮', '二作', '长文', 'Frontiers of Computer Science', 'International Conference on Very Large Data Bases', datetime.date(2019, 9, 19), datetime.date(2019, 9, 9), datetime.date(2019, 8, 23), '2017202084/6P1DVO09086762.pdf', '待审核'), ('Fast Representative Sampling in Large-Scale Online Social Networks', '陶俊屹', '二作', '短文', 'Artificial Intelligence', 'International Conference on Software Quality, Reliability and Security', datetime.date(2020, 8, 30), datetime.date(2020, 8, 30), datetime.date(2020, 8, 30), '2017201985/41V20I09076686.pdf', '待审核'), ('Flexible Resource Block Allocation to Multiple Slices', '陶云浩', '一作', 'demo', 'ACM Transactions on Privacy and Security', 'ACM SIGPLAN Symposium on Programming Language Design & Implementation', datetime.date(2020, 8, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 14), '2017201985/UZEI2CAutomaticHyper-ParameterOptimizationBasedonMappingDiscoveryfrom DatatoHyper-Parameters .pdf', '待审核'), ('Optimal Data Routing Algorithm for Mine WSNs Based on Maximum Life Cycle', '陈冠华', '通讯作者', '短文', 'Human Computer Interaction', 'SIAM International Conference on Data Mining', datetime.date(2020, 8, 31), datetime.date(2020, 9, 15), datetime.date(2020, 8, 30), '2017202095/YI6XF6Hyper-Parameter Selection in Convolutional Neural Networks Using Microcanonical Optimization Algorithm.pdf', '待审核'), ('Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', datetime.date(2020, 9, 2), datetime.date(2020, 8, 31), datetime.date(2020, 8, 31), '2017202084/PSQASXp2925-yu.pdf', '待审核')]
+2019-08-23
+2019-09-09
+2019-09-19
+2020-08-30
+2020-08-30
+2020-08-30
+2020-09-14
+2020-08-31
+2020-08-30
+2020-08-30
+2020-09-15
+2020-08-31
+2020-08-31
+2020-08-31
+2020-09-02
+[['An Efficient Cluster Based Resource Management Scheme and its Performance Analysis for V2X Networks.', '薛钦亮', '二作', '长文', 'Frontiers of Computer Science', 'International Conference on Very Large Data Bases', '2019-09-19', '2019-09-09', '2019-08-23', '2017202084/6P1DVO09086762.pdf', '待审核'], ['Fast Representative Sampling in Large-Scale Online Social Networks', '陶俊屹', '二作', '短文', 'Artificial Intelligence', 'International Conference on Software Quality, Reliability and Security', '2020-08-30', '2020-08-30', '2020-08-30', '2017201985/41V20I09076686.pdf', '待审核'], ['Flexible Resource Block Allocation to Multiple Slices', '陶云浩', '一作', 'demo', 'ACM Transactions on Privacy and Security', 'ACM SIGPLAN Symposium on Programming Language Design & Implementation', '2020-08-30', '2020-08-31', '2020-09-14', '2017201985/UZEI2CAutomaticHyper-ParameterOptimizationBasedonMappingDiscoveryfrom DatatoHyper-Parameters .pdf', '待审核'], ['Optimal Data Routing Algorithm for Mine WSNs Based on Maximum Life Cycle', '陈冠华', '通讯作者', '短文', 'Human Computer Interaction', 'SIAM International Conference on Data Mining', '2020-08-31', '2020-09-15', '2020-08-30', '2017202095/YI6XF6Hyper-Parameter Selection in Convolutional Neural Networks Using Microcanonical Optimization Algorithm.pdf', '待审核'], ['Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', '2020-09-02', '2020-08-31', '2020-08-31', '2017202084/PSQASXp2925-yu.pdf', '待审核']]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('An Efficient Cluster Based Resource Management Scheme and its Performance Analysis for V2X Networks.', '薛钦亮', '二作', '长文', 'Frontiers of Computer Science', 'International Conference on Very Large Data Bases', datetime.date(2019, 9, 19), datetime.date(2019, 9, 9), datetime.date(2019, 8, 23), '2017202084/6P1DVO09086762.pdf', '待审核'), ('Fast Representative Sampling in Large-Scale Online Social Networks', '陶俊屹', '二作', '短文', 'Artificial Intelligence', 'International Conference on Software Quality, Reliability and Security', datetime.date(2020, 8, 30), datetime.date(2020, 8, 30), datetime.date(2020, 8, 30), '2017201985/41V20I09076686.pdf', '待审核'), ('Flexible Resource Block Allocation to Multiple Slices', '陶云浩', '一作', 'demo', 'ACM Transactions on Privacy and Security', 'ACM SIGPLAN Symposium on Programming Language Design & Implementation', datetime.date(2020, 8, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 14), '2017201985/UZEI2CAutomaticHyper-ParameterOptimizationBasedonMappingDiscoveryfrom DatatoHyper-Parameters .pdf', '待审核'), ('Optimal Data Routing Algorithm for Mine WSNs Based on Maximum Life Cycle', '陈冠华', '通讯作者', '短文', 'Human Computer Interaction', 'SIAM International Conference on Data Mining', datetime.date(2020, 8, 31), datetime.date(2020, 9, 15), datetime.date(2020, 8, 30), '2017202095/YI6XF6Hyper-Parameter Selection in Convolutional Neural Networks Using Microcanonical Optimization Algorithm.pdf', '待审核'), ('Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', datetime.date(2020, 9, 2), datetime.date(2020, 8, 31), datetime.date(2020, 8, 31), '2017202084/PSQASXp2925-yu.pdf', '待审核')]
+2019-08-23
+2019-09-09
+2019-09-19
+2020-08-30
+2020-08-30
+2020-08-30
+2020-09-14
+2020-08-31
+2020-08-30
+2020-08-30
+2020-09-15
+2020-08-31
+2020-08-31
+2020-08-31
+2020-09-02
+[['An Efficient Cluster Based Resource Management Scheme and its Performance Analysis for V2X Networks.', '薛钦亮', '二作', '长文', 'Frontiers of Computer Science', 'International Conference on Very Large Data Bases', '2019-09-19', '2019-09-09', '2019-08-23', '2017202084/6P1DVO09086762.pdf', '待审核'], ['Fast Representative Sampling in Large-Scale Online Social Networks', '陶俊屹', '二作', '短文', 'Artificial Intelligence', 'International Conference on Software Quality, Reliability and Security', '2020-08-30', '2020-08-30', '2020-08-30', '2017201985/41V20I09076686.pdf', '待审核'], ['Flexible Resource Block Allocation to Multiple Slices', '陶云浩', '一作', 'demo', 'ACM Transactions on Privacy and Security', 'ACM SIGPLAN Symposium on Programming Language Design & Implementation', '2020-08-30', '2020-08-31', '2020-09-14', '2017201985/UZEI2CAutomaticHyper-ParameterOptimizationBasedonMappingDiscoveryfrom DatatoHyper-Parameters .pdf', '待审核'], ['Optimal Data Routing Algorithm for Mine WSNs Based on Maximum Life Cycle', '陈冠华', '通讯作者', '短文', 'Human Computer Interaction', 'SIAM International Conference on Data Mining', '2020-08-31', '2020-09-15', '2020-08-30', '2017202095/YI6XF6Hyper-Parameter Selection in Convolutional Neural Networks Using Microcanonical Optimization Algorithm.pdf', '待审核'], ['Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', '2020-09-02', '2020-08-31', '2020-08-31', '2017202084/PSQASXp2925-yu.pdf', '待审核']]
+{'P_Author': '陶俊屹', 'P_Title': 'Fast Representative Sampling in Large-Scale Online Social Networks'}
+
+    select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+    Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    where Paper.P_Author="陶俊屹" and Paper.P_Title="Fast Representative Sampling in Large-Scale Online Social Networks"
+[('Fast Representative Sampling in Large-Scale Online Social Networks', '陶俊屹', '二作', '短文', 'Artificial Intelligence', 'International Conference on Software Quality, Reliability and Security', datetime.date(2020, 8, 30), datetime.date(2020, 8, 30), datetime.date(2020, 8, 30), '2017201985/41V20I09076686.pdf')]
+2020-08-30
+2020-08-30
+2020-08-30
+待审核
+upload_file
+是谁的文件 2017202084
+../usrupload/2017202084/UKC6FY学生学号.xlsx
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('An Efficient Cluster Based Resource Management Scheme and its Performance Analysis for V2X Networks.', '薛钦亮', '二作', '长文', 'Frontiers of Computer Science', 'International Conference on Very Large Data Bases', datetime.date(2019, 9, 19), datetime.date(2019, 9, 9), datetime.date(2019, 8, 23), '2017202084/6P1DVO09086762.pdf', '待审核'), ('Fast Representative Sampling in Large-Scale Online Social Networks', '陶俊屹', '二作', '短文', 'Artificial Intelligence', 'International Conference on Software Quality, Reliability and Security', datetime.date(2020, 8, 30), datetime.date(2020, 8, 30), datetime.date(2020, 8, 30), '2017201985/41V20I09076686.pdf', '待审核'), ('Flexible Resource Block Allocation to Multiple Slices', '陶云浩', '一作', 'demo', 'ACM Transactions on Privacy and Security', 'ACM SIGPLAN Symposium on Programming Language Design & Implementation', datetime.date(2020, 8, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 14), '2017201985/UZEI2CAutomaticHyper-ParameterOptimizationBasedonMappingDiscoveryfrom DatatoHyper-Parameters .pdf', '待审核'), ('Optimal Data Routing Algorithm for Mine WSNs Based on Maximum Life Cycle', '陈冠华', '通讯作者', '短文', 'Human Computer Interaction', 'SIAM International Conference on Data Mining', datetime.date(2020, 8, 31), datetime.date(2020, 9, 15), datetime.date(2020, 8, 30), '2017202095/YI6XF6Hyper-Parameter Selection in Convolutional Neural Networks Using Microcanonical Optimization Algorithm.pdf', '待审核'), ('Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', datetime.date(2020, 9, 2), datetime.date(2020, 8, 31), datetime.date(2020, 8, 31), '2017202084/PSQASXp2925-yu.pdf', '待审核')]
+2019-08-23
+2019-09-09
+2019-09-19
+2020-08-30
+2020-08-30
+2020-08-30
+2020-09-14
+2020-08-31
+2020-08-30
+2020-08-30
+2020-09-15
+2020-08-31
+2020-08-31
+2020-08-31
+2020-09-02
+[['An Efficient Cluster Based Resource Management Scheme and its Performance Analysis for V2X Networks.', '薛钦亮', '二作', '长文', 'Frontiers of Computer Science', 'International Conference on Very Large Data Bases', '2019-09-19', '2019-09-09', '2019-08-23', '2017202084/6P1DVO09086762.pdf', '待审核'], ['Fast Representative Sampling in Large-Scale Online Social Networks', '陶俊屹', '二作', '短文', 'Artificial Intelligence', 'International Conference on Software Quality, Reliability and Security', '2020-08-30', '2020-08-30', '2020-08-30', '2017201985/41V20I09076686.pdf', '待审核'], ['Flexible Resource Block Allocation to Multiple Slices', '陶云浩', '一作', 'demo', 'ACM Transactions on Privacy and Security', 'ACM SIGPLAN Symposium on Programming Language Design & Implementation', '2020-08-30', '2020-08-31', '2020-09-14', '2017201985/UZEI2CAutomaticHyper-ParameterOptimizationBasedonMappingDiscoveryfrom DatatoHyper-Parameters .pdf', '待审核'], ['Optimal Data Routing Algorithm for Mine WSNs Based on Maximum Life Cycle', '陈冠华', '通讯作者', '短文', 'Human Computer Interaction', 'SIAM International Conference on Data Mining', '2020-08-31', '2020-09-15', '2020-08-30', '2017202095/YI6XF6Hyper-Parameter Selection in Convolutional Neural Networks Using Microcanonical Optimization Algorithm.pdf', '待审核'], ['Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', '2020-09-02', '2020-08-31', '2020-08-31', '2017202084/PSQASXp2925-yu.pdf', '待审核']]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author
+[('An Efficient Cluster Based Resource Management Scheme and its Performance Analysis for V2X Networks.', '薛钦亮', '二作', '长文', 'Frontiers of Computer Science', 'International Conference on Very Large Data Bases', datetime.date(2019, 9, 19), datetime.date(2019, 9, 9), datetime.date(2019, 8, 23), '2017202084/6P1DVO09086762.pdf', '待审核'), ('Fast Representative Sampling in Large-Scale Online Social Networks', '陶俊屹', '二作', '短文', 'Artificial Intelligence', 'International Conference on Software Quality, Reliability and Security', datetime.date(2020, 8, 30), datetime.date(2020, 8, 30), datetime.date(2020, 8, 30), '2017201985/41V20I09076686.pdf', '待审核'), ('Flexible Resource Block Allocation to Multiple Slices', '陶云浩', '一作', 'demo', 'ACM Transactions on Privacy and Security', 'ACM SIGPLAN Symposium on Programming Language Design & Implementation', datetime.date(2020, 8, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 14), '2017201985/UZEI2CAutomaticHyper-ParameterOptimizationBasedonMappingDiscoveryfrom DatatoHyper-Parameters .pdf', '待审核'), ('Optimal Data Routing Algorithm for Mine WSNs Based on Maximum Life Cycle', '陈冠华', '通讯作者', '短文', 'Human Computer Interaction', 'SIAM International Conference on Data Mining', datetime.date(2020, 8, 31), datetime.date(2020, 9, 15), datetime.date(2020, 8, 30), '2017202095/YI6XF6Hyper-Parameter Selection in Convolutional Neural Networks Using Microcanonical Optimization Algorithm.pdf', '待审核'), ('Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', datetime.date(2020, 9, 2), datetime.date(2020, 8, 31), datetime.date(2020, 8, 31), '2017202084/PSQASXp2925-yu.pdf', '待审核')]
+2019-08-23
+2019-09-09
+2019-09-19
+2020-08-30
+2020-08-30
+2020-08-30
+2020-09-14
+2020-08-31
+2020-08-30
+2020-08-30
+2020-09-15
+2020-08-31
+2020-08-31
+2020-08-31
+2020-09-02
+[['An Efficient Cluster Based Resource Management Scheme and its Performance Analysis for V2X Networks.', '薛钦亮', '二作', '长文', 'Frontiers of Computer Science', 'International Conference on Very Large Data Bases', '2019-09-19', '2019-09-09', '2019-08-23', '2017202084/6P1DVO09086762.pdf', '待审核'], ['Fast Representative Sampling in Large-Scale Online Social Networks', '陶俊屹', '二作', '短文', 'Artificial Intelligence', 'International Conference on Software Quality, Reliability and Security', '2020-08-30', '2020-08-30', '2020-08-30', '2017201985/41V20I09076686.pdf', '待审核'], ['Flexible Resource Block Allocation to Multiple Slices', '陶云浩', '一作', 'demo', 'ACM Transactions on Privacy and Security', 'ACM SIGPLAN Symposium on Programming Language Design & Implementation', '2020-08-30', '2020-08-31', '2020-09-14', '2017201985/UZEI2CAutomaticHyper-ParameterOptimizationBasedonMappingDiscoveryfrom DatatoHyper-Parameters .pdf', '待审核'], ['Optimal Data Routing Algorithm for Mine WSNs Based on Maximum Life Cycle', '陈冠华', '通讯作者', '短文', 'Human Computer Interaction', 'SIAM International Conference on Data Mining', '2020-08-31', '2020-09-15', '2020-08-30', '2017202095/YI6XF6Hyper-Parameter Selection in Convolutional Neural Networks Using Microcanonical Optimization Algorithm.pdf', '待审核'], ['Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', '2020-09-02', '2020-08-31', '2020-08-31', '2017202084/PSQASXp2925-yu.pdf', '待审核']]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author and Paper_Status.Status = '审核通过'
+[]
+[]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author and Paper_Status.Status = '审核不通过'
+[]
+[]
+
+        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
+        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
+        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
+        inner join Paper_Status
+        where Paper.P_Title = Paper_Status.P_Title and Paper.P_Author = Paper_Status.P_Author and Paper_Status.Status = '待审核'
+[('An Efficient Cluster Based Resource Management Scheme and its Performance Analysis for V2X Networks.', '薛钦亮', '二作', '长文', 'Frontiers of Computer Science', 'International Conference on Very Large Data Bases', datetime.date(2019, 9, 19), datetime.date(2019, 9, 9), datetime.date(2019, 8, 23), '2017202084/6P1DVO09086762.pdf', '待审核'), ('Fast Representative Sampling in Large-Scale Online Social Networks', '陶俊屹', '二作', '短文', 'Artificial Intelligence', 'International Conference on Software Quality, Reliability and Security', datetime.date(2020, 8, 30), datetime.date(2020, 8, 30), datetime.date(2020, 8, 30), '2017201985/41V20I09076686.pdf', '待审核'), ('Flexible Resource Block Allocation to Multiple Slices', '陶云浩', '一作', 'demo', 'ACM Transactions on Privacy and Security', 'ACM SIGPLAN Symposium on Programming Language Design & Implementation', datetime.date(2020, 8, 30), datetime.date(2020, 8, 31), datetime.date(2020, 9, 14), '2017201985/UZEI2CAutomaticHyper-ParameterOptimizationBasedonMappingDiscoveryfrom DatatoHyper-Parameters .pdf', '待审核'), ('Optimal Data Routing Algorithm for Mine WSNs Based on Maximum Life Cycle', '陈冠华', '通讯作者', '短文', 'Human Computer Interaction', 'SIAM International Conference on Data Mining', datetime.date(2020, 8, 31), datetime.date(2020, 9, 15), datetime.date(2020, 8, 30), '2017202095/YI6XF6Hyper-Parameter Selection in Convolutional Neural Networks Using Microcanonical Optimization Algorithm.pdf', '待审核'), ('Tabula in Action: A Sampling Middleware for Interactive Geospatial Visualization Dashboards.', '薛钦亮', '一作', '长文', 'ACM Transactions on Privacy and Security', 'ACM Conference on Management of Data', datetime.date(2020, 9, 2), datetime.date(2020, 8, 31), datetime.date(2020, 8, 31), '2017202084/PSQASXp2925-yu.pdf', '待审核')]
