@@ -50,14 +50,18 @@ export default {
         create_add_all(){
             let setting = {
                 method: "POST",
-                url: global.Url+"importsid/",
+                url: global.Url+"importsid",
                 data: {
                     "students":this.newmembers,
                 },
             };
             this.$axios(setting).then((response)=>{
+                if(response.data.status=='OK'){
+                    alert("信息导入成功")
+                }else if(response.data.status=='error'){
+                    alert("学号格式不规范，请检查")
+                }
                 
-                alert('信息导入成功')
                 
             })
             

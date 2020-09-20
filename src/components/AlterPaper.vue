@@ -308,7 +308,58 @@ var fly = require("flyio")
             },
             back(){
                 this.submitted = false
-                location.reload(false)
+                var _this = this
+            setTimeout(function(){
+                let setting1 = {
+                    method: "POST",
+                    url: global.Url+"fuzzyjournal",
+                    data: {
+                        "string":""
+                    },
+                }
+                _this.$axios(setting1).then((response)=>{
+                var temp = "空"
+                $("#sp1").html('')
+                $("#sp1").append("<option value=''>"+temp+"</option>")
+                $.each(response.data,function(index,item){
+                    var typestr = ""
+                    if(item.J_Name==_this.Papers.journal_name){
+                        typestr = "<option selected>"+item.J_Name+"</option>"
+                    }else{
+                        typestr = "<option>"+item.J_Name+"</option>"
+                    }
+                    $("#sp1").append(typestr)
+                })
+                $("#sp1").selectpicker('refresh');
+                $("#sp1").selectpicker('show');
+                
+                })
+                let setting2 = {
+                    method: "POST",
+                    url: global.Url+"fuzzymeeting",
+                    data: {
+                        "string":""
+                    },
+                }
+                _this.$axios(setting2).then((response)=>{
+                console.log(response)
+                var temp = "空"
+                $("#sp2").html('')
+                $("#sp2").append("<option value=''>"+temp+"</option>")
+                console.log(_this.Papers.meeting_name)
+                $.each(response.data,function(index,item){
+                    var typestr=""
+                    if(item.M_FName==_this.Papers.meeting_name){
+                        typestr = "<option selected>"+item.M_FName+"</option>"
+                    }else{
+                        typestr = "<option>"+item.M_FName+"</option>"
+                    }
+                    $("#sp2").append(typestr)
+                })
+                $("#sp2").selectpicker('refresh');
+                $("#sp2").selectpicker('show');
+                })
+            },1000)
             },
             getName:function(){
                 var avatarUpload = document.getElementById('avatar-upload')
