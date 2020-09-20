@@ -24,7 +24,11 @@
                 </li>
             </ul>
             </nav>
-        <img src="./../assets/top_logo.jpg">
+            <img src="./../assets/top_logo.jpg">
+            <div id="footer">
+                <p>Copyright 2020 IRMS</p>
+                <p>All Rights Reserved.</p>
+            </div>
         </div>
         <div id="popovercontent" style="display:none">
             <p >学号：{{user.number}}</p>
@@ -176,7 +180,7 @@ nav{
 }
 img{
     position: absolute;
-    bottom: 0;
+    bottom: 11%;
     left: 0%;
     width: 100%;
 }
@@ -192,12 +196,17 @@ button{
     height:30px;
     width:200px
 }
-p{
-    font-size:15px;
-    border-bottom:1px solid #D5D5D5;
-}
+
 #userbutton{
     background:rgb(119, 173, 224);
 }
-
+#footer{
+    text-align: center;
+    color: rgb(119, 173, 224);
+    position: absolute;
+    bottom: 0%;
+    left: 5%;
+    z-index: 200;
+    width: 90%;
+}
 </style>

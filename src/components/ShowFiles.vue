@@ -34,7 +34,7 @@ export default {
 <style scoped>
 #show-files{
     position: absolute;
-    top: 13%;
+    top: 10%;
     width: 100%;
     height: 100%;
     margin:0 auto;

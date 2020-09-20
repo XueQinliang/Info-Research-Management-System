@@ -6,6 +6,7 @@ import CheckPapers from './components/CheckPapers.vue'
 import Login from './components/Login.vue'
 import TeacherIndex from './components/TeacherIndex.vue'
 import AlterPaper from './components/AlterPaper.vue'
+import ImportSid  from './components/ImportSid.vue'
 
 export default[
     {
@@ -74,5 +75,12 @@ export default[
             title:"修改论文信息"
         },
         component:AlterPaper
+    },
+    {
+        path:"/teacher/import_sid",
+        meta:{
+            title:"导入学生信息"
+        },
+        component:ImportSid
     }
 ]

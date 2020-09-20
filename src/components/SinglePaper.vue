@@ -24,11 +24,11 @@
                 <p>会议召开时间：{{Papers.meeting_time}}</p>
             </div>
             <br><br>
-            <div v-if="show">
+            <div v-if="show" id="check_button">
                 <button @click="check_pass">审核通过</button>
                 <button @click="check_notpass">审核不通过</button>
             </div>
-            <div v-if="show">
+            <div v-if="show" id="change_button">
                 <button class="mybutton2">
                     <router-link class="ptext" v-bind:to="'/teacher/alter_paper/'+title+'/'+author">修改信息</router-link>
                 </button>
@@ -176,5 +176,21 @@ label{
     margin:10px 0 auto;
     background: #eee;
     border: 1px dotted #aaa;
+}
+#check_button{
+    display: inline-block;
+}
+#check_button button{
+    background: rgb(35, 101, 223);
+    color:#fff;
+    border:0;
+    border-radius: 4px;
+    width:120px;
+    height: 40px;
+    font-size: 18px;
+    cursor: pointer;
+}
+#change_button{
+    display: inline-block;
 }
 </style>
