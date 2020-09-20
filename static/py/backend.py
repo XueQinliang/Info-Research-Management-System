@@ -7,6 +7,7 @@ import time
 import string
 import random
 import json
+import re
 import pymysql
 import pandas as pd
 
@@ -366,12 +367,24 @@ def importsid():
     cursor = conn.cursor()
     for info in infos:
         sid = info['sid']
+        if not re.match("\d{8,10}$",sid):
+            cursor.close()
+            conn.close()
+            return jsonify({'status': 'error'})
         name = info['name']
+        sql0 = '''
+            select * from Student where S_ID = %s and S_Name = %s
+        '''
+        data0 = [sid,name]
+        cursor.execute(sql0, data0)
+        ret1 = cursor.fetchall()
+        if ret1 != ():
+            continue
+        data1 = data0
         sql1 = '''
             insert into Student(S_ID,S_Name)
             values (%s,%s)
         '''
-        data1 = [sid,name]
         sql2 = '''
             insert into Student_Login(S_ID,Password)
             values (%s,%s)
