@@ -62,6 +62,9 @@
                   return false;"
             enctype="multipart/form-data" id="file_form">
               <label>上传论文内容(PDF格式)</label>
+              <div id="filename">
+                已选文件：{{order.title}}
+              </div>
               <input type="file" id="avatar-upload" name="uploadfile" />
               <input id="upload_button" type='submit' @click="isupload" value='上传' />
             </form>
@@ -136,7 +139,7 @@ export default {
             url:""
         },
         order:{
-            title:"",
+            title:"未选择文件",
             pages:0,
         },
         time:"",
@@ -209,22 +212,74 @@ export default {
         $eleForm.submit();
       },
       isupload(){
+        var avatarUpload = document.getElementById('avatar-upload')
+        var fname = avatarUpload.value;
+        var pos=fname.lastIndexOf("\\");
+        var filename=fname.substring(pos+1);
+        this.order.title = filename 
         this.click = true
       },
       back(){
         this.submitted = false
-        $(".selectpicker").selectpicker("render");
+        var _this = this
+            setTimeout(function(){
+                let setting1 = {
+                    method: "POST",
+                    url: global.Url+"fuzzyjournal",
+                    data: {
+                        "string":""
+                    },
+                }
+                _this.$axios(setting1).then((response)=>{
+                var temp = "空"
+                $("#sp1").html('')
+                $("#sp1").append("<option value=''>"+temp+"</option>")
+                $.each(response.data,function(index,item){
+                    var typestr = ""
+                    if(item.J_Name==_this.Papers.journal_name){
+                        typestr = "<option selected>"+item.J_Name+"</option>"
+                    }else{
+                        typestr = "<option>"+item.J_Name+"</option>"
+                    }
+                    $("#sp1").append(typestr)
+                })
+                $("#sp1").selectpicker('refresh');
+                $("#sp1").selectpicker('show');
+                
+                })
+                let setting2 = {
+                    method: "POST",
+                    url: global.Url+"fuzzymeeting",
+                    data: {
+                        "string":""
+                    },
+                }
+                _this.$axios(setting2).then((response)=>{
+                console.log(response)
+                var temp = "空"
+                $("#sp2").html('')
+                $("#sp2").append("<option value=''>"+temp+"</option>")
+                console.log(_this.Papers.meeting_name)
+                $.each(response.data,function(index,item){
+                    var typestr=""
+                    if(item.M_FName==_this.Papers.meeting_name){
+                        typestr = "<option selected>"+item.M_FName+"</option>"
+                    }else{
+                        typestr = "<option>"+item.M_FName+"</option>"
+                    }
+                    $("#sp2").append(typestr)
+                })
+                $("#sp2").selectpicker('refresh');
+                $("#sp2").selectpicker('show');
+                })
+            },1000)
       },
      getName:function(){
         var avatarUpload = document.getElementById('avatar-upload')
         var fname = avatarUpload.value;
       },
-      post:function(){
-        var avatarUpload = document.getElementById('avatar-upload')
-        var fname = avatarUpload.value;
-        var pos=fname.lastIndexOf("\\");
-        var filename=fname.substring(pos+1); 
-        this.order.title = filename 
+      post:function(){ 
+        
         if (this.Papers.title == ""){
           alert("请输入论文题目")
         }else if(this.order.title == ""){
