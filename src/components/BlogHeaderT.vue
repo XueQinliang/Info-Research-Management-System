@@ -170,9 +170,8 @@ nav{
     background:  -webkit-linear-gradient(top,rgb(119, 173, 224),rgb(203, 225, 245),rgb(218, 234, 252)) no-repeat;
 }
 img{
-    position: relative;
-    top: 65%;
-    bottom: 0%;
+    position: absolute;
+    top: 82%;
     left: 0%;
     width: 100%;
 }
@@ -194,9 +193,8 @@ button{
 #footer{
     text-align: center;
     color: rgb(119, 173, 224);
-    position: relative;
-    top: 65%;
-    bottom: 0%;
+    position: absolute;
+    top: 90%;
     left: 5%;
     z-index: 200;
     width: 90%;
