@@ -180,7 +180,7 @@ nav{
 }
 img{
     position: absolute;
-    bottom: 11%;
+    top: 82%;
     left: 0%;
     width: 100%;
 }
@@ -204,7 +204,7 @@ button{
     text-align: center;
     color: rgb(119, 173, 224);
     position: absolute;
-    bottom: 0%;
+    top: 90%;
     left: 5%;
     z-index: 200;
     width: 90%;
