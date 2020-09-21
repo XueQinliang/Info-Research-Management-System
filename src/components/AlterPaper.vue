@@ -57,7 +57,7 @@
                             alert('上传文件失败')
                             }else if(message!=''){
                             alert('上传文件成功')
-                            var temp = 'http://irms.ruc.edu.cn/download/'+message
+                            var temp = message
                             sessionStorage.setItem('url',temp)
                             }
                     }});
@@ -275,7 +275,7 @@ var fly = require("flyio")
                 console.log(this.Papers.url);
             　　//在本页打开窗口
                 let $eleForm = $("<form id='newform' method='get'></form>");
-                $eleForm.attr("action",sessionStorage.getItem('url'));
+                $eleForm.attr("action",'http://irms.ruc.edu.cn/download/'+sessionStorage.getItem('url'));
                 $(document.body).append($eleForm);
                 try{
                     file_form.action = ""
