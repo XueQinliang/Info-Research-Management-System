@@ -9,7 +9,7 @@ import json
 import pymysql
 import requests
 from backend import Get_Paper_By_any
-r = requests.post(url="http://202.112.113.26:5000/filter_papers",json={},headers={'Content-Type': 'application/json;charset=UTF-8'})
+r = requests.post(url="http://202.112.113.26:5000/importsid",json={'students':[{'sid':'202020','name':'xql2'}]},headers={'Content-Type': 'application/json;charset=UTF-8'})
 print(r)
 print(r.json())
 # print(Get_Paper_By_any({},status='all'))

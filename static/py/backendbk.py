@@ -11,6 +11,15 @@ import re
 import pymysql
 import pandas as pd
 
+'''
+todolist:
+1. Get_Paper_By_any函数的修改
+2. filter_papers
+3. csvdownload
+4. getdetailedinfo
+5. upload_file
+'''
+
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 app.config['SECRET_KEY'] = 'T8mT#DS!NVjrR8*ATUUR'
@@ -24,7 +33,7 @@ dbinfo = {
     'port': 5412,
     'user': "root",
     'password': "j&ipH9yITl^3Sce8AvsO",
-    'database': "irmsdata",
+    'database': "irmsdatatemp",
     'charset': "utf8"
 }
 
@@ -47,7 +56,7 @@ def Paper_Status(Title, Name):
         charset="utf8")
     cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
     sql = '''
-            select Status from Paper_Status
+            select Status from Paper
             where P_Title = %s and P_Author = %s
         '''
     data = [Title, Name]
@@ -106,17 +115,11 @@ def Get_Paper_By_any(infodict, status=None):
     sql = """
     select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
     Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
-    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url from Paper 
+    Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_Atime,Paper.P_url,Paper.P_status from Paper 
     """
     time_position = [-2, -3, -4]
     if status != None:
         time_position = [-3, -4, -5]
-        sql = """
-        select Paper.P_Title,Paper.P_Author,Paper.P_ASequence,
-        Paper.P_Size,Paper.P_Journal,Paper.P_Meeting,
-        Paper.P_Mtime,Paper.P_Otime,Paper.P_Jtime,Paper.P_url,Paper_Status.status from Paper 
-        inner join Paper_Status
-        """
     if conditionlist != []:
         sql += ('where ' + ' and '.join(conditionlist))
     elif status != None:
@@ -163,8 +166,9 @@ def insert_into_Student(data):
         charset="utf8")
     cursor = conn.cursor()
     sql = """
-    insert into Student (S_ID,S_Name,S_Grade,S_Class,S_Level,S_Major) values (%s,%s,%s,%s,%s,%s)
+    insert into Student (S_ID,S_Name,S_Grade,S_Class,S_Level,S_Major,Password) values (%s,%s,%s,%s,%s,%s,%s)
     """
+    data.append(data[0])
     cursor.execute(sql, data)
     conn.commit()
     cursor.close()
@@ -173,8 +177,8 @@ def insert_into_Student(data):
 
 # 录入论文信息
 # 参数为论文信息
-# 格式：[论文标题，论文作者，作者排序，论文篇幅，发表期刊，发表会议，会议时间，线上时间，期刊时间]
-# 例：data = ['论文A','陶云浩','一作','长文','test_J','test_M','2018-10-30','2019-01-01','2019-12-25']
+# 格式：[论文标题，论文作者，作者排序，论文篇幅，发表期刊，发表会议，会议时间，线上时间，期刊时间，录用时间]
+# 例：data = ['论文A','陶云浩','一作','长文','test_J','test_M','2018-10-30','2019-01-01','2019-12-25','2020-02-01']
 def insert_into_Paper(data):
     conn = pymysql.connect(
         host="202.112.113.26",
@@ -185,7 +189,7 @@ def insert_into_Paper(data):
         charset="utf8")
     cursor = conn.cursor()
     sql = """
-    insert into Paper (P_Title,P_Author,P_ASequence,P_Size,P_Journal,P_Meeting,P_Mtime,P_Otime,P_Jtime,P_url) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+    insert into Paper (P_Title,P_Author,P_ASequence,P_Size,P_Journal,P_Meeting,P_Mtime,P_Otime,P_Jtime,P_Atime) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
     """
     cursor.execute(sql, data)
     conn.commit()
@@ -193,11 +197,11 @@ def insert_into_Paper(data):
     conn.close()
 
 
-# 学生登录检测
-# 参数为学生用户名和密码，检测是否在数据库中有记录，有记录返回1，否则返回0
+# 登录检测
+# 参数为用户名和密码，检测是否在数据库中有记录，有记录返回1，否则返回0
 # 格式:[用户名，密码]
 # 例：data = ['2017201985','123456']
-def Student_Login(data):
+def Check_Login(data):
     conn = pymysql.connect(
         host="202.112.113.26",
         port=5412,
@@ -207,13 +211,13 @@ def Student_Login(data):
         charset="utf8")
     cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
     sql1 = '''
-    select * from Student_Login 
+    select * from Student 
     where S_ID = %s and Password = %s
     '''
     cursor.execute(sql1, data)
     ret1 = cursor.fetchmany(1)
     sql2 = '''
-    select * from Teacher_Login 
+    select * from Teacher 
     where T_ID = %s and Password = %s
     '''
     cursor.execute(sql2, data)
@@ -239,8 +243,8 @@ def New_Paper(Title, Name):
         charset="utf8")
     cursor = conn.cursor()
     sql = '''
-        insert into Paper_Status
-        values(%s,%s,"待审核")
+        update Paper set Status = "待审核"
+        where P_Title=%s and P_Author=%s
     '''
     data = [Title, Name]
     cursor.execute(sql, data)
@@ -260,7 +264,7 @@ def Examine_Paper(Title, Name, Status):
         charset="utf8")
     cursor = conn.cursor()
     sql = '''
-        update Paper_Status
+        update Paper
         set Status = %s
         where P_Title = %s and P_Author = %s
     '''
@@ -283,7 +287,7 @@ def dologin():
     usr = request.json.get('username')
     data = [usr, pwd]
     print(data)
-    ret1 = Student_Login(data)
+    ret1 = Check_Login(data)
     print("ret:", ret1)
     ret2 = Get_Name_By_ID(usr)
     if not os.path.exists(app.config['UPLOAD_FOLDER'] + usr):
@@ -299,7 +303,7 @@ def revisepswd():
     new2 = request.json.get('newpswd2')
     if (new1 != new2):
         return jsonify({'status': 2})  # 两次密码不同
-    ret1 = Student_Login([uid, old])
+    ret1 = Check_Login([uid, old])
     if (ret1 == 1):
         conn = pymysql.connect(
             host="202.112.113.26",
@@ -310,7 +314,7 @@ def revisepswd():
             charset="utf8")
         cursor = conn.cursor()
         sql = '''
-            update Student_Login
+            update Student
             set Password = %s
             where S_ID = %s and Password = %s
         '''
@@ -330,7 +334,7 @@ def revisepswd():
             charset="utf8")
         cursor = conn.cursor()
         sql = '''
-            update Teacher_Login
+            update Teacher
             set Password = %s
             where T_ID = %s and Password = %s
         '''
@@ -381,18 +385,12 @@ def importsid():
         ret1 = cursor.fetchall()
         if ret1 != ():
             continue
-        data1 = data0
+        data1 = [sid,name,sid]
         sql1 = '''
-            insert into Student(S_ID,S_Name)
-            values (%s,%s)
+            insert into Student(S_ID,S_Name,Password)
+            values (%s,%s,%s)
         '''
-        sql2 = '''
-            insert into Student_Login(S_ID,Password)
-            values (%s,%s)
-        '''
-        data2 = [sid,sid]
         cursor.execute(sql1, data1)
-        cursor.execute(sql2, data2)
         conn.commit()
 
     cursor.close()
@@ -404,8 +402,7 @@ def importsid():
 def get_info():
     print("Getinfo")
     sid = request.json.get('id')
-    print(sid)
-    name = Get_Name_By_ID(request.json.get('id'))
+    name = Get_Name_By_ID(sid)
     print(sid, name)
     return jsonify({'sid': sid, 'name': name})
 
@@ -439,7 +436,8 @@ def upload():
     mtime = None if request.json.get("mtime").strip() =="" else request.json.get("mtime").strip()
     mlevel = None if request.json.get("mlevel").strip() =="" else request.json.get("mlevel").strip()
     msname = None if request.json.get("msname").strip() =="" else request.json.get("msname").strip()
-    purl = None if request.json.get("purl").strip() =="" else request.json.get("purl").strip()
+    atime = None if request.json.get("atime").strip() =="" else request.json.get("atime").strip()
+    # purl = None if request.json.get("purl").strip() =="" else request.json.get("purl").strip()
 
     # 连接数据库
     conn = pymysql.connect(
@@ -456,141 +454,133 @@ def upload():
             select * from Paper as p 
             where p.P_Title= %s and p.P_Author= %s;
         """
-    search_sql_paperstatus = """
-            select * from Paper_Status as ps
-            where ps.P_Title= %s and ps.P_Author= %s;
-        """
     re0 = cur.execute(search_sql_paper, [title, author])
-    re1 = cur.execute(search_sql_paperstatus, [title, author])
-    if re0 != re1:  # paper与status两个表格内容不一致
-        print("出现故障，Paper与Paper_Status表格内容不一致，论文主键为：" + title + " " + author)
-        return -1
-    else:
-        if re0 == 1:  # 已经出现过这篇论文，需要执行update操作
-            try:
-                # 更新paper表
-                # p.P_Title, p.P_Author, p.P_ASequence, p.P_Size, p.P_Otime, p.P_Journal, p.P_Jtime, j.J_Level, j.J_SName, p.P_Meeting, p.P_Mtime, m.M_Level, m.M_SName, p.P_url
-                sql_uppaper = """
-                        update Paper as p
-                        set p.P_ASequence = %s, p.P_Size = %s, 
-                        p.P_Journal = %s, p.P_Jtime = %s, p.P_Meeting = %s, p.P_Mtime = %s, p.P_Otime = %s,
-                        p.P_url = %s
-                        where p.P_Title = %s and p.P_Author = %s ;
+    if re0 == 1:  # 已经出现过这篇论文，需要执行update操作
+        try:
+            # 更新paper表
+            # p.P_Title, p.P_Author, p.P_ASequence, p.P_Size, p.P_Otime, p.P_Journal, p.P_Jtime, j.J_Level, j.J_SName, p.P_Meeting, p.P_Mtime, m.M_Level, m.M_SName, p.P_url
+            sql_uppaper = """
+                    update Paper as p
+                    set p.P_ASequence = %s, p.P_Size = %s, 
+                    p.P_Journal = %s, p.P_Jtime = %s, p.P_Meeting = %s, p.P_Mtime = %s, p.P_Otime = %s,
+                    p.P_Atime = %s, p.P_status = %s
+                    where p.P_Title = %s and p.P_Author = %s ;
+                """
+            re_update = cur.execute(sql_uppaper,
+                                    [sequence, size, journal, jtime, meeting, mtime, otime, atime, "待审核", title, author])
+            # 更新journal表,meeting表
+            # 在杂志表中寻找该杂志是否已经存在
+            if journal:
+                sql_fjournal = """
+                        select * 
+                        from Journal as j
+                        where
+                        j.J_Name= %s;
                     """
-                re_update = cur.execute(sql_uppaper,
-                                        [sequence, size, journal, jtime, meeting, mtime, otime, purl, title, author])
-                # 更新journal表,meeting表
-                # 在杂志表中寻找该杂志是否已经存在
-                if journal:
-                    sql_fjournal = """
-                            select * 
-                            from Journal as j
-                            where
-                            j.J_Name= %s;
+                re_fjournal = cur.execute(sql_fjournal, [journal])
+                if re_fjournal == 0:  # 没有找到该journal
+                    sql_ijournal = """
+                            insert into Journal
+                            values
+                            (%s , %s , %s);
                         """
-                    re_fjournal = cur.execute(sql_fjournal, [journal])
-                    if re_fjournal == 0:  # 没有找到该journal
-                        sql_ijournal = """
-                                insert into Journal
-                                values
-                                (%s , %s , %s);
-                            """
-                        cur.execute(sql_ijournal, [journal, jlevel, jsname])
-                    else:
-                        pass  # 找到了就不插了
-                if meeting:
-                    sql_fmeeting = """
-                            select * 
-                            from Meeting as m
-                            where
-                            m.M_FName= %s;
+                    cur.execute(sql_ijournal, [journal, jsname, jlevel])
+                else:
+                    pass  # 找到了就不插了
+            if meeting:
+                sql_fmeeting = """
+                        select * 
+                        from Meeting as m
+                        where
+                        m.M_Name= %s;
+                    """
+                re_fmeeting = cur.execute(sql_fmeeting, [meeting])
+                if re_fmeeting == 0:  # 没有找到该meeting
+                    sql_imeeting = """
+                            insert into Meeting
+                            values
+                            (%s , %s , %s);
                         """
-                    re_fmeeting = cur.execute(sql_fmeeting, [meeting])
-                    if re_fmeeting == 0:  # 没有找到该meeting
-                        sql_imeeting = """
-                                insert into Meeting
-                                values
-                                (%s , %s , %s);
-                            """
-                        cur.execute(sql_imeeting, [meeting, msname, mlevel])
-                    else:
-                        pass  # 找到了就不插了
+                    cur.execute(sql_imeeting, [meeting, msname, mlevel])
+                else:
+                    pass  # 找到了就不插了
 
-                # 更新paper status表
-                sql_uppaperstatus = """
-                        update Paper_Status as ps
-                        set ps.Status= %s
-                        where ps.P_Title =%s and ps.P_Author=%s;
-                    """
-                cur.execute(sql_uppaperstatus, ["待审核", title, author])
+            # 更新paper status表
+            # sql_uppaperstatus = """
+            #         update Paper_Status as ps
+            #         set ps.Status= %s
+            #         where ps.P_Title =%s and ps.P_Author=%s;
+            #     """
+            # cur.execute(sql_uppaperstatus, ["待审核", title, author])
 
-                conn.commit()
-                return jsonify({'status': 1, 'content': "执行成功"})
-            except Exception as e:
-                conn.rollback()
-                print("执行sql语句发生错误 update")
-                print(e)
-                return -1
-        if re0 == 0:  # 没找到这篇论文，需要执行插入操作
-            try:
-                # 插入paper表
-                sql_ipaper = """
-                        insert into Paper
-                        values
-                        (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);
+            conn.commit()
+            return jsonify({'status': 1, 'content': "执行成功"})
+        except Exception as e:
+            conn.rollback()
+            print("执行sql语句发生错误 update")
+            print(e)
+            return -1
+    if re0 == 0:  # 没找到这篇论文，需要执行插入操作
+        try:
+            # 插入paper表
+            sql_ipaper = """
+                    insert into Paper
+                    values
+                    (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);
+                """
+            cur.execute(sql_ipaper, [title, author, sequence, size, journal, meeting, mtime, otime, jtime, atime, "待审核"])
+            # 更新journal表，meeting表
+            # 在杂志表中寻找该杂志是否已经存在
+            if journal:
+                sql_fjournal = """
+                        select * 
+                        from Journal as j
+                        where
+                        j.J_Name= %s;
                     """
-                cur.execute(sql_ipaper, [title, author, sequence, size, journal, meeting, mtime, otime, jtime, purl])
-                # 更新journal表，meeting表
-                # 在杂志表中寻找该杂志是否已经存在
-                if journal:
-                    sql_fjournal = """
-                            select * 
-                            from Journal as j
-                            where
-                            j.J_Name= %s;
+                re_fjournal = cur.execute(sql_fjournal, [journal])
+                if re_fjournal == 0:  # 没有找到该journal
+                    sql_ijournal = """
+                            insert into Journal
+                            values
+                            (%s , %s , %s);
                         """
-                    re_fjournal = cur.execute(sql_fjournal, [journal])
-                    if re_fjournal == 0:  # 没有找到该journal
-                        sql_ijournal = """
-                                insert into Journal
-                                values
-                                (%s , %s , %s);
-                            """
-                        cur.execute(sql_ijournal, [journal, jlevel, jsname])
-                    else:
-                        pass  # 找到了就不插了
-                if meeting:
-                    sql_fmeeting = """
-                            select * 
-                            from Meeting as m
-                            where
-                            m.M_FName= %s;
+                    cur.execute(sql_ijournal, [journal, jsname, jlevel])
+                else:
+                    pass  # 找到了就不插了
+            if meeting:
+                sql_fmeeting = """
+                        select * 
+                        from Meeting as m
+                        where
+                        m.M_Name= %s;
+                    """
+                re_fmeeting = cur.execute(sql_fmeeting, [meeting])
+                if re_fmeeting == 0:  # 没有找到该meeting
+                    sql_imeeting = """
+                            insert into Meeting
+                            values
+                            (%s , %s , %s);
                         """
-                    re_fmeeting = cur.execute(sql_fmeeting, [meeting])
-                    if re_fmeeting == 0:  # 没有找到该meeting
-                        sql_imeeting = """
-                                insert into Meeting
-                                values
-                                (%s , %s , %s);
-                            """
-                        cur.execute(sql_imeeting, [meeting, msname, mlevel])
-                    else:
-                        pass  # 找到了就不插了
+                    cur.execute(sql_imeeting, [meeting, msname, mlevel])
+                else:
+                    pass  # 找到了就不插了
 
-                # 插入paper status表
-                sql_ipaperstatus = """
-                        insert into Paper_Status
-                        values
-                        (%s,%s,%s);
-                    """
-                cur.execute(sql_ipaperstatus, [title, author, "待审核"])
-                conn.commit()
-                return jsonify({'status': 1, 'content': "执行成功"})
-            except Exception as e:
-                conn.rollback()
-                print("执行sql语句发生错误 insert")
-                print(e)
-                return -1
+            # 插入paper status表
+            # sql_ipaperstatus = """
+            #         insert into Paper_Status
+            #         values
+            #         (%s,%s,%s);
+            #     """
+            # cur.execute(sql_ipaperstatus, [title, author, "待审核"])
+
+            conn.commit()
+            return jsonify({'status': 1, 'content': "执行成功"})
+        except Exception as e:
+            conn.rollback()
+            print("执行sql语句发生错误 insert")
+            print(e)
+            return -1
 
 
 @app.route('/check_papers', methods=['POST'])
@@ -710,8 +700,8 @@ def fuzzymeeting():
         charset="utf8")
     cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
     sql1 = '''
-    select M_FName from Meeting 
-    where M_FName like '%{}%'
+    select M_Name from Meeting 
+    where M_Name like '%{}%'
     '''.format(string)
     cursor.execute(sql1)
     ret1 = cursor.fetchmany(10)
